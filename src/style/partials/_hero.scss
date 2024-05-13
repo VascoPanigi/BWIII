@@ -1,0 +1,100 @@
+@mixin verify {
+  padding: 2px 12px;
+  font-size: 14px;
+  border-radius: 75px;
+  border: 1px dashed $primary;
+  background-color: transparent;
+  color: $primary;
+  font-weight: 600;
+}
+
+@mixin btn-group {
+  border-radius: 75px;
+  padding: 4px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid;
+  outline: 1px solid transparent;
+}
+
+.hero-section {
+  margin-block: 10px;
+
+  &.card {
+    min-height: 400px;
+  }
+
+  img {
+    object-fit: cover;
+    height: 20vh;
+  }
+
+  .card-body {
+    margin-top: 50px;
+  }
+
+  h5,
+  h6 {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  p.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    max-width: 100ch;
+    font-size: 16px;
+    margin-bottom: 6px;
+    padding-right: 20px;
+  }
+  .uni-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  p {
+    font-size: 14px;
+    margin: 0 0 6px 0;
+  }
+  span {
+    color: $primary;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .button-group {
+    margin-top: 12px;
+    button {
+      @include btn-group();
+    }
+    button:nth-of-type(1):hover {
+      background-color: $primary-dark;
+    }
+    button:nth-of-type(2) {
+      background-color: transparent;
+      color: $primary;
+
+      &:hover {
+        background-color: $primary-light;
+      }
+    }
+    button:nth-of-type(3) {
+      background-color: transparent;
+      color: $secondary;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .verify-btn {
+    @include verify();
+    i {
+      margin-right: 4px;
+    }
+  }
+}
