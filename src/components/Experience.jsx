@@ -1,14 +1,14 @@
-import ExperienceCard from "./ExperienceCards";
+import { Card } from "react-bootstrap";
+import ExperienceCard from "./ExperienceCard";
 
 const Experience = () => {
   return (
-    <div className="section-container">
+    <Card className="section-container">
       <div className="inner-section-container">
-        <p className="text-white section-title">Experience</p>
-        <ExperienceCard />
+        <p className=" section-title">Experience</p>
         <ExperienceCard />
       </div>
-    </div>
+    </Card>
   );
 };
 

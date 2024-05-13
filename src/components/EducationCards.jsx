@@ -10,9 +10,9 @@ const EducationCard = () => {
         />
         <div className="d-flex flex-column">
           <Card.Body>
-            <Card.Title className="education-name text-white">Sapienza università di Roma</Card.Title>
-            <Card.Text className="education-info text-white">PhD Computer Science</Card.Text>
-            <Card.Text className="education-period text-white">2024 - 2024</Card.Text>
+            <Card.Title className="education-name ">Sapienza università di Roma</Card.Title>
+            <Card.Text className="education-info ">PhD Computer Science</Card.Text>
+            <Card.Text className="education-period ">2024 - 2024</Card.Text>
           </Card.Body>
         </div>
       </div>

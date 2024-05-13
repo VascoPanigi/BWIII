@@ -1,14 +1,15 @@
+import { Card } from "react-bootstrap";
 import SuggestionCard from "./SuggestionCard";
 
 const MySuggestions = () => {
   return (
-    <div className="suggestions-container">
-      <p className="text-white suggestion-title">Other similar profiles</p>
+    <Card className="suggestions-container">
+      <p className="suggestion-title">Other similar profiles</p>
       <SuggestionCard />
       <SuggestionCard />
       <SuggestionCard />
       <SuggestionCard />
-    </div>
+    </Card>
   );
 };
 

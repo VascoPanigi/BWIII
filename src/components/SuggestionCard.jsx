@@ -12,11 +12,11 @@ const SuggestionCard = () => {
         />
         <div className="d-flex flex-column">
           <Card.Body>
-            <Card.Title className="suggestion-name text-white">
+            <Card.Title className="suggestion-name ">
               nome cognome<span className="last-seen-suggestion"> • 3rd</span>
             </Card.Title>
-            <Card.Text className="suggestion-occupation text-white">studente presso Epicode</Card.Text>
-            <Button className="suggestion-button" variant="outline-light">
+            <Card.Text className="suggestion-occupation ">studente presso Epicode</Card.Text>
+            <Button className="suggestion-button" variant="outline-dark">
               View profile
             </Button>
           </Card.Body>
