@@ -1,0 +1,117 @@
+.card-container {
+  background-color: transparent;
+  //   background-color: violet;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid black;
+}
+
+.section-container {
+  margin-block-end: 1rem;
+  //   background-color: magenta;
+}
+
+.inner-section-container {
+  width: 95%;
+  margin-inline: auto;
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    margin-block-start: 1.5rem;
+    padding-block-start: 1rem;
+    margin-block-end: 0;
+  }
+
+  .education-card {
+    p {
+      margin: 0;
+    }
+    .education-image {
+      width: 50px;
+      height: 50px;
+      margin-block-start: 1.4rem;
+      border-radius: 0;
+    }
+    .education-name {
+      margin-block-end: 0;
+      font-size: 1.1rem;
+    }
+    .education-info {
+      font-size: 0.9rem;
+    }
+    .education-period {
+      font-size: 0.9rem;
+      opacity: 80%;
+    }
+  }
+}
+
+.card-container:nth-last-of-type(1) {
+  border: 0;
+  padding-block-end: 2rem;
+}
+
+.experience-card-inner-container {
+  border-bottom: 1px solid white;
+
+  p {
+    margin: 0;
+  }
+  .experience-timeline-container {
+    border: 0;
+    .continuity-container {
+      width: 50px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .circular-continuity {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: black;
+        margin-block: 25px 5px;
+      }
+      .linear-continuity {
+        border-left: 2px solid black;
+        height: 60px;
+      }
+    }
+  }
+
+  .experience-image {
+    width: 50px;
+    height: 50px;
+    margin-block-start: 1.2rem;
+    border-radius: 0;
+  }
+  .experience-name {
+    font-size: 1rem;
+  }
+
+  .experience-duration {
+    font-size: 0.9rem;
+    opacity: 80%;
+  }
+
+  .experience-location {
+    font-size: 0.9rem;
+    opacity: 80%;
+  }
+
+  .experience-period {
+    opacity: 80%;
+    font-size: 0.9rem;
+  }
+}
+
+.experience-card-inner-container {
+  .experience-timeline-container:last-child {
+    .linear-continuity {
+      height: 0;
+      border: none;
+    }
+  }
+}
