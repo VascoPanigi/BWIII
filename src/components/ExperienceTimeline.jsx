@@ -5,7 +5,9 @@ const ExperienceTimeline = () => {
     <Card className="experience-timeline-container my-auto">
       <div className="d-flex experience-continuity">
         <div className="continuity-container">
-          <div className="circular-continuity"></div>
+          <div className="circular-continuity">
+            <p className="dot">•</p>
+          </div>
           <div className="linear-continuity"></div>
         </div>
         <div className="d-flex flex-column">
