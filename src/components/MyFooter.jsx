@@ -135,21 +135,21 @@ const MyFooter = () => {
           </Col>
           <Col xs={6} md={3} className="mb-3">
             <div className="d-flex mb-2 align-items-start">
-              <Image className="me-2" src={questionmark}></Image>
+              <Image className="me-2" src={questionmark} />
               <div>
                 <p className="m-0">Questions?</p>
                 <span>Visit our Help Center.</span>
               </div>
             </div>
             <div className="d-flex mb-2 align-items-start">
-              <Image className="me-2" src={gear}></Image>
+              <Image className="me-2" src={gear} />
               <div>
                 <p className="m-0">Manage your account and privacy</p>
                 <span>Go to your Settings.</span>
               </div>
             </div>
             <div className="d-flex mb-2 align-items-start">
-              <Image className="me-2" src={shield}></Image>
+              <Image className="me-2" src={shield} />
               <div>
                 <p className="m-0">Recommendation transparency</p>
                 <span>Learn more about Recommended Content.</span>
