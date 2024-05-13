@@ -1,0 +1,27 @@
+//navbar
+
+.navbar-container {
+  p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+}
+
+//profile
+.profile-container {
+    .row {
+      div {
+        height: 100vh;
+      }
+      .right-column {
+        min-width: 300px;
+      }
+      .left-column {
+        flex-grow: 1;
+      }
+    }
+  }
+
+
+  
+  
