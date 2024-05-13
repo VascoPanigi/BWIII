@@ -1,0 +1,42 @@
+.suggestion-card-container {
+  background-color: transparent;
+  //   background-color: violet;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid white;
+  .suggestion-profile-image {
+    border-radius: 50%;
+    aspect-ratio: 4/4;
+    max-width: 50px;
+    margin-block-start: 1rem;
+  }
+  .suggestion-name {
+    font-size: 1.1rem;
+  }
+  .suggestion-occupation {
+    font-size: 1rem;
+  }
+  .last-seen-suggestion {
+    font-weight: 400;
+    font-size: 0.9rem;
+    opacity: 80%;
+  }
+}
+
+.suggestion-title {
+  font-size: 1rem;
+  font-weight: 500;
+
+  margin-block-start: 1.5rem;
+  margin-block-end: 0;
+}
+
+.suggestions-container {
+  max-width: 85%;
+  margin-inline: auto;
+}
+
+.suggestion-button {
+  border-radius: 30px;
+  padding-block: 0.2rem;
+}
