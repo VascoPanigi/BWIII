@@ -28,7 +28,10 @@ const ProfileHero = () => {
                 dolor sit amet consectetur adipisicing elit. Quis ut enim numquam iste dolore eveniet saepe dignissimos
                 qui culpa fugit debitis nisi error quibusdam itaque dolorem aspernatur, sed quod totam.
               </Card.Text>
-              <h6 className="d-xl-none">University of Rome</h6>
+              <a href="">
+                <h6 className="d-xl-none">University of Rome</h6>
+              </a>
+
               <p>
                 Country • <span>Contact info</span>
               </p>
@@ -39,7 +42,9 @@ const ProfileHero = () => {
                 src="https://media.licdn.com/dms/image/C510BAQF5OJVPD2RZjA/company-logo_100_100/0/1631329806779?e=1723680000&amp;v=beta&amp;t=upxQJFA3e2Dccg58oJvGGECbA7Pq_8wzUAY_rdEjDrs"
                 className="uni-logo"
               />
-              <h6>University of Rome</h6>
+              <a href="">
+                <h6>University of Rome</h6>
+              </a>
             </div>
           </div>
           <div className="button-group d-flex align-items-center justify-content-start gap-1 gap-md-2">
