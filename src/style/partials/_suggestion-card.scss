@@ -3,7 +3,7 @@
   //   background-color: violet;
   border: none;
   border-radius: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $secondary-light;
   width: 85%;
   margin-inline: auto;
 
@@ -14,11 +14,17 @@
     margin-block-start: 1rem;
   }
   .suggestion-name {
-    font-size: 1.1rem;
-  }
-  .suggestion-name:hover {
-    text-decoration: underline;
-    color: blue;
+    font-size: 1rem;
+    &:hover {
+      text-decoration: underline;
+      color: $primary;
+      cursor: pointer;
+    }
+
+    &:hover > .last-seen-suggestion {
+      text-decoration: underline;
+      text-decoration-color: white;
+    }
   }
 
   .suggestion-occupation {
@@ -26,8 +32,9 @@
   }
   .last-seen-suggestion {
     font-weight: 400;
-    font-size: 0.9rem;
+    font-size: 1rem;
     opacity: 80%;
+    color: $dark;
   }
 }
 
@@ -35,7 +42,7 @@
   font-size: 1rem;
   font-weight: 500;
 
-  margin-block-start: 1.5rem;
+  margin-block-start: 0.5rem;
   margin-block-end: 0;
   margin-inline-start: 1rem;
 }
@@ -48,8 +55,10 @@
 }
 
 .suggestion-button {
-  border-radius: 30px;
-  padding-block: 0.2rem;
+  @include btn-group;
+  @include outline-dark;
+  background-color: transparent !important;
+  color: $dark !important;
 }
 
 .suggestion-card-container:nth-last-of-type(1) {
