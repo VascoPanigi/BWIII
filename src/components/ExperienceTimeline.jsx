@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 const ExperienceTimeline = () => {
   return (
     <Card className="experience-timeline-container my-auto">
-      <div className="d-flex align-items-start experience-continuity">
+      <div className="d-flex experience-continuity">
         <div className="continuity-container">
           <div className="circular-continuity"></div>
           <div className="linear-continuity"></div>
