@@ -6,6 +6,9 @@
   background-color: transparent;
   color: $primary;
   font-weight: 600;
+  &:hover {
+    background-color: $primary-light;
+  }
 }
 
 @mixin btn-group {
@@ -13,12 +16,52 @@
   padding: 4px 16px;
   font-size: 16px;
   font-weight: 600;
-  border: 1px solid;
-  outline: 1px solid transparent;
+  border: 1px solid transparent;
+}
+
+@mixin outline-dark {
+  box-shadow: inset 0 0 0 1px $dark;
+  color: $dark;
+  background-color: transparent;
+  &:hover {
+    box-shadow: inset 0 0 0 2px $dark;
+    background-color: $secondary-emphasis;
+  }
+}
+@mixin outline-primary {
+  box-shadow: inset 0 0 0 1px $primary;
+  color: $primary;
+  background-color: transparent;
+  &:hover {
+    box-shadow: inset 0 0 0 2px $primary;
+    background-color: $primary-light;
+  }
+}
+
+@mixin edit-icon {
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 30px;
+  height: 30px;
+  border: 1px solid transparent;
 }
 
 .hero-section {
-  margin-block: 10px;
+  margin-block: 1rem;
+  position: relative;
+
+  .propic {
+    position: absolute;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 5px solid white;
+    top: 17%;
+    left: 1.3rem;
+  }
 
   &.card {
     min-height: 400px;
@@ -30,13 +73,38 @@
   }
 
   .card-body {
-    margin-top: 50px;
+    margin-top: 40px;
+    padding-left: 1.5rem;
   }
 
   h5,
   h6 {
     margin: 0;
     font-weight: 600;
+  }
+
+  a {
+    text-decoration: none;
+    color: $dark;
+    &:hover {
+      text-decoration: underline;
+      color: $primary;
+    }
+  }
+
+  h6 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    min-width: 25ch;
+    font-size: 14px;
+
+    &.d-xl-none {
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
   }
 
   p.card-text {
@@ -69,24 +137,33 @@
     margin-top: 12px;
     button {
       @include btn-group();
+      box-shadow: inset 0 0 0 1px $primary;
     }
     button:nth-of-type(1):hover {
       background-color: $primary-dark;
+      box-shadow: inset 0 0 0 1px transparent;
     }
     button:nth-of-type(2) {
-      background-color: transparent;
-      color: $primary;
-
-      &:hover {
-        background-color: $primary-light;
-      }
+      @include outline-primary();
     }
     button:nth-of-type(3) {
-      background-color: transparent;
-      color: $secondary;
-
+      @include outline-dark();
       &:hover {
         background-color: transparent;
+      }
+    }
+  }
+
+  .edit-icon {
+    @include edit-icon();
+
+    i {
+      font-size: 15px;
+      color: $primary;
+    }
+    &:hover {
+      i {
+        color: $dark;
       }
     }
   }
@@ -95,6 +172,56 @@
     @include verify();
     i {
       margin-right: 4px;
+    }
+  }
+
+  //MEDIA////////////////////////
+
+  @media (max-width: $xl) {
+    .propic {
+      top: 17%;
+    }
+  }
+  @media (max-width: $lg) {
+    .propic {
+      width: 120px;
+      height: 120px;
+      top: 23%;
+    }
+    .button-group {
+      padding: 2px 0;
+
+      button {
+        font-size: 12px;
+      }
+    }
+  }
+  @media (max-width: $md) {
+    .propic {
+      width: 110px;
+      height: 110px;
+      top: 25%;
+    }
+  }
+  @media (max-width: $sm) {
+    &.card {
+      min-height: 300px;
+    }
+
+    img {
+      height: 12vh;
+    }
+    .propic {
+      width: 100px;
+      height: 100px;
+      top: 15%;
+    }
+    .button-group {
+      padding: 2px 0;
+
+      button {
+        font-size: 14px;
+      }
     }
   }
 }

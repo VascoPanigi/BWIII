@@ -1,0 +1,13 @@
+.projects-container {
+  margin-block-end: 1rem;
+}
+
+.project-card {
+  border-bottom: 1px solid rgb(226, 226, 226);
+}
+.project-card:nth-last-of-type(1) {
+  border-bottom: 0;
+}
+.show-project {
+  @include btn-group();
+}
