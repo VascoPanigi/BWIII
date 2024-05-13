@@ -8,7 +8,7 @@ const MyProjects = () => {
       <h4 className="ps-3 pt-3">Projects</h4>
       <ProjectCard />
       <ProjectCard />
-      <h6 className="text-center border-top">
+      <h6 className="show-all-projects text-center border-top m-0 p-2">
         Show all N projects <Image src={rightarrow} />
       </h6>
     </Card>

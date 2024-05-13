@@ -10,4 +10,19 @@
 }
 .show-project {
   @include btn-group();
+  @include outline-dark();
+  &:hover {
+    background-color: $secondary-emphasis;
+  }
+  & {
+    cursor: pointer;
+  }
+}
+.show-all-projects:hover {
+  background-color: $secondary-emphasis;
+}
+.show-all-projects {
+  cursor: pointer;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
