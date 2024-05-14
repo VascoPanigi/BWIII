@@ -11,15 +11,26 @@ const PlaintextExample = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const submitDispatch = (id) => {
+    dispatch({ type: TOGGLE_IS_LOGGED, payload: true });
+    dispatch({ type: SET_USER_LOGGED, payload: id });
+    navigate(`/user/${id}`);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email === "ciao@ciao.it" && password === "ciao") {
       const id = "6642750c55621a0015c15faa";
       console.log(id);
-
-      dispatch({ type: TOGGLE_IS_LOGGED, payload: true });
-      dispatch({ type: SET_USER_LOGGED, payload: id });
-      navigate(`/user/${id}`);
+      submitDispatch(id);
+      // dispatch({ type: TOGGLE_IS_LOGGED, payload: true });
+      // dispatch({ type: SET_USER_LOGGED, payload: id });
+      // navigate(`/user/${id}`);
+    }
+    if (email === "francesco@ciao.it" && password === "francesco") {
+      const id = "664317a555621a0015c15fce";
+      console.log(id);
+      submitDispatch(id);
     }
   };
 

@@ -40,7 +40,7 @@ const ProfileHero = ({ userData }) => {
                   Verify now
                 </Button>
               </div>
-              {loginStatus.isLogged && id === "6642750c55621a0015c15faa" && (
+              {loginStatus.isLogged && id === loginStatus.userLoggedID && (
                 <div className="edit-wrapper">
                   <i className="edit bi bi-pen" onClick={handleShow}></i>
                 </div>

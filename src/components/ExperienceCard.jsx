@@ -1,10 +1,15 @@
-import { Card } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
+import { removeExperienceAction } from "../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import trash from "../assets/icons/trash.svg";
 // import ExperienceTimeline from "./ExperienceTimeline";
 
 const ExperienceCard = ({ experience }) => {
-  console.log("dssdgsg", experience);
   // const startingDate = new Date(experience.startDate);
   // const endingDate = new Date(experience.endDate);
+  const id = useSelector((state) => state.login.userLoggedID);
+  const loggedIn = useSelector((state) => state.login.isLogged);
+  const dispatch = useDispatch();
 
   const dateConversion = (startingDate) => {
     if (startingDate) {
@@ -31,25 +36,48 @@ const ExperienceCard = ({ experience }) => {
       <Card className="card-container experience-card my-auto">
         <div className="d-flex align-items-start">
           <Card.Img src={experience.image} className="experience-image" />
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column flex-grow-1">
             <Card.Body>
-              <Card.Title className="experience-name ">{experience.role}</Card.Title>
-              <Card.Text className="experience-info ">{experience.company}</Card.Text>
-              <Card.Text className="experience-period ">
-                {dateConversion(experience.startDate)}
-                {experience.endDate && " - "} {dateConversion(experience.endDate)}
-              </Card.Text>
-              <Card.Text className="experience-location ">{experience.area}</Card.Text>
+              <div className="d-flex justify-content-between align-items-start">
+                <div>
+                  <Card.Title className="experience-name">{experience.role}</Card.Title>
+                  <Card.Text className="experience-info">{experience.company}</Card.Text>
+                  <Card.Text className="experience-period">
+                    {dateConversion(experience.startDate)}
+                    {experience.endDate && " - "}
+                    {dateConversion(experience.endDate)}
+                  </Card.Text>
+                  <Card.Text className="experience-location">{experience.area}</Card.Text>
+                </div>
+                {loggedIn && (
+                  <button
+                    onClick={() => dispatch(removeExperienceAction(id, experience._id))}
+                    className="btn btn-danger bg-transparent border-0 p-0"
+                  >
+                    <Image src={trash} className="trash-icon" />
+                  </button>
+                )}
+              </div>
             </Card.Body>
           </div>
         </div>
-        <div className="experience-timeline-outer-container">
-          {/* <ExperienceTimeline />
-          <ExperienceTimeline />
-          <ExperienceTimeline /> */}
-        </div>
+      </Card>
+    </div>
+  );
+};
 
-        {/* <Card className="education-card my-auto">
+export default ExperienceCard;
+
+{
+  /* <div className="experience-timeline-outer-container">
+           <ExperienceTimeline />
+          <ExperienceTimeline />
+          <ExperienceTimeline /> 
+        </div> */
+}
+
+{
+  /* <Card className="education-card my-auto">
           <div className="d-flex align-items-start experience-continuity">
             <div className="circular-continuity"></div>
             <div className="linear-continuity"></div>
@@ -61,10 +89,5 @@ const ExperienceCard = ({ experience }) => {
               </Card.Body>
             </div>
           </div>
-        </Card> */}
-      </Card>
-    </div>
-  );
-};
-
-export default ExperienceCard;
+        </Card> */
+}
