@@ -1,17 +1,23 @@
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
-import img from '../assets/img/img1.jpg'
-import { Image } from 'react-bootstrap'
-import EditModal from './EditModal'
-import { showModal } from '../redux/actions'
-import { useDispatch } from 'react-redux'
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import img from "../assets/img/img1.jpg";
+import { Image } from "react-bootstrap";
+import EditModal from "./EditModal";
+import { showModal } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const ProfileHero = ({ userData }) => {
-  console.log(userData)
-  console.log(userData.user_info.name)
+  console.log(userData);
+  console.log(userData.user_info.name);
+  const loginStatus = useSelector((state) => state.login);
+  console.log(loginStatus);
 
-  const dispatch = useDispatch()
-  const handleShow = () => dispatch(showModal())
+  const params = useParams();
+  const id = params.dynamicValue;
+
+  const dispatch = useDispatch();
+  const handleShow = () => dispatch(showModal());
 
   return (
     <>
@@ -34,9 +40,12 @@ const ProfileHero = ({ userData }) => {
                   Verify now
                 </Button>
               </div>
-              <div className="edit-wrapper">
-                <i className="edit bi bi-pen" onClick={handleShow}></i>
-              </div>
+              {loginStatus.isLogged && id === "6642750c55621a0015c15faa" && (
+                <div className="edit-wrapper">
+                  <i className="edit bi bi-pen" onClick={handleShow}></i>
+                </div>
+              )}
+
               <Card.Text>{userData.user_info.bio} </Card.Text>
               <a href="">
                 <h6 className="d-xl-none">University of Rome</h6>
@@ -65,6 +74,6 @@ const ProfileHero = ({ userData }) => {
         </Card.Body>
       </Card>
     </>
-  )
-}
-export default ProfileHero
+  );
+};
+export default ProfileHero;
