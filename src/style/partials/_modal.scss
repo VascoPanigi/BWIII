@@ -61,14 +61,20 @@
     position: relative;
     min-height: 71px;
 
+    .form-control:focus {
+      box-shadow: 0 0 0 2px $warning;
+    }
+
     .edit-wrapper {
       left: 15px;
       bottom: 10px;
       background-color: transparent;
       border: 1px solid transparent;
-
-      &:hover {
+      &.active {
         background-color: $secondary;
+      }
+      &:hover {
+        background-color: #464646;
         cursor: pointer;
         transition: background-color 0.5s ease;
       }

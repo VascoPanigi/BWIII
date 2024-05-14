@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
-import { hideModal } from '../redux/actions'
+import { hideModal, modifyProfileAction } from '../redux/actions'
 import { Form, Image } from 'react-bootstrap'
 
 const PicModal = ({ userData }) => {
@@ -13,7 +13,7 @@ const PicModal = ({ userData }) => {
     setIsEditing(false)
     dispatch(hideModal())
   }
-  const [imageURL, setImageURL] = useState(userData.user_info.image)
+  const [image, setImageURL] = useState(userData.user_info.image)
   const [isEditing, setIsEditing] = useState(false)
 
   const toggleEdit = () => {
@@ -26,7 +26,11 @@ const PicModal = ({ userData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setIsEditing(false)
+    const profileObject = {
+      image: image,
+    }
+    dispatch(modifyProfileAction(profileObject))
+    handleClose()
   }
 
   return (
@@ -43,17 +47,15 @@ const PicModal = ({ userData }) => {
         </Modal.Body>
         <Modal.Footer>
           <div className="d-flex align-items-center justify-content-between">
-            {!isEditing && (
-              <Button className="edit-wrapper" onClick={toggleEdit}>
-                <i className="edit bi bi-pen"></i>
-              </Button>
-            )}
+            <Button className={`edit-wrapper ${isEditing ? 'active' : ''}`} onClick={toggleEdit}>
+              <i className="edit bi bi-pen"></i>
+            </Button>
             {isEditing && (
               <Form onSubmit={handleSubmit} className="d-flex gap-5">
                 <Form.Group>
-                  <Form.Control type="text" value={imageURL} onChange={handleInputChange} />
+                  <Form.Control type="text" value={image} onChange={handleInputChange} />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" onClick={handleSubmit}>
                   Save
                 </Button>
               </Form>
