@@ -7,6 +7,7 @@ import Experience from "./Experience";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfileAction, fetchUsersListAction } from "../redux/actions";
+import { useNavigate, useParams } from "react-router-dom";
 
 const MyProfilePage = () => {
   const dispatch = useDispatch();
@@ -16,8 +17,13 @@ const MyProfilePage = () => {
 
   console.log(usersList);
 
+  const params = useParams();
+  // const navigate = useNavigate();
+
+  console.log("ID dinamico", params.dynamicValue);
+
   useEffect(() => {
-    dispatch(fetchProfileAction("me"));
+    dispatch(fetchProfileAction(params.dynamicValue));
     dispatch(fetchUsersListAction());
   }, []);
 
@@ -32,7 +38,7 @@ const MyProfilePage = () => {
             <Education />
           </Col>
           <Col xs={3} className="d-none d-md-block right-column">
-            <MySuggestions />
+            {usersList && <MySuggestions usersList={usersList} />}
           </Col>
         </Row>
       </Container>

@@ -66,11 +66,8 @@
       align-items: center;
 
       .circular-continuity {
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background-color: $secondary;
-        margin-block: 25px 5px;
+        color: $secondary;
+        margin-block: 15px 5px;
       }
       .linear-continuity {
         border-left: 2px solid $secondary;
