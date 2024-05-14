@@ -1,6 +1,12 @@
 //navbar
 
 .navbar-container {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  border-bottom: 1px solid $secondary-light;
+
   a:not(.navbar-brand) {
     margin: 0;
     padding: 0;
@@ -40,6 +46,7 @@
 
   .propic {
     border-radius: 50%;
+    object-fit: cover;
     width: 24px;
     height: 24px;
   }
@@ -82,6 +89,7 @@
 
 //profile
 .profile-container {
+  padding-top: 72px;
   .row {
     .left-column,
     .right-column {
