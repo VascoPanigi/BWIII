@@ -38,16 +38,16 @@
   }
 }
 
-@mixin edit-icon {
-  background-color: white;
-  border-radius: 99px;
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  width: 40px;
-  height: 40px;
-  border: 1px solid transparent;
-}
+// @mixin edit-icon {
+//   background-color: white;
+//   border-radius: 99px;
+//   position: absolute;
+//   right: 1rem;
+//   top: 1rem;
+//   width: 40px;
+//   height: 40px;
+//   border: 1px solid transparent;
+// }
 
 @mixin edit-button {
   position: absolute;
@@ -176,22 +176,22 @@
     }
   }
 
-  .edit-icon {
-    @include edit-icon();
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  // .edit-icon {
+  //   @include edit-icon();
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
 
-    i {
-      font-size: 15px;
-      color: $primary;
-    }
-    &:hover {
-      i {
-        color: $dark;
-      }
-    }
-  }
+  //   i {
+  //     font-size: 15px;
+  //     color: $primary;
+  //   }
+  //   &:hover {
+  //     i {
+  //       color: $dark;
+  //     }
+  //   }
+  // }
 
   .verify-btn {
     @include verify();
