@@ -1,32 +1,34 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import img from "../assets/img/img1.jpg";
-import { Image } from "react-bootstrap";
-import EditModal from "./EditModal";
-import { showModal } from "../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
+import img from '../assets/img/img1.jpg'
+import { Image } from 'react-bootstrap'
+import EditModal from './EditModal'
+import { showModal } from '../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
 
 const ProfileHero = ({ userData }) => {
-  console.log(userData);
-  console.log(userData.user_info.name);
-  const loginStatus = useSelector((state) => state.login);
-  console.log(loginStatus);
+  console.log(userData)
+  console.log(userData.user_info.name)
+  const loginStatus = useSelector((state) => state.login)
+  console.log(loginStatus)
 
-  const params = useParams();
-  const id = params.dynamicValue;
+  const params = useParams()
+  const id = params.dynamicValue
 
-  const dispatch = useDispatch();
-  const handleShow = () => dispatch(showModal());
+  const dispatch = useDispatch()
+  const handleShow = () => dispatch(showModal())
 
   return (
     <>
       <Card className="hero-section">
         <Card.Img variant="top" src={img} />
-        <Image src={userData.user_info.image} className="propic" />
-        <button className="edit-icon">
+        <Link onClick={handleShow}>
+          <Image src={userData.user_info.image} className="propic" />
+        </Link>
+        {/* <button className="edit-icon">
           <i className=" bi bi-pen"></i>
-        </button>
+        </button> */}
         <EditModal userData={userData} />
         <Card.Body>
           <div className="d-flex align-items-start">
@@ -40,7 +42,7 @@ const ProfileHero = ({ userData }) => {
                   Verify now
                 </Button>
               </div>
-              {loginStatus.isLogged && id === "6642750c55621a0015c15faa" && (
+              {loginStatus.isLogged && id === '6642750c55621a0015c15faa' && (
                 <div className="edit-wrapper">
                   <i className="edit bi bi-pen" onClick={handleShow}></i>
                 </div>
@@ -74,6 +76,6 @@ const ProfileHero = ({ userData }) => {
         </Card.Body>
       </Card>
     </>
-  );
-};
-export default ProfileHero;
+  )
+}
+export default ProfileHero
