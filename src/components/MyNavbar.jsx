@@ -1,22 +1,33 @@
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import { Image } from 'react-bootstrap'
-import bell from '../assets/icons/bell.svg'
-import grid from '../assets/icons/grid.svg'
-import messaging from '../assets/icons/messaging.svg'
-import network from '../assets/icons/network.svg'
-import home from '../assets/icons/home.svg'
-import jobs from '../assets/icons/jobs.svg'
-import Form from 'react-bootstrap/Form'
-import Col from 'react-bootstrap/Col'
-import logo from '../assets/icons/logo.svg'
-import { useSelector } from 'react-redux'
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { Image } from "react-bootstrap";
+import bell from "../assets/icons/bell.svg";
+import grid from "../assets/icons/grid.svg";
+import messaging from "../assets/icons/messaging.svg";
+import network from "../assets/icons/network.svg";
+import home from "../assets/icons/home.svg";
+import jobs from "../assets/icons/jobs.svg";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import logo from "../assets/icons/logo.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { TOGGLE_STATE, fetchProfileAction } from "../redux/actions";
 
 const MyNavbar = () => {
-  const userData = useSelector((state) => state.user)
-  console.log(userData)
+  const userData = useSelector((state) => state.user);
+  console.log(userData);
+
+  const loginStatus = useSelector((state) => state.login);
+  console.log(loginStatus);
+
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(fetchProfileAction(loginStatus.userLoggedID));
+  };
 
   return (
     <Navbar expand="lg" className="navbar-container bg-body-tertiary align-items-center">
@@ -66,10 +77,21 @@ const MyNavbar = () => {
                 <Image src={bell}></Image>
                 <p>Notifications</p>
               </Nav.Link>
-              <div className="d-flex flex-column justify-content-end align-items-center" style={{ maxWidth: '78px' }}>
+              <div className="d-flex flex-column justify-content-end align-items-center" style={{ maxWidth: "78px" }}>
                 <Image src={userData.user_info.image} className="propic mx-auto" />
                 <NavDropdown title="Me" id="basic-nav-dropdown" className="first-dropdown" align="end">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                  {loginStatus.isLogged ? (
+                    <NavDropdown.Item>
+                      <Link to={`/user/${loginStatus.userLoggedID}`} onClick={handleClick}>
+                        Profile
+                      </Link>
+                    </NavDropdown.Item>
+                  ) : (
+                    <NavDropdown.Item>
+                      <Link to={"/login"}>Login</Link>{" "}
+                    </NavDropdown.Item>
+                  )}
+
                   <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                   <NavDropdown.Divider />
@@ -91,7 +113,7 @@ const MyNavbar = () => {
         </div>
       </Container>
     </Navbar>
-  )
-}
+  );
+};
 
-export default MyNavbar
+export default MyNavbar;

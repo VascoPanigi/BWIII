@@ -4,6 +4,7 @@ import "./style/App.scss";
 import MyProfilePage from "./components/MyProfilePage";
 import MyNavbar from "./components/MyNavbar";
 import MyFooter from "./components/MyFooter";
+import LoginPage from "./components/LoginPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/user" element={<MyProfilePage />} />
           <Route path="/user/:dynamicValue" element={<MyProfilePage />} />
+          <Route path="/login" element={<LoginPage />} />
 
           {/* <MyProfilePage /> */}
         </Routes>

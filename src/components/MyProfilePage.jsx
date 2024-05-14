@@ -14,10 +14,14 @@ const MyProfilePage = () => {
   const userData = useSelector((state) => state.user);
   const usersList = useSelector((state) => state.users_list);
   const experiencesList = useSelector((state) => state.experiences_list);
+  // const loginStatus = useSelector((state) => state.login);
   console.log("showUserData", userData);
   console.log("experiencetest", experiencesList);
 
   console.log(usersList);
+
+  const loginStatus = useSelector((state) => state.login);
+  console.log(loginStatus);
 
   const params = useParams();
   // const navigate = useNavigate();
