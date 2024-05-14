@@ -24,7 +24,7 @@ const PlaintextExample = () => {
   }
 
   return (
-    <div className="background">
+    <div className="background-login">
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Email address</Form.Label>
