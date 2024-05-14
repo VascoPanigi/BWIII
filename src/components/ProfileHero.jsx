@@ -5,7 +5,7 @@ import { Image } from "react-bootstrap";
 import EditModal from "./EditModal";
 import { showModal } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ProfileHero = ({ userData }) => {
   console.log(userData);
@@ -23,10 +23,12 @@ const ProfileHero = ({ userData }) => {
     <>
       <Card className="hero-section">
         <Card.Img variant="top" src={img} />
-        <Image src={userData.user_info.image} className="propic" />
-        <button className="edit-icon">
+        <Link onClick={handleShow}>
+          <Image src={userData.user_info.image} className="propic" />
+        </Link>
+        {/* <button className="edit-icon">
           <i className=" bi bi-pen"></i>
-        </button>
+        </button> */}
         <EditModal userData={userData} />
         <Card.Body>
           <div className="d-flex align-items-start">
