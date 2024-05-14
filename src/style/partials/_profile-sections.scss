@@ -113,3 +113,8 @@
     }
   }
 }
+
+.edit-wrapper {
+  @include edit-button();
+  top: 15px;
+}

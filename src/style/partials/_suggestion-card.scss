@@ -55,6 +55,10 @@
 }
 
 .suggestion-button {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   @include btn-group;
   @include outline-dark;
   background-color: transparent !important;
