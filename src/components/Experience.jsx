@@ -10,6 +10,7 @@ const Experience = ({ experiencesList }) => {
           <i className="edit bi bi-pen"></i>
         </div>
         <p className=" section-title">Experience</p>
+        <div></div>
         {experiencesList.experiences_list.map((experience) => (
           <ExperienceCard key={experience._id} experience={experience} />
         ))}

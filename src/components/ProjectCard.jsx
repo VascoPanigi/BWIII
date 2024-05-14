@@ -12,12 +12,12 @@ const ProjectCard = () => {
           className="uni-logo me-2"
           width={25}
         />
-        <p className="m-0 mb-2">Associated with</p>
+        <p className="m-0">Associated with</p>
       </div>
       <span className="show-project border rounded-pill align-items-center d-inline-flex mb-3">
         Show Project<Image className="ms-2" src={linkicon}></Image>
       </span>
-      <p className="m-0 pb-1">
+      <p className="m-0 pb-1 mb-2">
         Project description Lorem ipsum dolor sit amet consectetur adipisicing elit. In voluptatum voluptas commodi
         eveniet eum dolor natus beatae est eos dolore tempore ducimus cupiditate hic ea quaerat error sed, vero
         mollitia.

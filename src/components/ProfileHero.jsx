@@ -3,33 +3,52 @@ import Card from 'react-bootstrap/Card'
 import img from '../assets/img/img1.jpg'
 import { Image } from 'react-bootstrap'
 import EditModal from './EditModal'
-import { showModal } from '../redux/actions'
+import PicModal from './PicModal'
+import { setModalType, showModal } from '../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 
 const ProfileHero = ({ userData }) => {
-  console.log(userData)
   console.log(userData.user_info.name)
   const loginStatus = useSelector((state) => state.login)
-  console.log(loginStatus)
 
   const params = useParams()
   const id = params.dynamicValue
 
   const dispatch = useDispatch()
-  const handleShow = () => dispatch(showModal())
+
+  const modalType = useSelector((state) => state.modal.modalType)
+  console.log(modalType)
+
+  const handleShowEditModal = () => {
+    dispatch(setModalType('edit'))
+    dispatch(showModal())
+  }
+
+  const handleShowPicModal = () => {
+    dispatch(setModalType('pic'))
+    dispatch(showModal())
+  }
 
   return (
     <>
       <Card className="hero-section">
         <Card.Img variant="top" src={img} />
-        <Link onClick={handleShow}>
-          <Image src={userData.user_info.image} className="propic" />
-        </Link>
         {/* <button className="edit-icon">
           <i className=" bi bi-pen"></i>
         </button> */}
-        <EditModal userData={userData} />
+        {modalType === 'edit' && <EditModal userData={userData} />}
+        {modalType === 'pic' && <PicModal userData={userData} />}
+        <div className="invisible-slider">
+          <Link onClick={handleShowPicModal}>
+            <Image src={userData.user_info.image} className="propic" />
+          </Link>
+          {loginStatus.isLogged && id === '6642750c55621a0015c15faa' && (
+            <div className="edit-wrapper">
+              <i className="edit bi bi-pen" onClick={handleShowEditModal}></i>
+            </div>
+          )}
+        </div>
         <Card.Body>
           <div className="d-flex align-items-start">
             <div>
@@ -37,16 +56,13 @@ const ProfileHero = ({ userData }) => {
                 <h5>
                   {userData.user_info.name} {userData.user_info.surname}
                 </h5>
-                <Button className="verify-btn">
-                  <i className="bi bi-shield-check"></i>
-                  Verify now
-                </Button>
+                {loginStatus.isLogged && id === '6642750c55621a0015c15faa' && (
+                  <Button className="verify-btn">
+                    <i className="bi bi-shield-check"></i>
+                    Verify now
+                  </Button>
+                )}
               </div>
-              {loginStatus.isLogged && id === '6642750c55621a0015c15faa' && (
-                <div className="edit-wrapper">
-                  <i className="edit bi bi-pen" onClick={handleShow}></i>
-                </div>
-              )}
 
               <Card.Text>{userData.user_info.bio} </Card.Text>
               <a href="">
@@ -69,9 +85,21 @@ const ProfileHero = ({ userData }) => {
             </div>
           </div>
           <div className="button-group d-flex align-items-center justify-content-start gap-1 gap-md-2">
-            <Button>Open to</Button>
-            <Button>Add profile section</Button>
-            <Button>More</Button>
+            {loginStatus.isLogged && id === '6642750c55621a0015c15faa' ? (
+              <>
+                <Button>Open to</Button>
+                <Button>Add profile section</Button>
+                <Button>More</Button>
+              </>
+            ) : (
+              <>
+                <Button>
+                  <i className="bi bi-person-plus-fill me-1"></i>Connect
+                </Button>
+                <Button>Message</Button>
+                <Button>More</Button>
+              </>
+            )}
           </div>
         </Card.Body>
       </Card>
