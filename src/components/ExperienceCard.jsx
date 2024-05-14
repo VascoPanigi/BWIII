@@ -1,26 +1,52 @@
 import { Card } from "react-bootstrap";
-import ExperienceTimeline from "./ExperienceTimeline";
+// import ExperienceTimeline from "./ExperienceTimeline";
 
-const ExperienceCard = () => {
+const ExperienceCard = ({ experience }) => {
+  console.log("dssdgsg", experience);
+  // const startingDate = new Date(experience.startDate);
+  // const endingDate = new Date(experience.endDate);
+
+  const dateConversion = (startingDate) => {
+    if (startingDate) {
+      const rawdate = new Date(startingDate);
+      const year = rawdate.getUTCFullYear();
+      const month = rawdate.getUTCMonth();
+      console.log("anno e mese", year, month);
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const actualMonth = months[month];
+      const actualDate = `${actualMonth} ${year}`;
+      console.log(actualDate);
+      return actualDate;
+    }
+  };
+  // const year = startingDate.getUTCFullYear();
+  // const month = startingDate.getUTCMonth();
+  // console.log("anno e mese", year, month);
+  // const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  // const actualMonth = months[month];
+  // const actualDate = `${actualMonth} ${year}`;
+  // console.log(actualDate);
   return (
     <div className="experience-card-inner-container">
       <Card className="card-container experience-card my-auto">
         <div className="d-flex align-items-start">
-          <Card.Img
-            src="https://media.licdn.com/dms/image/C510BAQF5OJVPD2RZjA/company-logo_100_100/0/1631329806779?e=1723680000&amp;v=beta&amp;t=upxQJFA3e2Dccg58oJvGGECbA7Pq_8wzUAY_rdEjDrs"
-            className="experience-image"
-          />
+          <Card.Img src={experience.image} className="experience-image" />
           <div className="d-flex flex-column">
             <Card.Body>
-              <Card.Title className="experience-name ">Sapienza università di Roma</Card.Title>
-              <Card.Text className="experience-period ">21 yrs 1 mo</Card.Text>
+              <Card.Title className="experience-name ">{experience.role}</Card.Title>
+              <Card.Text className="experience-info ">{experience.company}</Card.Text>
+              <Card.Text className="experience-period ">
+                {dateConversion(experience.startDate)}
+                {experience.endDate && " - "} {dateConversion(experience.endDate)}
+              </Card.Text>
+              <Card.Text className="experience-location ">{experience.area}</Card.Text>
             </Card.Body>
           </div>
         </div>
         <div className="experience-timeline-outer-container">
+          {/* <ExperienceTimeline />
           <ExperienceTimeline />
-          <ExperienceTimeline />
-          <ExperienceTimeline />
+          <ExperienceTimeline /> */}
         </div>
 
         {/* <Card className="education-card my-auto">

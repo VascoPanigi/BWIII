@@ -47,12 +47,15 @@
 
 .card-container:nth-last-of-type(1) {
   border: 0;
-  padding-block-end: 2rem;
+  padding-block-end: 1rem;
 }
 
 .experience-card-inner-container {
   border-bottom: 1px solid white;
 
+  .card-body {
+    padding-block: 0;
+  }
   p {
     margin: 0;
   }

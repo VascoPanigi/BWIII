@@ -1,11 +1,18 @@
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { GET_MY_PROFILE, fetchProfileAction } from "../redux/actions";
+import { GET_MY_PROFILE, fetchExperiencesAction, fetchProfileAction } from "../redux/actions";
+import fetchExperiencesReducer from "../redux/reducers/fetchExperiencesReducer";
 
 const SuggestionCard = ({ singleUser }) => {
   const dispatch = useDispatch();
   console.log(singleUser._id);
+
+  const handleClick = () => {
+    dispatch({ type: GET_MY_PROFILE, payload: singleUser });
+    dispatch(fetchExperiencesAction(singleUser._id));
+  };
+
   return (
     <Card className="suggestion-card-container my-auto">
       <div className="d-flex align-items-start">
@@ -18,12 +25,7 @@ const SuggestionCard = ({ singleUser }) => {
             </Card.Title>
             <Card.Text className="suggestion-occupation ">{singleUser.title}</Card.Text>
             <Button className="suggestion-button" variant="outline-dark">
-              <Link
-                to={`/user/${singleUser._id}`}
-                onClick={() => {
-                  dispatch({ type: GET_MY_PROFILE, payload: singleUser });
-                }}
-              >
+              <Link to={`/user/${singleUser._id}`} onClick={handleClick}>
                 {" "}
                 View profile
               </Link>

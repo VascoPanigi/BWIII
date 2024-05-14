@@ -15,6 +15,7 @@ const MyProfilePage = () => {
   const usersList = useSelector((state) => state.users_list);
   const experiencesList = useSelector((state) => state.experiences_list);
   console.log("showUserData", userData);
+  console.log("experiencetest", experiencesList);
 
   console.log(usersList);
 
@@ -26,7 +27,7 @@ const MyProfilePage = () => {
   useEffect(() => {
     dispatch(fetchProfileAction(params.dynamicValue));
     dispatch(fetchUsersListAction());
-    dispatch(fetchExperiencesAction(userData.user_info._id));
+    dispatch(fetchExperiencesAction(params.dynamicValue));
   }, []);
 
   return (
@@ -36,7 +37,7 @@ const MyProfilePage = () => {
           <Col xs={12} md={6} lg={7} className="left-column">
             {userData && <ProfileHero userData={userData} />}
             <MyProjects />
-            <Experience experiencesList={experiencesList} />
+            {experiencesList && <Experience experiencesList={experiencesList} />}
             <Education />
           </Col>
           <Col xs={3} className="d-none d-md-block right-column">

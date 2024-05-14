@@ -72,7 +72,7 @@ export const fetchExperiencesAction = (id) => {
         const experiences = await response.json();
 
         dispatch({
-          type: GET_MY_EXPERIENCES,
+          type: GET_EXPERIENCES_LIST,
           payload: experiences,
         });
       } else {
