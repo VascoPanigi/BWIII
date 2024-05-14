@@ -1,0 +1,24 @@
+.modal-content {
+  color: $dark !important;
+}
+
+.modal-body {
+  .form-label {
+    font-weight: 300;
+  }
+  .form-control {
+    @include outline-dark();
+    &:hover {
+      background-color: transparent;
+    }
+    &:focus {
+      border-color: $dark;
+    }
+  }
+}
+
+.modal-footer {
+  button {
+    @include btn-group();
+  }
+}

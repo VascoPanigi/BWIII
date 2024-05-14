@@ -12,9 +12,12 @@ import jobs from '../assets/icons/jobs.svg'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import logo from '../assets/icons/logo.svg'
-import propic from '../assets/img/propic.jpg'
+import { useSelector } from 'react-redux'
 
 const MyNavbar = () => {
+  const userData = useSelector((state) => state.user)
+  console.log(userData)
+
   return (
     <Navbar expand="lg" className="navbar-container bg-body-tertiary align-items-center">
       <Container className="justify-content-between">
@@ -64,7 +67,7 @@ const MyNavbar = () => {
                 <p>Notifications</p>
               </Nav.Link>
               <div className="d-flex flex-column justify-content-end align-items-center" style={{ maxWidth: '78px' }}>
-                <Image src={propic} className="propic mx-auto" />
+                <Image src={userData.user_info.image} className="propic mx-auto" />
                 <NavDropdown title="Me" id="basic-nav-dropdown" className="first-dropdown" align="end">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
