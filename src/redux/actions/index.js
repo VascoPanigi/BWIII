@@ -37,6 +37,36 @@ export const fetchProfileAction = (id) => {
   };
 };
 
+export const modifyProfileAction = (id, updatedProfileData) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/" + id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+        body: JSON.stringify(updatedProfileData),
+      });
+
+      if (response.ok) {
+        const user = await response.json();
+        console.log(user);
+
+        dispatch({
+          type: GET_MY_PROFILE,
+          payload: user,
+        });
+      } else {
+        console.log("error");
+        throw new Error("Error updating your profile, try again later! ");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa :(");
+    }
+  };
+};
+
 export const fetchUsersListAction = () => {
   return async (dispatch) => {
     try {
