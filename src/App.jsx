@@ -4,13 +4,22 @@ import "./style/App.scss";
 import MyProfilePage from "./components/MyProfilePage";
 import MyNavbar from "./components/MyNavbar";
 import MyFooter from "./components/MyFooter";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <MyNavbar />
-      <MyProfilePage />
-      <MyFooter />
+      <BrowserRouter>
+        <MyNavbar />
+        <Routes>
+          <Route path="/user" element={<MyProfilePage />} />
+          <Route path="/user/:dynamicValue" element={<MyProfilePage />} />
+
+          {/* <MyProfilePage /> */}
+        </Routes>
+
+        <MyFooter />
+      </BrowserRouter>
     </>
   );
 }

@@ -2,7 +2,6 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import img from "../assets/img/img1.jpg";
 import { Image } from "react-bootstrap";
-import propic from "../assets/img/propic.jpg";
 
 const ProfileHero = ({ userData }) => {
   console.log(userData);

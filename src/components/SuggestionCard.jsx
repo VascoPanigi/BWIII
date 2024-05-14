@@ -1,29 +1,38 @@
-import { Button, Card } from 'react-bootstrap'
+import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { GET_MY_PROFILE, fetchProfileAction } from "../redux/actions";
 
-const SuggestionCard = () => {
+const SuggestionCard = ({ singleUser }) => {
+  const dispatch = useDispatch();
+  console.log(singleUser._id);
   return (
     <Card className="suggestion-card-container my-auto">
       <div className="d-flex align-items-start">
-        <Card.Img
-          src={
-            'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-          }
-          className="suggestion-profile-image"
-        />
+        <Card.Img src={singleUser.image} className="suggestion-profile-image" />
         <div className="d-flex flex-column">
           <Card.Body>
             <Card.Title className="suggestion-name ">
-              nome cognome<span className="last-seen-suggestion"> • 3rd</span>
+              {singleUser.name} {singleUser.surname}
+              <span className="last-seen-suggestion"> • 3rd</span>
             </Card.Title>
-            <Card.Text className="suggestion-occupation ">studente presso Epicode</Card.Text>
+            <Card.Text className="suggestion-occupation ">{singleUser.title}</Card.Text>
             <Button className="suggestion-button" variant="outline-dark">
-              View profile
+              <Link
+                to={`/user/${singleUser._id}`}
+                onClick={() => {
+                  dispatch({ type: GET_MY_PROFILE, payload: singleUser });
+                }}
+              >
+                {" "}
+                View profile
+              </Link>
             </Button>
           </Card.Body>
         </div>
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default SuggestionCard
+export default SuggestionCard;
