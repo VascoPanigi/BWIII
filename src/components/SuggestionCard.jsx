@@ -1,4 +1,4 @@
-import { Button, Card } from "react-bootstrap";
+import { Button, Card } from 'react-bootstrap'
 
 const SuggestionCard = () => {
   return (
@@ -6,7 +6,7 @@ const SuggestionCard = () => {
       <div className="d-flex align-items-start">
         <Card.Img
           src={
-            "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
           }
           className="suggestion-profile-image"
         />
@@ -23,7 +23,7 @@ const SuggestionCard = () => {
         </div>
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default SuggestionCard;
+export default SuggestionCard

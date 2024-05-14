@@ -40,12 +40,12 @@
 
 @mixin edit-icon {
   background-color: white;
-  border-radius: 50%;
+  border-radius: 99px;
   position: absolute;
   right: 1rem;
   top: 1rem;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border: 1px solid transparent;
 }
 
@@ -59,22 +59,18 @@
     width: 150px;
     height: 150px;
     border: 5px solid white;
-    top: 17%;
+    top: 15%;
     left: 1.3rem;
-  }
-
-  &.card {
-    min-height: 400px;
   }
 
   img {
     object-fit: cover;
-    height: 20vh;
+    height: 23vh;
   }
 
   .card-body {
     margin-top: 40px;
-    padding-left: 1.5rem;
+    padding-inline: 1.5rem;
   }
 
   h5,
@@ -115,7 +111,7 @@
     -webkit-line-clamp: 2;
     max-width: 100ch;
     font-size: 16px;
-    margin-bottom: 6px;
+    margin-block: 6px;
     padding-right: 20px;
   }
   .uni-logo {
@@ -156,6 +152,9 @@
 
   .edit-icon {
     @include edit-icon();
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     i {
       font-size: 15px;
@@ -179,7 +178,7 @@
 
   @media (max-width: $xl) {
     .propic {
-      top: 17%;
+      top: 16%;
     }
   }
   @media (max-width: $lg) {
@@ -209,12 +208,12 @@
     }
 
     img {
-      height: 12vh;
+      height: 14vh;
     }
     .propic {
       width: 100px;
       height: 100px;
-      top: 15%;
+      top: 14%;
     }
     .button-group {
       padding: 2px 0;

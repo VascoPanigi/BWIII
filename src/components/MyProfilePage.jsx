@@ -8,7 +8,7 @@ import Experience from './Experience'
 const MyProfilePage = () => {
   return (
     <div className="background">
-      <Container className="profile-container ">
+      <Container className="profile-container">
         <Row className="justify-content-center gap-2">
           <Col xs={12} md={6} lg={7} className="left-column">
             <ProfileHero />

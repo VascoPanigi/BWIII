@@ -3,7 +3,7 @@
   //   background-color: violet;
   border: none;
   border-radius: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $secondary-light;
 }
 
 .section-container {
@@ -12,14 +12,12 @@
 }
 
 .inner-section-container {
-  width: 95%;
-  margin-inline: auto;
+  margin-inline: 1.5rem;
   .section-title {
     font-size: 1.5rem;
     font-weight: 500;
 
-    margin-block-start: 1.5rem;
-    padding-block-start: 1rem;
+    margin-block-start: 0.5rem;
     margin-block-end: 0;
   }
 
@@ -61,23 +59,22 @@
   .experience-timeline-container {
     border: 0;
     .continuity-container {
-      width: 50px;
+      min-width: 45px;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
 
       .circular-continuity {
-        .dot {
-          font-size: 30px;
-          line-height: 0px;
-          margin-block: 25px 10px;
-        }
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: $secondary;
+        margin-block: 25px 5px;
       }
       .linear-continuity {
-        border-radius: 0px;
-
-        border-left: 2px solid black;
-        height: 100%;
+        border-left: 2px solid $secondary;
+        height: 60px;
       }
     }
   }
