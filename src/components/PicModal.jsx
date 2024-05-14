@@ -1,13 +1,13 @@
-import { useSelector, useDispatch } from 'react'
-import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
-import { hideModal } from '../redux/actions'
+import { useSelector, useDispatch } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { hideModal } from "../redux/actions";
 
 const PicModal = () => {
-  const dispatch = useDispatch()
-  const show = useSelector((state) => state.modal.showModal)
+  const dispatch = useDispatch();
+  const show = useSelector((state) => state.modal.showModal);
 
-  const handleClose = () => dispatch(hideModal())
+  const handleClose = () => dispatch(hideModal());
 
   return (
     <>
@@ -26,7 +26,7 @@ const PicModal = () => {
         </Modal.Footer>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default PicModal
+export default PicModal;

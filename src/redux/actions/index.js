@@ -37,10 +37,10 @@ export const fetchProfileAction = (id) => {
   };
 };
 
-export const modifyProfileAction = (id, updatedProfileData) => {
+export const modifyProfileAction = (updatedProfileData) => {
   return async (dispatch) => {
     try {
-      const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/" + id, {
+      const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
