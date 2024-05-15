@@ -1,27 +1,29 @@
-import { useState } from 'react'
-import { Col, Row, Form, Button } from 'react-bootstrap'
-import { SET_USER_LOGGED, TOGGLE_IS_LOGGED } from '../redux/actions'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useState } from "react";
+import { Col, Row, Form, Button } from "react-bootstrap";
+import { SET_USER_LOGGED, TOGGLE_IS_LOGGED } from "../redux/actions";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const PlaintextExample = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    if (email === 'ciao@ciao.it' && password === 'ciao') {
-      const id = '6642750c55621a0015c15faa'
-      console.log(id)
+    e.preventDefault();
+    if (email === "ciao@ciao.it" && password === "ciao") {
+      // const id = "6642750c55621a0015c15faa";
+      const id = "me";
+      console.log(id);
 
-      dispatch({ type: TOGGLE_IS_LOGGED, payload: true })
-      dispatch({ type: SET_USER_LOGGED, payload: id })
-      navigate(`/user/${id}`)
+      dispatch({ type: TOGGLE_IS_LOGGED, payload: true });
+      dispatch({ type: SET_USER_LOGGED, payload: id });
+      navigate(`/user/${id}`);
+      // navigate(`/user/${id}`);
     }
-  }
+  };
 
   return (
     <div className="background-login">
@@ -53,7 +55,7 @@ const PlaintextExample = () => {
         <Button type="submit">LOGIN</Button>
       </Form>
     </div>
-  )
-}
+  );
+};
 
-export default PlaintextExample
+export default PlaintextExample;
