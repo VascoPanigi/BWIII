@@ -17,7 +17,7 @@ function App() {
           {/* <Route path="/user/me" element={<MyProfilePage />} /> */}
           <Route path="/user/:dynamicValue" element={<MyProfilePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/home" element={<MyHome />} />
+          <Route path="/user/home" element={<MyHome />} />
 
           {/* <MyProfilePage /> */}
         </Routes>

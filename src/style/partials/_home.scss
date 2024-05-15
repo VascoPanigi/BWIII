@@ -38,10 +38,18 @@
 
       img {
         width: 100%;
+        height: 65px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
       }
       .profile {
-        width: 40%;
-        margin-top: -79px;
+        width: 75px;
+        margin-top: -49px;
+        height: 75px;
+        border-radius: 50%;
+        object-fit: cover;
+        aspect-ratio: 4/4;
+        border: 2px solid white;
       }
       h4 {
         font-size: 1em;
@@ -78,14 +86,16 @@
     .col {
       padding: 0;
       img {
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
-        width: 70px;
-        border-radius: 50%;
+        object-fit: cover;
       }
       input {
-        width: 80%;
+        width: 100%;
+        height: 48px;
         border: 1px solid rgb(187, 187, 187);
-        border-radius: 15px;
+        border-radius: 75px;
         margin-left: 20px;
         padding: 5px;
         color: black;
@@ -131,8 +141,10 @@
       }
       .img-post {
         width: 100%;
+        height: 100%;
         border-radius: 0%;
         padding: 0;
+        object-fit: cover;
       }
     }
   }
@@ -179,6 +191,6 @@
 #p {
   font-weight: 400;
   color: rgb(90, 90, 90);
-padding-left: 20px;
+  padding-left: 20px;
   display: inline-block;
 }
