@@ -6,6 +6,7 @@ import MyNavbar from "./components/MyNavbar";
 import MyFooter from "./components/MyFooter";
 import LoginPage from "./components/LoginPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ExperiencePage from "./components/ExperiencePage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/user" element={<MyProfilePage />} />
           <Route path="/user/:dynamicValue" element={<MyProfilePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/experience/:userid" element={<ExperiencePage />} />
 
           {/* <MyProfilePage /> */}
         </Routes>

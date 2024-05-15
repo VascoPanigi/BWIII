@@ -2,6 +2,7 @@ import { Card, Image } from "react-bootstrap";
 import { removeExperienceAction } from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import trash from "../assets/icons/trash.svg";
+import { useState } from "react";
 // import ExperienceTimeline from "./ExperienceTimeline";
 
 const ExperienceCard = ({ experience }) => {
@@ -10,6 +11,14 @@ const ExperienceCard = ({ experience }) => {
   const id = useSelector((state) => state.login.userLoggedID);
   const loggedIn = useSelector((state) => state.login.isLogged);
   const dispatch = useDispatch();
+  const [newExperience, setNewExperience] = useState({
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    area: "",
+  });
 
   const dateConversion = (startingDate) => {
     if (startingDate) {

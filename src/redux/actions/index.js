@@ -130,7 +130,7 @@ export const hideModal = () => ({
   type: HIDE_MODAL,
 });
 
-export const addExperienceAction = (id, experience) => {
+export const addExperienceAction = (id, newExperience) => {
   return async (dispatch) => {
     try {
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`, {
@@ -139,7 +139,7 @@ export const addExperienceAction = (id, experience) => {
           "Content-Type": "application/json",
           Authorization: import.meta.env.VITE_TOKEN_API,
         },
-        body: JSON.stringify(experience),
+        body: JSON.stringify(newExperience),
       });
 
       if (response.ok) {
