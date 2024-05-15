@@ -1,0 +1,196 @@
+.container-home {
+  margin-top: 73px;
+  padding: 0;
+
+  background-color: #f4f2ee;
+
+  .row {
+    border-radius: 10px;
+    .col {
+      padding: 0;
+      background-color: white;
+      border-radius: 10px;
+
+      a {
+        text-decoration: none;
+        font-size: 0.8em;
+        font-weight: 600;
+        padding: 7px;
+      }
+      p {
+        margin: 0;
+        padding: 5px;
+        text-align: center;
+        font-size: 1em;
+        color: rgb(102, 102, 102);
+        font-weight: 600;
+      }
+      .par {
+        border-top: 1px solid rgb(226, 226, 226);
+      }
+    }
+    .side-bar {
+      background-color: white;
+      .col {
+        padding: 0;
+        background-color: white;
+      }
+
+      img {
+        width: 100%;
+        height: 65px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .profile {
+        width: 75px;
+        margin-top: -49px;
+        height: 75px;
+        border-radius: 50%;
+        object-fit: cover;
+        aspect-ratio: 4/4;
+        border: 2px solid white;
+      }
+      h4 {
+        font-size: 1em;
+      }
+      p {
+        font-size: 0.75em;
+        color: grey;
+      }
+      .par {
+        border-top: 1px solid rgb(226, 226, 226);
+      }
+      h6 {
+        font-size: 0.8em;
+      }
+      .icon {
+        width: 25px;
+        height: 40px;
+      }
+      i {
+        color: rgb(124 123 123);
+        font-size: 0.9em;
+      }
+    }
+  }
+}
+
+.col-5 {
+  padding: 0px;
+  margin: 0;
+  .row {
+    background-color: white;
+    padding: 13px;
+    border-radius: 10px;
+    .col {
+      padding: 0;
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      input {
+        width: 100%;
+        height: 48px;
+        border: 1px solid rgb(187, 187, 187);
+        border-radius: 75px;
+        margin-left: 20px;
+        padding: 5px;
+        color: black;
+      }
+      .col-3,
+      .col-4 {
+        padding: 0;
+      }
+      .list {
+        color: rgb(255, 83, 40);
+      }
+      .calendar {
+        color: rgb(231, 152, 79);
+      }
+      .img {
+        border-radius: 50%;
+        color: $primary;
+      }
+      .p {
+        font-size: 0.8em;
+      }
+    }
+    .col-12 {
+      p {
+        font-size: 0.8em;
+      }
+      img {
+        width: 20px;
+        margin-right: 20px;
+      }
+    }
+    .row {
+      span {
+        font-weight: 600;
+      }
+      blockquote {
+        color: grey;
+        font-size: 0.7em;
+      }
+      p {
+        text-align: start;
+        font-size: 0.7em;
+      }
+      .img-post {
+        width: 100%;
+        height: 100%;
+        border-radius: 0%;
+        padding: 0;
+        object-fit: cover;
+      }
+    }
+  }
+}
+.container-home .row .border-side {
+  border-radius: 10px;
+  span {
+    color: rgb(139, 139, 139);
+    font-weight: 600;
+  }
+  p {
+    font-size: 0.9em;
+    font-weight: 700;
+    color: rgb(49, 49, 49);
+    span {
+      font-size: 0.8em;
+    }
+  }
+  span {
+    strong {
+      background-color: rgba(255, 220, 146, 0.836);
+      color: rgb(105, 105, 105);
+      font-weight: 500;
+    }
+  }
+}
+
+#game {
+  padding: 0;
+  img {
+    width: 100%;
+    padding-left: 12px;
+    margin-top: 10px;
+  }
+}
+
+#h5 {
+  font-size: 1em;
+  font-weight: 700;
+  padding-left: 20px;
+  margin: 0;
+  padding-top: 10px;
+}
+#p {
+  font-weight: 400;
+  color: rgb(90, 90, 90);
+  padding-left: 20px;
+  display: inline-block;
+}

@@ -31,7 +31,10 @@ const MyNavbar = () => {
   };
 
   return (
-    <Navbar expand="lg" className="navbar-container bg-body-tertiary align-items-center">
+    <Navbar
+      expand="lg"
+      className="navbar-container bg-body-tertiary align-items-center"
+    >
       <Container className="justify-content-between">
         <div className="d-flex align-items-center gap-1">
           <Navbar.Brand href="#home">
@@ -58,10 +61,10 @@ const MyNavbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="navbar-group me-auto">
-              <Nav.Link className="text-center" href="#home">
+              <Link className="text-center" to={"/user/home"}>
                 <Image src={home}></Image>
                 <p>Home</p>
-              </Nav.Link>
+              </Link>
               <Nav.Link className="text-center" href="#rete">
                 <Image src={network}></Image>
                 <p>My network</p>
@@ -80,15 +83,26 @@ const MyNavbar = () => {
               </Nav.Link>
               <div className="d-flex flex-column justify-content-end align-items-center" style={{ maxWidth: "78px" }}>
                 {loginStatus.isLogged ? (
-                  <Image src={userData.user_info.image} className="propic mx-auto" />
+                  <Image
+                    src={userData.user_info.image}
+                    className="propic mx-auto"
+                  />
                 ) : (
                   <Image src={propic} className="propic mx-auto" />
                 )}
 
-                <NavDropdown title="Me" id="basic-nav-dropdown" className="first-dropdown" align="end">
+                <NavDropdown
+                  title="Me"
+                  id="basic-nav-dropdown"
+                  className="first-dropdown"
+                  align="end"
+                >
                   {loginStatus.isLogged ? (
                     <NavDropdown.Item>
-                      <Link to={`/user/${loginStatus.userLoggedID}`} onClick={handleClick}>
+                      <Link
+                        to={`/user/${loginStatus.userLoggedID}`}
+                        onClick={handleClick}
+                      >
                         Profile
                       </Link>
                     </NavDropdown.Item>
@@ -98,20 +112,37 @@ const MyNavbar = () => {
                     </NavDropdown.Item>
                   )}
 
-                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    Something
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4">
+                    Separated link
+                  </NavDropdown.Item>
                 </NavDropdown>
               </div>
               <div className="separate d-flex flex-column justify-content-end align-items-center">
                 <Image src={grid} className="mx-auto" />
-                <NavDropdown title="For Business" id="basic-nav-dropdown" className="second-dropdown" align="end">
+                <NavDropdown
+                  title="For Business"
+                  id="basic-nav-dropdown"
+                  className="second-dropdown"
+                  align="end"
+                >
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    Something
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4">
+                    Separated link
+                  </NavDropdown.Item>
                 </NavDropdown>
               </div>
             </Nav>
