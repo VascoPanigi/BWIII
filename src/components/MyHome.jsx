@@ -1,9 +1,15 @@
 import { Col, Container, Dropdown, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import img from "../assets/img/img1.jpg";
+import { useEffect } from "react";
+import { fetchAllPosts } from "../redux/actions";
 
 const MyHome = () => {
   const userData = useSelector((state) => state.user.user_info.image);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllPosts());
+  }, []);
   return (
     <Container fluid className="container-home">
       <Row className="d-flex justify-content-center gap-3">
@@ -74,7 +80,6 @@ const MyHome = () => {
                     <img className="profile" src={userData} alt="" />
                   </Col>
                   <Col xs={11}>
-                  
                     <input type="text" placeholder="  Avvia un post" />
                   </Col>
                 </Row>
