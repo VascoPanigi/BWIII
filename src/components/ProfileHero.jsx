@@ -8,8 +8,13 @@ import { setModalType, showModal } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
-const ProfileHero = ({ userData }) => {
-  console.log(userData);
+const ProfileHero = () => {
+  const userData = useSelector((state) => state.user);
+
+  const userInfo = userData.user_info;
+  const otherUser = userData.other_user_info;
+
+  // console.log("BELANDI", otherUser);
   const loginStatus = useSelector((state) => state.login);
 
   const params = useParams();
@@ -18,7 +23,7 @@ const ProfileHero = ({ userData }) => {
   const dispatch = useDispatch();
 
   const modalType = useSelector((state) => state.modal.modalType);
-  console.log(modalType);
+  // console.log(modalType);
 
   const handleShowEditModal = () => {
     dispatch(setModalType("edit"));
@@ -34,14 +39,18 @@ const ProfileHero = ({ userData }) => {
     <>
       <Card className="hero-section">
         <Card.Img variant="top" src={img} />
-        {/* <button className="edit-icon">
-          <i className=" bi bi-pen"></i>
-        </button> */}
-        {modalType === "edit" && <EditModal userData={userData} />}
-        {modalType === "pic" && <PicModal userData={userData} />}
+
+        {modalType === "edit" && <EditModal />}
+        {modalType === "pic" && <PicModal />}
         <div className="invisible-slider">
           <Link onClick={handleShowPicModal}>
-            <Image src={userData.image} className="propic" />
+            {loginStatus.isLogged && id === "me" ? (
+              <Image src={userInfo.image} className="propic" />
+            ) : (
+              <h5>
+                <Image src={otherUser.image} className="propic" />
+              </h5>
+            )}
           </Link>
           {loginStatus.isLogged && id === "me" && (
             <div className="edit-wrapper">
@@ -53,9 +62,16 @@ const ProfileHero = ({ userData }) => {
           <div className="d-flex align-items-start">
             <div>
               <div className="d-flex gap-2">
-                <h5>
-                  {userData.name} {userData.surname}
-                </h5>
+                {loginStatus.isLogged && id === "me" ? (
+                  <h5>
+                    {userInfo.name} {userInfo.surname}{" "}
+                  </h5>
+                ) : (
+                  <h5>
+                    {otherUser.name} {otherUser.surname}{" "}
+                  </h5>
+                )}
+
                 {loginStatus.isLogged && id === "me" && (
                   <Button className="verify-btn">
                     <i className="bi bi-shield-check"></i>
@@ -63,15 +79,25 @@ const ProfileHero = ({ userData }) => {
                   </Button>
                 )}
               </div>
-
-              <Card.Text>{userData.bio} </Card.Text>
+              {loginStatus.isLogged && id === "me" ? (
+                <Card.Text>{userInfo.bio} </Card.Text>
+              ) : (
+                <Card.Text>{otherUser.bio} </Card.Text>
+              )}
               <a href="">
                 <h6 className="d-xl-none">University of Rome</h6>
               </a>
 
-              <p>
-                Country • <span>Contact info</span>
-              </p>
+              {loginStatus.isLogged && id === "me" ? (
+                <p>
+                  {userInfo.area} • <span>Contact info</span>
+                </p>
+              ) : (
+                <p>
+                  {otherUser.area} • <span>Contact info</span>
+                </p>
+              )}
+
               <span>100 connections</span>
             </div>
             <div className="d-none d-xl-flex align-items-center gap-2 ms-auto">
@@ -80,7 +106,9 @@ const ProfileHero = ({ userData }) => {
                 className="uni-logo"
               />
               <a href="">
-                <h6>{userData.title}</h6>
+                {loginStatus.isLogged && id === "me" ? <h6>{userInfo.title}</h6> : <h6>{otherUser.title}</h6>}
+
+                {/* <h6>{userInfo.title}</h6> */}
               </a>
             </div>
           </div>

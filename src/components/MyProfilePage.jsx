@@ -15,21 +15,21 @@ const MyProfilePage = () => {
   const usersList = useSelector((state) => state.users_list);
   const experiencesList = useSelector((state) => state.experiences_list);
   // const loginStatus = useSelector((state) => state.login);
-  console.log("showUserData", userData);
-  console.log("showOtherUserData", userData.other_user_info);
-  console.log("experiencetest", experiencesList);
-  let otherUser = userData.other_user_info;
+  // console.log("showUserData", userData);
+  // console.log("showOtherUserData", userData.other_user_info);
+  // console.log("experiencetest", experiencesList);
+  // const otherUser = userData.other_user_info;
   // let otherUserID = userData.other_user_info._id;
-  console.log(usersList);
+  // console.log(usersList);
 
-  const loginStatus = useSelector((state) => state.login);
-  console.log(loginStatus);
+  // const loginStatus = useSelector((state) => state.login);
+  // console.log(loginStatus);
 
   const params = useParams();
   // const navigate = useNavigate();
 
-  console.log("ID dinamico", params.dynamicValue);
-  console.log("parametri", params);
+  // console.log("ID dinamico", params.dynamicValue);
+  // console.log("parametri", params);
 
   useEffect(() => {
     dispatch(fetchProfileAction(params.dynamicValue));
@@ -56,7 +56,7 @@ const MyProfilePage = () => {
               <ProfileHero userData={otherUser} />
             )} */}
 
-            {userData && <ProfileHero userData={otherUser} />}
+            {userData && <ProfileHero />}
             <MyProjects />
             {experiencesList && <Experience experiencesList={experiencesList} />}
             <Education />

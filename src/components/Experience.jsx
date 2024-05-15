@@ -7,12 +7,12 @@ import ExpModal from "./ExpModal";
 import { useNavigate } from "react-router-dom";
 
 const Experience = ({ experiencesList }) => {
-  console.log("experiencestest2", experiencesList);
+  // console.log("experiencestest2", experiencesList);
   const navigate = useNavigate();
   const userId = useSelector((state) => state.user.other_user_info._id);
 
   const modalType = useSelector((state) => state.modal.modalType);
-  console.log(modalType);
+  // console.log(modalType);
 
   return (
     <Card className="section-container">

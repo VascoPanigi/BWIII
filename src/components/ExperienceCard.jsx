@@ -7,18 +7,18 @@ const ExperienceCard = ({ experience }) => {
   const id = useSelector((state) => state.user.other_user_info._id);
   const loggedIn = useSelector((state) => state.login.isLogged);
   const dispatch = useDispatch();
-  console.log("userid and expid", id, experience._id);
+  // console.log("userid and expid", id, experience._id);
 
   const dateConversion = (startingDate) => {
     if (startingDate) {
       const rawdate = new Date(startingDate);
       const year = rawdate.getUTCFullYear();
       const month = rawdate.getUTCMonth();
-      console.log("anno e mese", year, month);
+      // console.log("anno e mese", year, month);
       const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       const actualMonth = months[month];
       const actualDate = `${actualMonth} ${year}`;
-      console.log(actualDate);
+      // console.log(actualDate);
       return actualDate;
     }
   };

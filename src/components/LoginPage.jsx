@@ -1,30 +1,30 @@
-import { useState } from 'react'
-import { Col, Row, Form, Button, Container, Image } from 'react-bootstrap'
-import { SET_USER_LOGGED, TOGGLE_IS_LOGGED } from '../redux/actions'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import svg from '../assets/img/login.svg'
+import { useState } from "react";
+import { Col, Row, Form, Button, Container, Image } from "react-bootstrap";
+import { SET_USER_LOGGED, TOGGLE_IS_LOGGED } from "../redux/actions";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import svg from "../assets/img/login.svg";
 
 const PlaintextExample = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    if (email === 'ciao@ciao.it' && password === 'ciao') {
+    e.preventDefault();
+    if (email === "ciao@ciao.it" && password === "ciao") {
       // const id = "6642750c55621a0015c15faa";
-      const id = 'me'
-      console.log(id)
+      const id = "me";
+      // console.log(id)
 
-      dispatch({ type: TOGGLE_IS_LOGGED, payload: true })
-      dispatch({ type: SET_USER_LOGGED, payload: id })
-      navigate(`/user/${id}`)
+      dispatch({ type: TOGGLE_IS_LOGGED, payload: true });
+      dispatch({ type: SET_USER_LOGGED, payload: id });
+      navigate(`/user/${id}`);
       // navigate(`/user/${id}`);
     }
-  }
+  };
 
   return (
     <div className="background-login">
@@ -62,7 +62,7 @@ const PlaintextExample = () => {
               </Col>
             </Row>
             <p>
-              By clicking Continue to join or sign in, you agree to LinkedIn’s <span>User Agreement</span>,{' '}
+              By clicking Continue to join or sign in, you agree to LinkedIn’s <span>User Agreement</span>,{" "}
               <span>Privacy Policy</span>, and <span>Cookie Policy</span>.
             </p>
 
@@ -75,7 +75,7 @@ const PlaintextExample = () => {
         </Row>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default PlaintextExample
+export default PlaintextExample;
