@@ -5,10 +5,12 @@ import rightarrow from "../assets/icons/arrowright.svg";
 import { Image } from "react-bootstrap";
 import ExpModal from "./ExpModal";
 import { useNavigate } from "react-router-dom";
+import { Logger } from "sass";
 
 const Experience = () => {
   const navigate = useNavigate();
   const userId = useSelector((state) => state.user.other_user_info._id);
+
   const experiencesList = useSelector((state) => state.experiences_list);
 
   const modalType = useSelector((state) => state.modal.modalType);

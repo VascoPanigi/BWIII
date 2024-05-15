@@ -202,6 +202,7 @@ export const removeExperienceAction = (profileId, experienceId) => {
           type: REMOVE_EXPERIENCE,
           payload: experienceId,
         });
+        dispatch(fetchExperiencesAction(profileId));
       } else {
         console.log("error");
         throw new Error("Error removing experience, try again later!");

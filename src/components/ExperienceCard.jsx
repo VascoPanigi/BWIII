@@ -10,7 +10,7 @@ const ExperienceCard = ({ experience }) => {
   const loggedIn = useSelector((state) => state.login.isLogged);
   const dispatch = useDispatch();
   const modalType = useSelector((state) => state.modal.modalType);
-  console.log("userid and expid", id, experience._id);
+  // console.log("userid and expid", id, experience._id);
 
   const handleShowExpPostModal = () => {
     dispatch(setModalType("put"));
@@ -34,6 +34,7 @@ const ExperienceCard = ({ experience }) => {
   const handleRemove = () => {
     dispatch(removeExperienceAction(id, experience._id));
     dispatch(fetchExperiencesAction(id));
+    // dispatch(fetchExperiencesAction(id));
   };
 
   return (

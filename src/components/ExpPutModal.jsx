@@ -4,7 +4,7 @@ import { hideModal, modifyProfileAction, editExperienceAction, fetchExperiencesA
 import { useState } from "react";
 
 const ExpPutModal = ({ expData }) => {
-  console.log("expdata console log lalala", expData);
+  // console.log("expdata console log lalala", expData);
   const dispatch = useDispatch();
   const show = useSelector((state) => state.modal.showModal);
   const userId = useSelector((state) => state.user.other_user_info._id);
