@@ -10,7 +10,6 @@ const Experience = () => {
   const navigate = useNavigate();
   const userId = useSelector((state) => state.user.other_user_info._id);
   const experiencesList = useSelector((state) => state.experiences_list);
-  console.log("experienceslalalalal", experiencesList);
 
   const modalType = useSelector((state) => state.modal.modalType);
 
