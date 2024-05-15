@@ -11,6 +11,7 @@
     margin: 0;
     padding: 0;
     width: 78px;
+    text-decoration: none !important;
     &:hover {
       img {
         filter: grayscale(0) brightness(20%) contrast(300%);
@@ -25,6 +26,19 @@
     margin: 0;
     font-size: 12px;
     letter-spacing: -0.5px;
+    color: $secondary;
+  }
+
+  @media (max-width: $md) {
+    p {
+      display: none;
+    }
+    a:not(.navbar-brand) {
+      width: 50px;
+    }
+    .propic-wrapper {
+      width: 50px !important;
+    }
   }
   .form-control,
   .input-group,
@@ -44,6 +58,9 @@
     box-shadow: 0 0 0 2px $warning;
   }
 
+  .propic-wrapper {
+    width: 78px;
+  }
   .propic {
     border-radius: 50%;
     object-fit: cover;
@@ -85,6 +102,11 @@
 
     border-top-right-radius: 0px;
   }
+}
+
+.status-bar {
+  min-height: 60px;
+  background-color: aquamarine;
 }
 
 //profile
