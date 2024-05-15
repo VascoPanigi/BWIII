@@ -14,6 +14,7 @@ export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
 export const REMOVE_EXPERIENCE = "REMOVE_EXPERIENCE";
 export const GET_ALL_POSTS = "GET_ALL_POSTS";
 export const GET_SPECIFIC_POST = "GET_SPECIFIC_POST";
+export const EDIT_EXPERIENCE = "EDIT_EXPERIENCE";
 
 export const fetchProfileAction = (id) => {
   return async (dispatch) => {
@@ -207,6 +208,35 @@ export const removeExperienceAction = (profileId, experienceId) => {
       }
     } catch (error) {
       console.log("Your request returned this error:", error);
+    }
+  };
+};
+export const editExperienceAction = (profileId, experienceId, newExperience) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${profileId}/experiences/${experienceId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: import.meta.env.VITE_TOKEN_API,
+          },
+          body: JSON.stringify(newExperience),
+        }
+      );
+
+      if (response.ok) {
+        dispatch({
+          type: EDIT_EXPERIENCE,
+          payload: newExperience,
+        });
+      } else {
+        console.log("error");
+        throw new Error("Error editing experience, try again later!");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x5 :(");
     }
   };
 };

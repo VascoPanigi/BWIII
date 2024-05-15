@@ -1,11 +1,13 @@
 import { Modal, Button, Form, Col, FormGroup } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { hideModal, modifyProfileAction } from "../redux/actions";
+import { hideModal, modifyProfileAction, editExperienceAction, fetchExperiencesAction } from "../redux/actions";
 import { useState } from "react";
 
-const ExpModal = ({ expData }) => {
+const ExpPutModal = ({ expData }) => {
+  console.log("expdata console log lalala", expData);
   const dispatch = useDispatch();
   const show = useSelector((state) => state.modal.showModal);
+  const userId = useSelector((state) => state.user.other_user_info._id);
 
   const [role, setRole] = useState(expData.role);
   const [company, setCompany] = useState(expData.company);
@@ -14,7 +16,7 @@ const ExpModal = ({ expData }) => {
   const [description, setDescription] = useState(expData.description);
   const [area, setArea] = useState(expData.area);
 
-  const profileObject = {
+  const experienceObject = {
     role: role,
     company: company,
     startDate: startDate,
@@ -26,7 +28,9 @@ const ExpModal = ({ expData }) => {
   const handleClose = () => dispatch(hideModal());
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(modifyProfileAction(profileObject));
+    dispatch(modifyProfileAction(experienceObject));
+    dispatch(editExperienceAction(userId, expData._id, experienceObject));
+    dispatch(fetchExperiencesAction(userId));
   };
   return (
     <>
@@ -58,7 +62,8 @@ const ExpModal = ({ expData }) => {
             <FormGroup as={Col} md="12" controlId="validationStart" className="mt-4">
               <Form.Label>Start date</Form.Label>
               <Form.Control
-                as="number"
+                required
+                type="month"
                 placeholder="05/17/2024"
                 defaultValue={expData.startDate} ///////
                 onChange={(e) => setStartDate(e.target.value)}
@@ -67,7 +72,7 @@ const ExpModal = ({ expData }) => {
             <FormGroup as={Col} md="12" controlId="validationEnd" className="mt-4">
               <Form.Label>End date (or expected)</Form.Label>
               <Form.Control
-                as="number"
+                type="month"
                 placeholder="05/17/2025"
                 defaultValue={expData.endDate} ///////
                 onChange={(e) => setEndDate(e.target.value)}
@@ -109,4 +114,4 @@ const ExpModal = ({ expData }) => {
   );
 };
 
-export default ExpModal;
+export default ExpPutModal;
