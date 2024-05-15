@@ -232,6 +232,7 @@ export const editExperienceAction = (profileId, experienceId, newExperience) => 
           type: EDIT_EXPERIENCE,
           payload: newExperience,
         });
+        dispatch(fetchExperiencesAction(profileId));
       } else {
         console.log("error");
         throw new Error("Error editing experience, try again later!");
