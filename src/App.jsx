@@ -6,6 +6,7 @@ import MyNavbar from "./components/MyNavbar";
 import MyFooter from "./components/MyFooter";
 import LoginPage from "./components/LoginPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MyHome from "./components/MyHome";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           {/* <Route path="/user/me" element={<MyProfilePage />} /> */}
           <Route path="/user/:dynamicValue" element={<MyProfilePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/home" element={<MyHome />} />
 
           {/* <MyProfilePage /> */}
         </Routes>
