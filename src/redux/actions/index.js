@@ -10,6 +10,8 @@ export const SET_MODAL_TYPE = "SET_MODAL_TYPE";
 export const TOGGLE_IS_LOGGED = "TOGGLE_IS_LOGGED";
 export const TOGGLE_STATE = "TOGGLE_STATE";
 export const SET_USER_LOGGED = "SET_USER_LOGGED";
+export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
+export const REMOVE_EXPERIENCE = "REMOVE_EXPERIENCE";
 export const GET_ALL_POSTS = "GET_ALL_POSTS";
 export const GET_SPECIFIC_POST = "GET_SPECIFIC_POST";
 
@@ -151,6 +153,63 @@ export const hideModal = () => ({
   type: HIDE_MODAL,
 });
 
+export const addExperienceAction = (id, newExperience) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+        body: JSON.stringify(newExperience),
+      });
+
+      if (response.ok) {
+        const newExperience = await response.json();
+
+        dispatch({
+          type: ADD_EXPERIENCE,
+          payload: newExperience,
+        });
+      } else {
+        console.log("error");
+        throw new Error("Error adding experience, try again later!");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error);
+    }
+  };
+};
+
+export const removeExperienceAction = (profileId, experienceId) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${profileId}/experiences/${experienceId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: import.meta.env.VITE_TOKEN_API,
+          },
+        }
+      );
+
+      if (response.ok) {
+        dispatch({
+          type: REMOVE_EXPERIENCE,
+          payload: experienceId,
+        });
+      } else {
+        console.log("error");
+        throw new Error("Error removing experience, try again later!");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error);
+    }
+  };
+};
 export const setModalType = (modalType) => ({ type: SET_MODAL_TYPE, payload: modalType });
 
 export const fetchAllPosts = () => {

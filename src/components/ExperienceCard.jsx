@@ -1,70 +1,63 @@
-import { Card } from 'react-bootstrap'
-// import ExperienceTimeline from "./ExperienceTimeline";
+import { Card, Image } from "react-bootstrap";
+import { fetchExperiencesAction, removeExperienceAction } from "../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import trash from "../assets/icons/trash.svg";
 
 const ExperienceCard = ({ experience }) => {
-  console.log('dssdgsg', experience)
-  // const startingDate = new Date(experience.startDate);
-  // const endingDate = new Date(experience.endDate);
+  const id = useSelector((state) => state.user.other_user_info._id);
+  const loggedIn = useSelector((state) => state.login.isLogged);
+  const dispatch = useDispatch();
+  console.log("userid and expid", id, experience._id);
 
   const dateConversion = (startingDate) => {
     if (startingDate) {
-      const rawdate = new Date(startingDate)
-      const year = rawdate.getUTCFullYear()
-      const month = rawdate.getUTCMonth()
-      console.log('anno e mese', year, month)
-      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-      const actualMonth = months[month]
-      const actualDate = `${actualMonth} ${year}`
-      console.log(actualDate)
-      return actualDate
+      const rawdate = new Date(startingDate);
+      const year = rawdate.getUTCFullYear();
+      const month = rawdate.getUTCMonth();
+      console.log("anno e mese", year, month);
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const actualMonth = months[month];
+      const actualDate = `${actualMonth} ${year}`;
+      console.log(actualDate);
+      return actualDate;
     }
-  }
-  // const year = startingDate.getUTCFullYear();
-  // const month = startingDate.getUTCMonth();
-  // console.log("anno e mese", year, month);
-  // const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  // const actualMonth = months[month];
-  // const actualDate = `${actualMonth} ${year}`;
-  // console.log(actualDate);
+  };
+
+  const handleClick = () => {
+    dispatch(removeExperienceAction(id, experience._id));
+    dispatch(fetchExperiencesAction(id));
+  };
+
   return (
     <div className="experience-card-inner-container">
       <Card className="card-container experience-card my-auto">
         <div className="single-exp d-flex">
           <Card.Img src={experience.image} className="experience-image" />
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column flex-grow-1">
             <Card.Body>
-              <Card.Title className="experience-name ">{experience.role}</Card.Title>
-              <Card.Text className="experience-info ">{experience.company}</Card.Text>
-              <Card.Text className="experience-period ">
-                {dateConversion(experience.startDate)}
-                {experience.endDate && ' - '} {dateConversion(experience.endDate)}
-              </Card.Text>
-              <Card.Text className="experience-location ">{experience.area}</Card.Text>
+              <div className="d-flex justify-content-between align-items-start">
+                <div>
+                  <Card.Title className="experience-name">{experience.role}</Card.Title>
+                  <Card.Text className="experience-info">{experience.company}</Card.Text>
+                  <Card.Text className="experience-period">
+                    {dateConversion(experience.startDate)}
+                    {experience.endDate && " - "}
+                    {dateConversion(experience.endDate)}
+                  </Card.Text>
+                  <Card.Text className="experience-location">{experience.area}</Card.Text>
+                </div>
+                {loggedIn && (
+                  <button onClick={handleClick} className="btn btn-danger bg-transparent border-0 p-0">
+                    <Image src={trash} className="trash-icon" />
+                  </button>
+                )}
+              </div>
             </Card.Body>
           </div>
         </div>
-        <div className="experience-timeline-outer-container">
-          {/* <ExperienceTimeline />
-          <ExperienceTimeline />
-          <ExperienceTimeline /> */}
-        </div>
-
-        {/* <Card className="education-card my-auto">
-          <div className="d-flex align-items-start experience-continuity">
-            <div className="circular-continuity"></div>
-            <div className="linear-continuity"></div>
-            <div className="d-flex flex-column">
-              <Card.Body>
-                <Card.Title className="education-name ">Sapienza università di Roma</Card.Title>
-                <Card.Text className="education-info ">PhD Computer Science</Card.Text>
-                <Card.Text className="education-period ">2024 - 2024</Card.Text>
-              </Card.Body>
-            </div>
-          </div>
-        </Card> */}
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default ExperienceCard
+export default ExperienceCard;

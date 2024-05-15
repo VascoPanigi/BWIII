@@ -19,7 +19,7 @@ const MyProfilePage = () => {
   console.log("showOtherUserData", userData.other_user_info);
   console.log("experiencetest", experiencesList);
   let otherUser = userData.other_user_info;
-  let otherUserID = userData.other_user_info._id;
+  // let otherUserID = userData.other_user_info._id;
   console.log(usersList);
 
   const loginStatus = useSelector((state) => state.login);
