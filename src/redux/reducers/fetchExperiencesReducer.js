@@ -1,4 +1,4 @@
-import { GET_EXPERIENCES_LIST, ADD_EXPERIENCE, REMOVE_EXPERIENCE } from "../actions/index";
+import { GET_EXPERIENCES_LIST, ADD_EXPERIENCE, REMOVE_EXPERIENCE, EDIT_EXPERIENCE } from "../actions/index";
 
 const initialState = {
   experiences_list: [],
@@ -22,6 +22,11 @@ const fetchExperiencesReducer = (state = initialState, action) => {
         experiences_list: state.experiences_list.filter((experience) => experience.id !== action.payload),
       };
 
+    case EDIT_EXPERIENCE:
+      return {
+        ...state,
+        experiences_list: action.payload,
+      };
     default:
       return state;
   }

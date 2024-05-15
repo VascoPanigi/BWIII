@@ -35,9 +35,11 @@ const ExperiencePage = () => {
                   <i className="bi bi-plus-lg" onClick={handleShowExpModal}></i>
                 </div>
                 <p className=" section-title">Experience</p>
-                {experiencesList.experiences_list.map((experience) => (
-                  <ExperienceCard key={experience._id} experience={experience} />
-                ))}
+
+                {experiencesList.experiences_list &&
+                  experiencesList.experiences_list.map((experience) => (
+                    <ExperienceCard key={experience._id} experience={experience} />
+                  ))}
               </div>
             </Card>
           </Col>

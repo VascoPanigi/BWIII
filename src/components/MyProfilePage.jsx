@@ -6,7 +6,7 @@ import Education from "./Education";
 import Experience from "./Experience";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProfileAction, fetchUsersListAction, fetchExperiencesAction } from "../redux/actions";
+import { fetchProfileAction, fetchUsersListAction } from "../redux/actions";
 import { useParams } from "react-router-dom";
 
 const MyProfilePage = () => {
@@ -34,7 +34,12 @@ const MyProfilePage = () => {
   useEffect(() => {
     dispatch(fetchProfileAction(params.dynamicValue));
     dispatch(fetchUsersListAction());
-    dispatch(fetchExperiencesAction(params.dynamicValue));
+
+    // if (params.dynamicValue !== "me") {
+    //   dispatch(fetchExperiencesAction(otherUserId));
+    // } else {
+    //   dispatch(fetchExperiencesAction(userData.user_info._id));
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -58,7 +63,7 @@ const MyProfilePage = () => {
 
             {userData && <ProfileHero />}
             <MyProjects />
-            {experiencesList && <Experience experiencesList={experiencesList} />}
+            {experiencesList && <Experience />}
             <Education />
           </Col>
           <Col xs={3} className="d-none d-md-block right-column">

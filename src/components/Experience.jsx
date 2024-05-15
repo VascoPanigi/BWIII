@@ -6,13 +6,12 @@ import { Image } from "react-bootstrap";
 import ExpModal from "./ExpModal";
 import { useNavigate } from "react-router-dom";
 
-const Experience = ({ experiencesList }) => {
-  // console.log("experiencestest2", experiencesList);
+const Experience = () => {
   const navigate = useNavigate();
   const userId = useSelector((state) => state.user.other_user_info._id);
+  const experiencesList = useSelector((state) => state.experiences_list);
 
   const modalType = useSelector((state) => state.modal.modalType);
-  // console.log(modalType);
 
   return (
     <Card className="section-container">

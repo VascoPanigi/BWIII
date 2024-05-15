@@ -15,7 +15,7 @@ const ExpModal = () => {
   const [description, setDescription] = useState();
   const [area, setArea] = useState();
 
-  const profileObject = {
+  const experienceObject = {
     role: role,
     company: company,
     startDate: startDate,
@@ -27,8 +27,8 @@ const ExpModal = () => {
   const handleClose = () => dispatch(hideModal());
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(modifyProfileAction(profileObject));
-    dispatch(addExperienceAction(userId, profileObject));
+    dispatch(modifyProfileAction(experienceObject));
+    dispatch(addExperienceAction(userId, experienceObject));
     dispatch(fetchExperiencesAction(userId));
   };
   return (
