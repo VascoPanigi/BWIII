@@ -4,6 +4,7 @@ import fetchUserReducer from "../reducers/fetchUserReducer";
 import fetchUsersListReducer from "../reducers/fetchUsersListReducer";
 import modalReducer from "../reducers/modalReducer";
 import loginReducer from "../reducers/loginReducer";
+import fetchPostsReducer from "../reducers/fetchPostsReducer";
 
 const rootReducer = combineReducers({
   user: fetchUserReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   experiences_list: fetchExperiencesReducer,
   modal: modalReducer,
   login: loginReducer,
+  posts: fetchPostsReducer,
 });
 
 const store = configureStore({

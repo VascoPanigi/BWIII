@@ -10,6 +10,8 @@ export const SET_MODAL_TYPE = "SET_MODAL_TYPE";
 export const TOGGLE_IS_LOGGED = "TOGGLE_IS_LOGGED";
 export const TOGGLE_STATE = "TOGGLE_STATE";
 export const SET_USER_LOGGED = "SET_USER_LOGGED";
+export const GET_ALL_POSTS = "GET_ALL_POSTS";
+export const GET_SPECIFIC_POST = "GET_SPECIFIC_POST";
 
 export const fetchProfileAction = (id) => {
   return async (dispatch) => {
@@ -150,3 +152,141 @@ export const hideModal = () => ({
 });
 
 export const setModalType = (modalType) => ({ type: SET_MODAL_TYPE, payload: modalType });
+
+export const fetchAllPosts = () => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+      });
+      if (response.ok) {
+        const posts = await response.json();
+
+        dispatch({
+          type: GET_ALL_POSTS,
+          payload: posts,
+        });
+      } else {
+        console.log("error");
+        throw new Error("Error fetching the posts, try again later! ");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x3 :(");
+    }
+  };
+};
+
+export const postComment = (comment) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+        body: JSON.stringify(comment),
+      });
+      if (response.ok) {
+        console.log("commento postato 😎");
+        const posts = await response.json();
+
+        dispatch({
+          type: GET_ALL_POSTS,
+          payload: posts,
+        });
+      } else {
+        console.log("error");
+        throw new Error("Error posting your comment, try again later! ");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x4 :(");
+    }
+  };
+};
+
+export const fetchSpecificPost = (postID) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postID}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+      });
+      if (response.ok) {
+        const post = await response.json();
+
+        dispatch({
+          type: GET_SPECIFIC_POST,
+          payload: post,
+        });
+      } else {
+        console.log("error");
+        throw new Error("Error fetching this post, try again later! ");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x3 :(");
+    }
+  };
+};
+
+export const deleteSpecificPost = (postID) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postID}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+      });
+      if (response.ok) {
+        console.log("Post successfully deleted 😃");
+        const posts = await response.json();
+
+        dispatch({
+          type: GET_ALL_POSTS,
+          payload: posts,
+        });
+      } else {
+        console.log("error");
+        throw new Error("Error fetching this post, try again later! ");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x3 :(");
+    }
+  };
+};
+
+export const modifySpecificPost = (postID, postObj) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postID}`, {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+        body: JSON.stringify(postObj),
+      });
+      if (response.ok) {
+        console.log("Post successfully modified 😃");
+        const posts = await response.json();
+
+        dispatch({
+          type: GET_ALL_POSTS,
+          payload: posts,
+        });
+      } else {
+        console.log("error");
+        throw new Error("Error fetching this post, try again later! ");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x3 :(");
+    }
+  };
+};
