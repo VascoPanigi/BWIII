@@ -110,7 +110,7 @@ const MyNavbar = () => {
                     <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                   </NavDropdown>
                 </div>
-                <div className="separate d-flex flex-column justify-content-end align-items-center d-none d-lg-flex">
+                <div className="separate d-flex flex-column justify-content-end align-items-center d-none d-md-flex">
                   <Image src={grid} className="mx-auto" />
                   <NavDropdown title="For Business" id="basic-nav-dropdown" className="second-dropdown" align="end">
                     <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

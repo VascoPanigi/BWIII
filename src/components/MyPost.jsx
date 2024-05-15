@@ -1,8 +1,8 @@
-import { Col, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { Col, Row } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 
 const MyPost = () => {
-  const AllPosts = useSelector((state) => state.posts.posts);
+  const AllPosts = useSelector((state) => state.posts.posts)
 
   //   AllPosts &&
   //     AllPosts.slice(-1, -10).map((post) => {
@@ -10,11 +10,12 @@ const MyPost = () => {
   //     });
 
   return (
-    AllPosts &&AllPosts.slice(-40, -25).map((post) => {
-      console.log(post);
+    AllPosts &&
+    AllPosts.slice(-40, -25).map((post) => {
+      console.log(post)
       return (
         <>
-          <Row className="border my-2 ">
+          <Row className="border" style={{ marginBottom: '1rem' }}>
             <Col>
               <Row>
                 <Col xs="3" lg="2">
@@ -29,13 +30,7 @@ const MyPost = () => {
                   </blockquote>
                 </Col>
                 <p>{post.text}</p>
-                {post.image && (
-                  <img
-                    className="post-image img-post"
-                    src={post.image}
-                    alt=""
-                  />
-                )}
+                {post.image && <img className="post-image img-post" src={post.image} alt="" />}
 
                 <Row xs="3" className="text-center">
                   <Col xs="3" className="text-center">
@@ -56,11 +51,11 @@ const MyPost = () => {
                   </Col>
                 </Row>
               </Row>
-            </Col>{" "}
+            </Col>{' '}
           </Row>
         </>
-      );
+      )
     })
-  );
-};
-export default MyPost;
+  )
+}
+export default MyPost
