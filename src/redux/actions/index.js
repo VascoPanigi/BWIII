@@ -6,6 +6,7 @@ export const GET_PROFILES_LIST = "GET_PROFILES_LIST";
 export const MODIFY_DATA = "MODIFY_DATA";
 export const SHOW_MODAL = "SHOW_MODAL";
 export const HIDE_MODAL = "HIDE_MODAL";
+export const SET_MODAL_TYPE = "SET_MODAL_TYPE";
 export const TOGGLE_IS_LOGGED = "TOGGLE_IS_LOGGED";
 export const TOGGLE_STATE = "TOGGLE_STATE";
 export const SET_USER_LOGGED = "SET_USER_LOGGED";
@@ -25,10 +26,30 @@ export const fetchProfileAction = (id) => {
         const user = await response.json();
         console.log(user);
 
-        dispatch({
-          type: GET_MY_PROFILE,
-          payload: user,
-        });
+        switch (id) {
+          case "me":
+            dispatch({
+              type: GET_MY_PROFILE,
+              payload: user,
+            });
+            dispatch({
+              type: GET_SPECIFIC_PROFILE,
+              payload: user,
+            });
+
+            break;
+
+          default:
+            dispatch({
+              type: GET_SPECIFIC_PROFILE,
+              payload: user,
+            });
+            break;
+        }
+        // dispatch({
+        //   type: GET_MY_PROFILE,
+        //   payload: user,
+        // });
       } else {
         console.log("error");
         throw new Error("Error fetching your profile, try again later! ");
@@ -187,3 +208,4 @@ export const removeExperienceAction = (profileId, experienceId) => {
     }
   };
 };
+export const setModalType = (modalType) => ({ type: SET_MODAL_TYPE, payload: modalType });

@@ -1,6 +1,12 @@
 //navbar
 
 .navbar-container {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  border-bottom: 1px solid $secondary-light;
+
   a:not(.navbar-brand) {
     margin: 0;
     padding: 0;
@@ -34,13 +40,13 @@
       outline: none;
     }
   }
-  .input-group {
-    &:focus {
-      box-shadow: 0 0 0 2px $warning;
-    }
+  .input-group:focus-within {
+    box-shadow: 0 0 0 2px $warning;
   }
+
   .propic {
     border-radius: 50%;
+    object-fit: cover;
     width: 24px;
     height: 24px;
   }
@@ -62,17 +68,28 @@
   }
 
   .dropdown-menu {
+    padding-inline: 5px;
+    .dropdown-item {
+      padding: 4px 14px;
+      min-width: 160px !important;
+      &:hover {
+        background-color: $primary-light;
+        border-radius: 2px;
+      }
+    }
     a {
       font-size: 16px;
       text-align: start;
+      text-decoration: none;
     }
-    padding-left: 1rem;
+
     border-top-right-radius: 0px;
   }
 }
 
 //profile
 .profile-container {
+  padding-top: 72px;
   .row {
     .left-column,
     .right-column {

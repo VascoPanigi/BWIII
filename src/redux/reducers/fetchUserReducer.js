@@ -1,7 +1,8 @@
-import { GET_MY_PROFILE } from "../actions/index";
+import { GET_MY_PROFILE, GET_SPECIFIC_PROFILE } from "../actions/index";
 
 const initialState = {
   user_info: [],
+  other_user_info: [],
 };
 
 const fetchUserReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const fetchUserReducer = (state = initialState, action) => {
       return {
         ...state,
         user_info: action.payload,
+      };
+    case GET_SPECIFIC_PROFILE:
+      return {
+        ...state,
+        other_user_info: action.payload,
       };
 
     default:

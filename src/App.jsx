@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <MyNavbar />
         <Routes>
-          <Route path="/user" element={<MyProfilePage />} />
+          {/* <Route path="/user/me" element={<MyProfilePage />} /> */}
           <Route path="/user/:dynamicValue" element={<MyProfilePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/experience/:userid" element={<ExperiencePage />} />

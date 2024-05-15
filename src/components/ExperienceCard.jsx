@@ -43,7 +43,7 @@ const ExperienceCard = ({ experience }) => {
   return (
     <div className="experience-card-inner-container">
       <Card className="card-container experience-card my-auto">
-        <div className="d-flex align-items-start">
+        <div className="single-exp d-flex">
           <Card.Img src={experience.image} className="experience-image" />
           <div className="d-flex flex-column flex-grow-1">
             <Card.Body>

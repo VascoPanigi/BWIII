@@ -52,7 +52,6 @@
 @mixin edit-button {
   position: absolute;
   right: 0.9rem;
-  top: -25px;
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 99px;
@@ -80,7 +79,7 @@
     width: 150px;
     height: 150px;
     border: 5px solid white;
-    top: 15%;
+    bottom: 0;
     left: 1.3rem;
   }
 
@@ -89,10 +88,13 @@
     height: 23vh;
   }
 
-  .card-body {
-    margin-top: 40px;
-    padding-inline: 1.5rem;
+  .invisible-slider {
+    min-height: 40px;
     position: relative;
+  }
+
+  .card-body {
+    padding-inline: 1.5rem;
 
     .edit-wrapper {
       @include edit-button();
@@ -153,6 +155,7 @@
     color: $primary;
     font-weight: 700;
     font-size: 14px;
+    cursor: pointer;
   }
 
   .button-group {
@@ -202,16 +205,13 @@
 
   //MEDIA////////////////////////
 
-  @media (max-width: $xl) {
-    .propic {
-      top: 16%;
-    }
-  }
   @media (max-width: $lg) {
+    img {
+      height: 15vh;
+    }
     .propic {
       width: 120px;
       height: 120px;
-      top: 23%;
     }
     .button-group {
       padding: 2px 0;
@@ -221,25 +221,17 @@
       }
     }
   }
-  @media (max-width: $md) {
-    .propic {
-      width: 110px;
-      height: 110px;
-      top: 25%;
-    }
-  }
   @media (max-width: $sm) {
     &.card {
       min-height: 300px;
     }
 
     img {
-      height: 14vh;
+      height: 12vh;
     }
     .propic {
-      width: 100px;
-      height: 100px;
-      top: 14%;
+      width: 120px;
+      height: 120px;
     }
     .button-group {
       padding: 2px 0;

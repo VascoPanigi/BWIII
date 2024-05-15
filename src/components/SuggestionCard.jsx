@@ -1,16 +1,16 @@
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { GET_MY_PROFILE, fetchExperiencesAction, fetchProfileAction } from "../redux/actions";
-import fetchExperiencesReducer from "../redux/reducers/fetchExperiencesReducer";
+import { GET_SPECIFIC_PROFILE, fetchExperiencesAction, fetchProfileAction } from "../redux/actions";
 
 const SuggestionCard = ({ singleUser }) => {
   const dispatch = useDispatch();
   console.log(singleUser._id);
 
   const handleClick = () => {
-    dispatch({ type: GET_MY_PROFILE, payload: singleUser });
+    dispatch({ type: GET_SPECIFIC_PROFILE, payload: singleUser });
     dispatch(fetchExperiencesAction(singleUser._id));
+    dispatch(fetchProfileAction(singleUser._id));
   };
 
   return (

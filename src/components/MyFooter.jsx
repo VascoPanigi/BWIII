@@ -117,7 +117,7 @@ const MyFooter = () => {
                 </a>
               </li>
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary d-md-none ">
+                <a href="#" className="nav-link p-0 text-body-secondary ">
                   Ad Choices
                 </a>
               </li>
