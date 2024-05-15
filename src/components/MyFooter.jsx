@@ -1,8 +1,8 @@
-import { Container, Row, Col, Form } from 'react-bootstrap'
-import questionmark from '../assets/icons/footerquestion.svg'
-import gear from '../assets/icons/footergear.svg'
-import shield from '../assets/icons/footershield.svg'
-import { Image } from 'react-bootstrap'
+import { Container, Row, Col, Form } from "react-bootstrap";
+import questionmark from "../assets/icons/footerquestion.svg";
+import gear from "../assets/icons/footergear.svg";
+import shield from "../assets/icons/footershield.svg";
+import { Image } from "react-bootstrap";
 
 const MyFooter = () => {
   return (
@@ -184,7 +184,7 @@ const MyFooter = () => {
         </div>
       </footer>
     </Container>
-  )
-}
+  );
+};
 
-export default MyFooter
+export default MyFooter;

@@ -27,7 +27,7 @@ export const fetchProfileAction = (id) => {
       });
       if (response.ok) {
         const user = await response.json();
-        console.log(user);
+        // console.log(user);
 
         switch (id) {
           case "me":
@@ -77,7 +77,7 @@ export const modifyProfileAction = (updatedProfileData) => {
 
       if (response.ok) {
         const user = await response.json();
-        console.log(user);
+        // console.log(user);
 
         dispatch({
           type: GET_MY_PROFILE,
@@ -104,7 +104,7 @@ export const fetchUsersListAction = () => {
       });
       if (response.ok) {
         const users = await response.json();
-        console.log(users);
+        // console.log(users);
 
         dispatch({
           type: GET_PROFILES_LIST,

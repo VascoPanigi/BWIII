@@ -10,7 +10,7 @@ const fetchPostsReducer = (state = initialState, action) => {
     case GET_ALL_POSTS:
       return {
         ...state,
-        comments: action.payload,
+        posts: action.payload,
       };
     case GET_SPECIFIC_POST:
       return {

@@ -5,7 +5,7 @@ import { GET_SPECIFIC_PROFILE, fetchExperiencesAction, fetchProfileAction } from
 
 const SuggestionCard = ({ singleUser }) => {
   const dispatch = useDispatch();
-  console.log(singleUser._id);
+  // console.log(singleUser._id);
 
   const handleClick = () => {
     dispatch({ type: GET_SPECIFIC_PROFILE, payload: singleUser });

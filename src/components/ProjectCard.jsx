@@ -1,5 +1,5 @@
-import { Image } from 'react-bootstrap'
-import linkicon from '../assets/icons/projectlink.svg'
+import { Image } from "react-bootstrap";
+import linkicon from "../assets/icons/projectlink.svg";
 
 const ProjectCard = () => {
   return (
@@ -23,7 +23,7 @@ const ProjectCard = () => {
         mollitia.
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default ProjectCard
+export default ProjectCard;

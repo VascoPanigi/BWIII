@@ -2,7 +2,7 @@ import { Card } from "react-bootstrap";
 import SuggestionCard from "./SuggestionCard";
 
 const MySuggestions = ({ usersList }) => {
-  console.log(usersList.users_list);
+  // console.log(usersList.users_list);
 
   return (
     <Card className="suggestions-container">

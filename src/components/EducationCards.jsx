@@ -1,4 +1,4 @@
-import { Card } from 'react-bootstrap'
+import { Card } from "react-bootstrap";
 
 const EducationCard = () => {
   return (
@@ -19,7 +19,7 @@ const EducationCard = () => {
         </div>
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default EducationCard
+export default EducationCard;

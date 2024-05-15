@@ -1,37 +1,40 @@
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import { Image } from 'react-bootstrap'
-import bell from '../assets/icons/bell.svg'
-import grid from '../assets/icons/grid.svg'
-import messaging from '../assets/icons/messaging.svg'
-import network from '../assets/icons/network.svg'
-import home from '../assets/icons/home.svg'
-import jobs from '../assets/icons/jobs.svg'
-import Form from 'react-bootstrap/Form'
-import Col from 'react-bootstrap/Col'
-import logo from '../assets/icons/logo.svg'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { fetchProfileAction } from '../redux/actions'
-import propic from '../assets/img/propic.jpeg'
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { Image } from "react-bootstrap";
+import bell from "../assets/icons/bell.svg";
+import grid from "../assets/icons/grid.svg";
+import messaging from "../assets/icons/messaging.svg";
+import network from "../assets/icons/network.svg";
+import home from "../assets/icons/home.svg";
+import jobs from "../assets/icons/jobs.svg";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import logo from "../assets/icons/logo.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchProfileAction } from "../redux/actions";
+import propic from "../assets/img/propic.jpeg";
 
 const MyNavbar = () => {
-  const userData = useSelector((state) => state.user)
-  console.log('nav', userData)
+  const userData = useSelector((state) => state.user);
+  // console.log('nav', userData)
 
-  const loginStatus = useSelector((state) => state.login)
-  console.log(loginStatus)
+  const loginStatus = useSelector((state) => state.login);
+  // console.log(loginStatus)
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(fetchProfileAction(loginStatus.userLoggedID))
-  }
+    dispatch(fetchProfileAction(loginStatus.userLoggedID));
+  };
 
   return (
-    <Navbar expand="lg" className="navbar-container bg-body-tertiary align-items-center">
+    <Navbar
+      expand="lg"
+      className="navbar-container bg-body-tertiary align-items-center"
+    >
       <Container className="justify-content-between">
         <div className="d-flex align-items-center gap-1">
           <Navbar.Brand href="#home">
@@ -58,10 +61,10 @@ const MyNavbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="navbar-group me-auto">
-              <Nav.Link className="text-center" href="#home">
+              <Link className="text-center" to={"/user/home"}>
                 <Image src={home}></Image>
                 <p>Home</p>
-              </Nav.Link>
+              </Link>
               <Nav.Link className="text-center" href="#rete">
                 <Image src={network}></Image>
                 <p>My network</p>
@@ -78,40 +81,68 @@ const MyNavbar = () => {
                 <Image src={bell}></Image>
                 <p>Notifications</p>
               </Nav.Link>
-              <div className="d-flex flex-column justify-content-end align-items-center" style={{ maxWidth: '78px' }}>
+              <div className="d-flex flex-column justify-content-end align-items-center" style={{ maxWidth: "78px" }}>
                 {loginStatus.isLogged ? (
-                  <Image src={userData.user_info.image} className="propic mx-auto" />
+                  <Image
+                    src={userData.user_info.image}
+                    className="propic mx-auto"
+                  />
                 ) : (
                   <Image src={propic} className="propic mx-auto" />
                 )}
 
-                <NavDropdown title="Me" id="basic-nav-dropdown" className="first-dropdown" align="end">
+                <NavDropdown
+                  title="Me"
+                  id="basic-nav-dropdown"
+                  className="first-dropdown"
+                  align="end"
+                >
                   {loginStatus.isLogged ? (
                     <NavDropdown.Item>
-                      <Link to={`/user/${loginStatus.userLoggedID}`} onClick={handleClick}>
+                      <Link
+                        to={`/user/${loginStatus.userLoggedID}`}
+                        onClick={handleClick}
+                      >
                         Profile
                       </Link>
                     </NavDropdown.Item>
                   ) : (
                     <NavDropdown.Item>
-                      <Link to={'/login'}>Login</Link>{' '}
+                      <Link to={"/login"}>Login</Link>{" "}
                     </NavDropdown.Item>
                   )}
 
-                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    Something
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4">
+                    Separated link
+                  </NavDropdown.Item>
                 </NavDropdown>
               </div>
               <div className="separate d-flex flex-column justify-content-end align-items-center">
                 <Image src={grid} className="mx-auto" />
-                <NavDropdown title="For Business" id="basic-nav-dropdown" className="second-dropdown" align="end">
+                <NavDropdown
+                  title="For Business"
+                  id="basic-nav-dropdown"
+                  className="second-dropdown"
+                  align="end"
+                >
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    Something
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4">
+                    Separated link
+                  </NavDropdown.Item>
                 </NavDropdown>
               </div>
             </Nav>
@@ -119,7 +150,7 @@ const MyNavbar = () => {
         </div>
       </Container>
     </Navbar>
-  )
-}
+  );
+};
 
-export default MyNavbar
+export default MyNavbar;

@@ -1,16 +1,21 @@
 import { Modal, Button, Form, Col, FormGroup } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { hideModal, modifyProfileAction } from "../redux/actions";
+import { fetchUsersListAction, hideModal, modifyProfileAction } from "../redux/actions";
 import { useState } from "react";
+import { Logger } from "sass";
 
-const EditModal = ({ userData }) => {
+const EditModal = () => {
+  const userData = useSelector((state) => state.user);
+
+  const userInfo = userData.user_info;
+
   const dispatch = useDispatch();
   const show = useSelector((state) => state.modal.showModal);
-  const [name, setName] = useState(userData.user_info.name);
-  const [surname, setSurname] = useState(userData.user_info.surname);
-  const [bio, setBio] = useState(userData.user_info.bio);
-  const [title, setTitle] = useState(userData.user_info.title);
-  const [area, setArea] = useState(userData.user_info.area);
+  const [name, setName] = useState(userInfo.name);
+  const [surname, setSurname] = useState(userInfo.surname);
+  const [bio, setBio] = useState(userInfo.bio);
+  const [title, setTitle] = useState(userInfo.title);
+  const [area, setArea] = useState(userInfo.area);
 
   const profileObject = {
     name: name,
@@ -21,10 +26,14 @@ const EditModal = ({ userData }) => {
   };
 
   const handleClose = () => dispatch(hideModal());
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    // console.log("sono l'oggetto della put", profileObject);
     dispatch(modifyProfileAction(profileObject));
+    dispatch(modifyProfileAction(userInfo._id));
   };
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -39,7 +48,7 @@ const EditModal = ({ userData }) => {
                 required
                 type="text"
                 placeholder="First name"
-                defaultValue={userData.user_info.name}
+                defaultValue={userInfo.name}
                 onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
@@ -49,7 +58,7 @@ const EditModal = ({ userData }) => {
                 required
                 type="text"
                 placeholder="Last name"
-                defaultValue={userData.user_info.surname}
+                defaultValue={userInfo.surname}
                 onChange={(e) => setSurname(e.target.value)}
               />
             </FormGroup>
@@ -59,7 +68,7 @@ const EditModal = ({ userData }) => {
                 required
                 as="textarea"
                 placeholder="Write about yourself"
-                defaultValue={userData.user_info.bio}
+                defaultValue={userInfo.bio}
                 rows={4}
                 onChange={(e) => setBio(e.target.value)}
               />
@@ -71,7 +80,7 @@ const EditModal = ({ userData }) => {
                 required
                 type="text"
                 placeholder="School name"
-                defaultValue={userData.user_info.title}
+                defaultValue={userInfo.title}
                 onChange={(e) => setTitle(e.target.value)}
               />
             </FormGroup>
@@ -82,7 +91,7 @@ const EditModal = ({ userData }) => {
                 required
                 type="text"
                 placeholder="Your location"
-                defaultValue={userData.user_info.area}
+                defaultValue={userInfo.area}
                 onChange={(e) => setArea(e.target.value)}
               />
             </FormGroup>

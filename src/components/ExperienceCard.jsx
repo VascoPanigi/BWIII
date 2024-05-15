@@ -22,11 +22,11 @@ const ExperienceCard = ({ experience }) => {
       const rawdate = new Date(startingDate);
       const year = rawdate.getUTCFullYear();
       const month = rawdate.getUTCMonth();
-      console.log("anno e mese", year, month);
+      // console.log("anno e mese", year, month);
       const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       const actualMonth = months[month];
       const actualDate = `${actualMonth} ${year}`;
-      console.log(actualDate);
+      // console.log(actualDate);
       return actualDate;
     }
   };
