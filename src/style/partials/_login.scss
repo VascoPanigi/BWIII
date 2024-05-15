@@ -1,0 +1,56 @@
+.background-login {
+  h1 {
+    color: #b24020;
+    font-weight: 300;
+    margin-block: 3rem 2.5rem;
+  }
+
+  .form-label {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .form-control {
+    width: 400px;
+    padding: 0.8rem;
+    @include outline-dark;
+    border: 1px solid transparent;
+  }
+
+  @media (max-width: $sm) {
+    .form-control {
+      width: 100%;
+    }
+  }
+
+  h6 {
+    color: $primary;
+    font-weight: 700;
+    margin-top: 1.2rem;
+    margin-bottom: 2rem;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: $primary !important;
+    }
+  }
+
+  p {
+    margin-top: 1rem;
+    font-size: 12px;
+    opacity: 80%;
+    span {
+      color: $primary;
+      font-weight: 700;
+    }
+  }
+  button {
+    @include btn-group;
+    width: 100%;
+    padding-block: 0.7rem;
+  }
+  .join-btn {
+    @include outline-dark;
+    margin-bottom: 3rem;
+  }
+}
