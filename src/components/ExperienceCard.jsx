@@ -1,5 +1,5 @@
 import { Card, Image } from "react-bootstrap";
-import { removeExperienceAction } from "../redux/actions";
+import { fetchExperiencesAction, removeExperienceAction } from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import trash from "../assets/icons/trash.svg";
 
@@ -22,6 +22,12 @@ const ExperienceCard = ({ experience }) => {
       return actualDate;
     }
   };
+
+  const handleClick = () => {
+    dispatch(removeExperienceAction(id, experience._id));
+    dispatch(fetchExperiencesAction(id));
+  };
+
   return (
     <div className="experience-card-inner-container">
       <Card className="card-container experience-card my-auto">
@@ -41,10 +47,7 @@ const ExperienceCard = ({ experience }) => {
                   <Card.Text className="experience-location">{experience.area}</Card.Text>
                 </div>
                 {loggedIn && (
-                  <button
-                    onClick={() => dispatch(removeExperienceAction(id, experience._id))}
-                    className="btn btn-danger bg-transparent border-0 p-0"
-                  >
+                  <button onClick={handleClick} className="btn btn-danger bg-transparent border-0 p-0">
                     <Image src={trash} className="trash-icon" />
                   </button>
                 )}

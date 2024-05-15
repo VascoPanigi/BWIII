@@ -18,9 +18,9 @@ const ExperiencePage = () => {
     dispatch(fetchExperiencesAction(userId));
   }, []);
 
-  useEffect(() => {
-    dispatch(fetchExperiencesAction(userId));
-  }, [experiencesList]);
+  // useEffect(() => {
+  //   dispatch(fetchExperiencesAction(userId));
+  // }, [experiencesList]);
 
   const handleShowExpModal = () => {
     dispatch(setModalType("exp"));
