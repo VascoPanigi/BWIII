@@ -88,7 +88,7 @@ export const modifyProfileAction = (updatedProfileData) => {
         throw new Error("Error updating your profile, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa :(");
+      console.log("Your request returned this error:", error, "uffa x2 :(");
     }
   };
 };
@@ -115,7 +115,7 @@ export const fetchUsersListAction = () => {
         throw new Error("Error fetching users list, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "acciderbolina :(");
+      console.log("Your request returned this error:", error, "acciderbolina x3 :(");
     }
   };
 };
@@ -141,7 +141,7 @@ export const fetchExperiencesAction = (id) => {
         throw new Error("Error fetching your profile, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x2 :(");
+      console.log("Your request returned this error:", error, "uffa x4 :(");
     }
   };
 };
@@ -178,7 +178,7 @@ export const addExperienceAction = (id, newExperience) => {
         throw new Error("Error adding experience, try again later!");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error);
+      console.log("Your request returned this error:", error, "uffa x5 :(");
     }
   };
 };
@@ -208,7 +208,7 @@ export const removeExperienceAction = (profileId, experienceId) => {
         throw new Error("Error removing experience, try again later!");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error);
+      console.log("Your request returned this error:", error, "uffa x6 :(");
     }
   };
 };
@@ -238,7 +238,7 @@ export const editExperienceAction = (profileId, experienceId, newExperience) => 
         throw new Error("Error editing experience, try again later!");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x5 :(");
+      console.log("Your request returned this error:", error, "uffa x7 :(");
     }
   };
 };
@@ -265,7 +265,7 @@ export const fetchAllPosts = () => {
         throw new Error("Error fetching the posts, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x3 :(");
+      console.log("Your request returned this error:", error, "uffa x8 :(");
     }
   };
 };
@@ -294,7 +294,7 @@ export const postComment = (comment) => {
         throw new Error("Error posting your comment, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x4 :(");
+      console.log("Your request returned this error:", error, "uffa x9 :(");
     }
   };
 };
@@ -320,7 +320,7 @@ export const fetchSpecificPost = (postID) => {
         throw new Error("Error fetching this post, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x3 :(");
+      console.log("Your request returned this error:", error, "uffa x10 :(");
     }
   };
 };
@@ -348,7 +348,7 @@ export const deleteSpecificPost = (postID) => {
         throw new Error("Error fetching this post, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x3 :(");
+      console.log("Your request returned this error:", error, "uffa x11 :(");
     }
   };
 };
@@ -377,7 +377,7 @@ export const modifySpecificPost = (postID, postObj) => {
         throw new Error("Error fetching this post, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x3 :(");
+      console.log("Your request returned this error:", error, "uffa x12 :(");
     }
   };
 };
