@@ -88,7 +88,7 @@ const MyHome = () => {
           <>
             {modalType === 'post' && <PostModal />}
 
-            <Col xs={5} md={5} xl={4}>
+            <Col className='center-home' xs={12} md={5} xl={4}>
               <Row className="start-post-card border">
                 <Col>
                   <Row className="align-items-center py-0">
