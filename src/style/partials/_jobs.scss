@@ -1,0 +1,159 @@
+.suggested-search {
+  @include btn-group();
+  @include outline-primary();
+  &:hover {
+    box-shadow: inset 0 0 0 2px $primary;
+    background-color: $primary-light;
+    color: $primary;
+  }
+
+  padding-block: 0.1rem;
+  padding-inline: 0.5rem;
+  font-size: 14px;
+  margin-right: 4px;
+  color: $primary;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.company-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.left-column-list {
+  padding-left: 1rem;
+  list-style-type: none;
+  i {
+    font-size: 1.2rem;
+  }
+  li {
+    padding: 0.5rem 0;
+  }
+}
+.post-job-button {
+  @include btn-group();
+  @include outline-primary();
+  &:hover {
+    box-shadow: inset 0 0 0 2px $primary;
+    background-color: $primary-light;
+    color: $primary;
+  }
+  padding-inline: 60px;
+  padding-block: 10px;
+  font-size: 14px;
+  i {
+    font-size: 20px;
+  }
+}
+.search-jobs-button {
+  @include btn-group();
+  @include outline-primary();
+  &:hover {
+    box-shadow: inset 0 0 0 2px $primary;
+    background-color: $primary-light;
+    color: $primary;
+  }
+  margin-top: 10px;
+  padding-block: 10px;
+}
+.grey-text {
+  color: $secondary;
+}
+.inicon {
+  color: $primary;
+}
+.jobs-right-img {
+  border-radius: 15px;
+  width: 80px;
+}
+.background {
+  min-height: 100vh;
+  background-color: $bg-color;
+  padding-top: 72px;
+}
+.card {
+  margin-block: 1rem;
+}
+.right-banner-container {
+  background-color: #f8fafd;
+  cursor: pointer;
+  &:hover {
+    background-color: #eef2f8;
+  }
+}
+.fs-14 {
+  font-size: 14px;
+}
+.fs-12 {
+  font-size: 12px;
+}
+.show-more-link {
+  color: rgb(92, 91, 91);
+  font-weight: 500;
+  &:hover {
+    color: $primary;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+.job-offer-card {
+  cursor: pointer;
+  border-bottom: 1px solid rgb(226, 226, 226);
+  .role-name {
+    color: $primary;
+  }
+  &:hover {
+    .role-name {
+      text-decoration: underline;
+    }
+  }
+}
+.job-offer-card:nth-last-of-type(1) {
+  border-bottom: 0;
+}
+ul {
+  li {
+    cursor: pointer;
+    span {
+      font-weight: 500;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+  }
+}
+.premium-card {
+  div {
+    .propic {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+    div {
+      h5 {
+        font-size: 16px;
+      }
+      div {
+        span {
+          font-size: 12px;
+          color: $secondary;
+        }
+      }
+      .premium-button {
+        @include btn-group();
+        margin-block: 15px;
+      }
+    }
+  }
+}
+.close-icon {
+  cursor: pointer;
+  padding-inline: 0.5rem;
+  border-radius: 50%;
+  &:hover {
+    background-color: rgb(226, 226, 226);
+  }
+}
+.close-icon2 {
+  padding-block: 0.3rem;
+}
