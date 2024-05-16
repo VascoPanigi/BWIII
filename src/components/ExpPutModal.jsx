@@ -28,9 +28,11 @@ const ExpPutModal = ({ expData }) => {
   const handleClose = () => dispatch(hideModal());
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(modifyProfileAction(experienceObject));
+    console.log("SONO STATO PUTTATO AAA");
+    // dispatch(modifyProfileAction(experienceObject));
     dispatch(editExperienceAction(userId, expData._id, experienceObject));
     dispatch(fetchExperiencesAction(userId));
+    handleClose();
   };
   return (
     <>
@@ -104,7 +106,7 @@ const ExpPutModal = ({ expData }) => {
             </FormGroup>
           </Modal.Body>
           <Modal.Footer>
-            <Button type="submit" variant="primary" onClick={handleClose}>
+            <Button type="submit" variant="primary">
               Save
             </Button>
           </Modal.Footer>

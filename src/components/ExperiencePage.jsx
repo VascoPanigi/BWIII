@@ -36,7 +36,7 @@ const ExperiencePage = () => {
                 </div>
                 <p className=" section-title">Experience</p>
 
-                {experiencesList.experiences_list &&
+                {experiencesList.experiences_list.length > 1 &&
                   experiencesList.experiences_list.map((experience) => (
                     <ExperienceCard key={experience._id} experience={experience} />
                   ))}
