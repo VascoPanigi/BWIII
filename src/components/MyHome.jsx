@@ -1,35 +1,35 @@
-import { Button, Col, Container, Image, NavLink, Row } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import img from '../assets/img/img1.jpg'
-import { useEffect } from 'react'
-import { fetchAllPosts, setModalType, showModal } from '../redux/actions'
-import MyPost from './MyPost'
-import MySuggestions from './Mysuggestions'
-import PostModal from './PostModal'
-import propic from '../assets/img/propic.jpeg'
-import { Link } from 'react-router-dom'
+import { Button, Col, Container, Image, NavLink, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import img from "../assets/img/img1.jpg";
+import { useEffect } from "react";
+import { fetchAllPosts, setModalType, showModal } from "../redux/actions";
+import MyPost from "./MyPost";
+import MySuggestions from "./Mysuggestions";
+import PostModal from "./PostModal";
+import propic from "../assets/img/propic.jpeg";
+import { Link } from "react-router-dom";
 
 const MyHome = () => {
-  const AllPosts = useSelector((state) => state.posts.posts)
-  const userData = useSelector((state) => state.user.user_info)
-  const loginStatus = useSelector((state) => state.login)
+  const AllPosts = useSelector((state) => state.posts.posts);
+  const userData = useSelector((state) => state.user.user_info);
+  const loginStatus = useSelector((state) => state.login);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllPosts())
-  }, [])
+    dispatch(fetchAllPosts());
+  }, []);
 
-  const modalType = useSelector((state) => state.modal.modalType)
+  const modalType = useSelector((state) => state.modal.modalType);
 
   const handleShowPostModal = () => {
     if (loginStatus.isLogged) {
-      dispatch(setModalType('post'))
-      dispatch(showModal())
+      dispatch(setModalType("post"));
+      dispatch(showModal());
     } else {
-      alert('You need to login to start posting')
+      alert("You need to login to start posting");
     }
-  }
+  };
 
   return (
     <>
@@ -65,7 +65,7 @@ const MyHome = () => {
                     <h6 className="pointer">Grow your network</h6>
                   </>
                 ) : (
-                  <Link to={'/login'} className="my-2 text-center w-100">
+                  <Link to={"/login"} className="my-2 text-center w-100">
                     <Button className="login-btn">Login</Button>
                   </Link>
                 )}
@@ -104,7 +104,7 @@ const MyHome = () => {
           </Col>
 
           <>
-            {modalType === 'post' && <PostModal />}
+            {modalType === "post" && <PostModal />}
 
             <Col className="center-home" xs={12} md={5} xl={4}>
               <Row className="start-post-card border">
@@ -192,7 +192,7 @@ const MyHome = () => {
         </Row>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default MyHome
+export default MyHome;

@@ -12,7 +12,7 @@ const fetchPostsReducer = (state = initialState, action) => {
     case GET_ALL_JOBS:
       return {
         ...state,
-        jobs: action.payload.slice(1, 100),
+        jobs: action.payload,
       };
     case GET_QUERY_JOBS:
       return {

@@ -6,7 +6,7 @@ import Education from "./Education";
 import Experience from "./Experience";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProfileAction, fetchUsersListAction } from "../redux/actions";
+import { fetchExperiencesAction, fetchProfileAction, fetchUsersListAction } from "../redux/actions";
 import { useParams } from "react-router-dom";
 
 const MyProfilePage = () => {
@@ -19,7 +19,7 @@ const MyProfilePage = () => {
   // console.log("showOtherUserData", userData.other_user_info);
   // console.log("experiencetest", experiencesList);
   // const otherUser = userData.other_user_info;
-  // let otherUserID = userData.other_user_info._id;
+  let otherUserID = userData.other_user_info._id;
   // console.log(usersList);
 
   // const loginStatus = useSelector((state) => state.login);
@@ -35,32 +35,18 @@ const MyProfilePage = () => {
     dispatch(fetchProfileAction(params.dynamicValue));
     dispatch(fetchUsersListAction());
 
-    // if (params.dynamicValue !== "me") {
-    //   dispatch(fetchExperiencesAction(otherUserId));
-    // } else {
-    //   dispatch(fetchExperiencesAction(userData.user_info._id));
-    // }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (params.dynamicValue !== "me") {
+      dispatch(fetchExperiencesAction(otherUserID));
+    } else {
+      dispatch(fetchExperiencesAction(userData.user_info._id));
+    }
   }, []);
-
-  // useEffect(() => {
-  //   dispatch(fetchProfileAction(otherUserID));
-  //   dispatch(fetchUsersListAction());
-  //   dispatch(fetchExperiencesAction(otherUserID));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [otherUserID]);
 
   return (
     <div className="background">
       <Container className="profile-container">
         <Row className="justify-content-center gap-2">
           <Col xs={12} md={6} lg={7} className="left-column">
-            {/* {userData && params.dynamicValue === "me" ? (
-              <ProfileHero userData={userData} />
-            ) : (
-              <ProfileHero userData={otherUser} />
-            )} */}
-
             {userData && <ProfileHero />}
             <MyProjects />
             {experiencesList && <Experience />}
