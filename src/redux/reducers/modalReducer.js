@@ -1,8 +1,9 @@
-import { HIDE_MODAL, SET_MODAL_TYPE, SHOW_MODAL } from '../actions'
+import { HIDE_MODAL, SET_MODAL_TYPE, SHOW_MODAL, SELECTED } from '../actions'
 
 const initialState = {
   showModal: false,
   modalType: null,
+  selected: null,
 }
 
 const modalReducer = (state = initialState, action) => {
@@ -19,6 +20,9 @@ const modalReducer = (state = initialState, action) => {
       }
     case SET_MODAL_TYPE:
       return { ...state, modalType: action.payload }
+
+    case SELECTED:
+      return { ...state, selected: action.payload }
 
     default:
       return state

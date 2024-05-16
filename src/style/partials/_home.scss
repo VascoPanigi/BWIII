@@ -264,3 +264,13 @@
     padding-right: 0.5rem;
   }
 }
+
+.post-card {
+  .edit-wrapper {
+    @include edit-button();
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
