@@ -283,12 +283,8 @@ export const postComment = (comment) => {
       });
       if (response.ok) {
         console.log("commento postato 😎");
-        const posts = await response.json();
 
-        dispatch({
-          type: GET_ALL_POSTS,
-          payload: posts,
-        });
+        dispatch(fetchAllPosts);
       } else {
         console.log("error");
         throw new Error("Error posting your comment, try again later! ");
