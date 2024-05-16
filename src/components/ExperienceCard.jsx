@@ -3,6 +3,7 @@ import { fetchExperiencesAction, removeExperienceAction } from '../redux/actions
 import { useSelector, useDispatch } from 'react-redux'
 import { setModalType, showModal } from '../redux/actions'
 import ExpPutModal from './ExpPutModal'
+import { useParams } from 'react-router-dom'
 // import trash from "../assets/icons/trash.svg";
 
 const ExperienceCard = ({ experience }) => {
@@ -11,6 +12,9 @@ const ExperienceCard = ({ experience }) => {
   const dispatch = useDispatch()
   const modalType = useSelector((state) => state.modal.modalType)
   // console.log("userid and expid", id, experience._id);
+
+  const params = useParams()
+  const mineId = params.dynamicValue
 
   const handleShowExpPostModal = () => {
     dispatch(setModalType('put'))
@@ -56,7 +60,7 @@ const ExperienceCard = ({ experience }) => {
                   </Card.Text>
                   <Card.Text className="experience-location">{experience.area}</Card.Text>
                 </div>
-                {loggedIn && (
+                {loggedIn && mineId === 'me' && (
                   <div>
                     {/* <button onClick={handleRemove} className="btn btn-danger bg-transparent border-0 p-0">
                       <Image src={trash} className="trash-icon" />
