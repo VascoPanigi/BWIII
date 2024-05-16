@@ -1,9 +1,9 @@
 import { Card } from 'react-bootstrap'
 import { fetchExperiencesAction, removeExperienceAction } from '../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
-import { setModalType, showModal } from '../redux/actions'
+import { setModalType, selectCard, showIdModal } from '../redux/actions'
 import ExpPutModal from './ExpPutModal'
-import { useParams } from 'react-router-dom'
+
 // import trash from "../assets/icons/trash.svg";
 
 const ExperienceCard = ({ experience }) => {
@@ -13,12 +13,15 @@ const ExperienceCard = ({ experience }) => {
   const modalType = useSelector((state) => state.modal.modalType)
   // console.log("userid and expid", id, experience._id);
 
-  const params = useParams()
-  const mineId = params.dynamicValue
+  const userId = useSelector((state) => state.user.other_user_info._id)
+  const myId = useSelector((state) => state.user.user_info._id)
+
+  const showModalId = useSelector((state) => state.modal.showIdModal)
 
   const handleShowExpPostModal = () => {
+    dispatch(selectCard(experience))
     dispatch(setModalType('put'))
-    dispatch(showModal())
+    dispatch(showIdModal(experience._id))
   }
 
   const dateConversion = (startingDate) => {
@@ -44,7 +47,7 @@ const ExperienceCard = ({ experience }) => {
   return (
     <div className="experience-card-inner-container">
       <Card className="card-container experience-card my-auto">
-        {modalType === 'put' && <ExpPutModal expData={experience} />}
+        {modalType === 'put' && showModalId === experience._id && <ExpPutModal expData={experience} />}
         <div className="single-exp d-flex">
           <Card.Img src={experience.image} className="experience-image" />
           <div className="d-flex flex-column flex-grow-1">
@@ -60,7 +63,7 @@ const ExperienceCard = ({ experience }) => {
                   </Card.Text>
                   <Card.Text className="experience-location">{experience.area}</Card.Text>
                 </div>
-                {loggedIn && mineId === 'me' && (
+                {loggedIn && userId === myId && (
                   <div>
                     {/* <button onClick={handleRemove} className="btn btn-danger bg-transparent border-0 p-0">
                       <Image src={trash} className="trash-icon" />

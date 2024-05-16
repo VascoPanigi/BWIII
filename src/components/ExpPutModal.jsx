@@ -15,6 +15,7 @@ const ExpPutModal = ({ expData }) => {
   const [endDate, setEndDate] = useState(expData.endDate)
   const [description, setDescription] = useState(expData.description)
   const [area, setArea] = useState(expData.area)
+  const [image, setImageURL] = useState(expData.image)
 
   const experienceObject = {
     role: role,
@@ -23,6 +24,7 @@ const ExpPutModal = ({ expData }) => {
     endDate: endDate,
     description: description,
     area: area,
+    image: image,
   }
 
   const handleClose = () => dispatch(hideModal())
@@ -103,6 +105,18 @@ const ExpPutModal = ({ expData }) => {
                 onChange={(e) => setArea(e.target.value)}
               />
             </FormGroup>
+
+            <Modal.Title className="mt-4">Media</Modal.Title>
+            <Form.Group as={Col} md="12" controlId="validationImage">
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Image Url"
+                defaultValue={expData.image}
+                onChange={(e) => setImageURL(e.target.value)}
+              />
+            </Form.Group>
           </Modal.Body>
           <Modal.Footer>
             <Button type="submit" variant="primary">

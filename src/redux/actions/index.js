@@ -20,6 +20,7 @@ export const GET_QUERY_JOBS = 'GET_QUERY_JOBS'
 export const GET_COMPANY_JOBS = 'GET_COMPANY_JOBS'
 export const GET_CATEGORY_JOBS = 'GET_CATEGORY_JOBS'
 export const SELECTED = 'SELECTED'
+export const SHOW_ID_MODAL = 'SHOW_ID_MODAL'
 
 export const fetchProfileAction = (id) => {
   return async (dispatch) => {
@@ -164,6 +165,13 @@ export const selectCard = (card) => ({
   payload: card,
 })
 
+export const showIdModal = (_id) => ({
+  type: SHOW_ID_MODAL,
+  payload: _id,
+})
+
+export const setModalType = (modalType) => ({ type: SET_MODAL_TYPE, payload: modalType })
+
 export const addExperienceAction = (id, newExperience) => {
   return async (dispatch) => {
     try {
@@ -252,7 +260,6 @@ export const editExperienceAction = (profileId, experienceId, newExperience) => 
     }
   }
 }
-export const setModalType = (modalType) => ({ type: SET_MODAL_TYPE, payload: modalType })
 
 export const fetchAllPosts = () => {
   return async (dispatch) => {
