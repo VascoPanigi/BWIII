@@ -14,18 +14,28 @@ const PostModal = () => {
   const userInfo = userData.user_info;
 
   const [postText, setPostText] = useState("");
+  const [image, setImageURL] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleInputChange = (event) => {
     setPostText(event.target.value);
   };
+  const handleImageChange = (event) => {
+    setImageURL(event.target.value);
+  };
 
   const postObjToSubmit = {
     text: postText,
+    image: image,
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postComment(postObjToSubmit));
+  };
+
+  const toggleEdit = () => {
+    setIsEditing(!isEditing);
   };
 
   return (
@@ -55,8 +65,22 @@ const PostModal = () => {
               />
             </Form.Group>
           </Modal.Body>
-          <Modal.Footer>
-            <Button type="submit" onClick={postText ? handleClose : null} className={!postText ? "inactive" : "active"}>
+          <Modal.Footer className="d-flex align-items-center justify-content-between">
+            <Button className={`pic-edit-btn ${isEditing ? "active" : ""}`} onClick={toggleEdit}>
+              <i className="edit bi bi-pen"></i>
+            </Button>
+            {isEditing && (
+              <Form onSubmit={handleClose} className="d-flex gap-5 pic-edit-form">
+                <Form.Group>
+                  <Form.Control type="text" value={image} onChange={handleImageChange} placeholder="Post an image!" />
+                </Form.Group>
+              </Form>
+            )}
+            <Button
+              type="submit"
+              onClick={postText ? handleClose : null}
+              className={!postText ? "save-inactive" : "save-active"}
+            >
               Post
             </Button>
           </Modal.Footer>
