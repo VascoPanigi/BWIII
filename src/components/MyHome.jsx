@@ -141,7 +141,7 @@ const MyHome = () => {
                 </Col>
               </Row>
 
-              {AllPosts && AllPosts.slice(-25, -1).map((post) => <MyPost key={post._id} post={post} />)}
+              {AllPosts && AllPosts.slice(88).map((post) => <MyPost key={post._id} post={post} />)}
             </Col>
             <Col md={3} xl={3} xxl={2} className="d-none d-xl-block p-0">
               <MySuggestions />
