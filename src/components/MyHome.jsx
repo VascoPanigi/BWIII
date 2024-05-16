@@ -124,7 +124,7 @@ const MyHome = () => {
             </Row> */}
               <MyPost />
             </Col>
-            <Col md={3} xl={3} xxl={2} className="d-none d-lg-block p-0">
+            <Col md={3} xl={3} xxl={2} className="d-none d-xl-block p-0">
               <MySuggestions />
             </Col>
           </>
