@@ -142,11 +142,23 @@
     }
   }
   .modal-footer {
-    .active {
+    .save-active {
       @include active();
     }
-    .inactive {
+    .save-inactive {
       @include inactive();
+    }
+
+    .pic-edit-btn {
+      height: 40px;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .pic-edit-form {
+      border: 1px solid $secondary-light;
+      border-radius: 8px;
     }
   }
 }

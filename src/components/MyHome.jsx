@@ -1,33 +1,33 @@
-import { Col, Container, NavLink, Row } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import img from '../assets/img/img1.jpg'
-import { useEffect } from 'react'
-import { fetchAllPosts, setModalType, showModal } from '../redux/actions'
-import MyPost from './MyPost'
-import MySuggestions from './Mysuggestions'
-import PostModal from './PostModal'
+import { Col, Container, NavLink, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import img from "../assets/img/img1.jpg";
+import { useEffect } from "react";
+import { fetchAllPosts, setModalType, showModal } from "../redux/actions";
+import MyPost from "./MyPost";
+import MySuggestions from "./Mysuggestions";
+import PostModal from "./PostModal";
 
 const MyHome = () => {
-  const AllPosts = useSelector((state) => state.posts.posts)
-  const userData = useSelector((state) => state.user.user_info)
-  const loginStatus = useSelector((state) => state.login)
+  const AllPosts = useSelector((state) => state.posts.posts);
+  const userData = useSelector((state) => state.user.user_info);
+  const loginStatus = useSelector((state) => state.login);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllPosts())
-  }, [])
+    dispatch(fetchAllPosts());
+  }, []);
 
-  const modalType = useSelector((state) => state.modal.modalType)
+  const modalType = useSelector((state) => state.modal.modalType);
 
   const handleShowPostModal = () => {
     if (loginStatus.isLogged) {
-      dispatch(setModalType('post'))
-      dispatch(showModal())
+      dispatch(setModalType("post"));
+      dispatch(showModal());
     } else {
-      alert('You need to login to start posting')
+      alert("You need to login to start posting");
     }
-  }
+  };
 
   return (
     <>
@@ -86,9 +86,9 @@ const MyHome = () => {
           </Col>
 
           <>
-            {modalType === 'post' && <PostModal />}
+            {modalType === "post" && <PostModal />}
 
-            <Col className='center-home' xs={12} md={5} xl={4}>
+            <Col className="center-home" xs={12} md={5} xl={4}>
               <Row className="start-post-card border">
                 <Col>
                   <Row className="align-items-center py-0">
@@ -119,10 +119,7 @@ const MyHome = () => {
                 </Col>
               </Row>
 
-              {/* <Row className="border ">
-           
-            </Row> */}
-              <MyPost />
+              {AllPosts && AllPosts.slice(-25, -1).map((post) => <MyPost key={post._id} post={post} />)}
             </Col>
             <Col md={3} xl={3} xxl={2} className="d-none d-xl-block p-0">
               <MySuggestions />
@@ -173,6 +170,7 @@ const MyHome = () => {
         </Row>
       </Container>
     </>
-  )
-}
-export default MyHome
+  );
+};
+
+export default MyHome;
