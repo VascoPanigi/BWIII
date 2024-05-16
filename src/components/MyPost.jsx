@@ -20,17 +20,17 @@ const MyPost = () => {
     const hours = Math.round(minutes / 60);
     
     if (seconds < 60) {
-      return seconds + "s";
+      return seconds + " s ";
     } else if (minutes < 60) {
-      return minutes + " m";
+      return minutes + " m ";
     } else if (hours < 24) {
-      return hours + " h";
+      return hours + " h ";
     } else if (day < 31) {
-      return day + " d";
+      return day + " d ";
     } else if (day < 365) {
-      return Math.round(day / 31) + " m";
+      return Math.round(day / 31) + " m ";
     } else {
-      return Math.floor(day / 365) + " y";
+      return Math.floor(day / 365) + " y ";
     }
   };
   return (
@@ -49,7 +49,7 @@ const MyPost = () => {
                   <span>{post.user.username}</span>
                   <blockquote className="m-0">{post.user.area}</blockquote>
                   <blockquote className="m-0">
-                    {data(post.createdAt)} <strong>.</strong>
+                    {data(post.createdAt)} 
                     <i className="bi bi-globe-americas"></i>
                   </blockquote>
                 </Col>
