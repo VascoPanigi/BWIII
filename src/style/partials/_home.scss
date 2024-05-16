@@ -240,6 +240,11 @@
     margin: 0 !important;
     padding-inline: 0 !important;
   }
+  .login-btn {
+    @include btn-group;
+    @include outline-primary;
+    width: 80%;
+  }
 }
 .bottom-side {
   margin-block: 1rem;
