@@ -1,13 +1,13 @@
 import { Container, Row, Col, Card, Button, Image } from "react-bootstrap";
 import { Dropdown } from "react-bootstrap";
-
+import jobspic from "../assets/img/jobsrightcolumn.gif";
 // import interviewicon from "../assets/icons/interviewprep.svg";
 
 const MyJobs = () => {
   return (
     <div className="background">
       <Container>
-        <Row className="gap-2">
+        <Row className="gap-2 justify-content-center">
           <Col xs={12} className="d-md-none px-2">
             <Card>
               <div className="d-flex justify-content-between">
@@ -182,10 +182,7 @@ const MyJobs = () => {
               </div>
               <div className="d-flex right-banner-container px-3 py-2  align-items-center justify-content-between">
                 <span className="fw-bold fs-14">I want to improve my resume</span>
-                <Image
-                  className="jobs-right-img"
-                  src="https://www.linkedin.com/dms/prv/image/C4D0DAQFdDVwn9b17iA/learning-public-crop_60_100/0/1568251157263?m=AQJM_lCwLyTTawAAAY-Amn1Tpe6eYMvjW5PUuK1EUQdFI85gFJzKcBbFLA&e=1715935959&v=beta&t=7nYqM0fP6l-Cb2-Sv4OFTm2YFnO7C95B0__-FdJuF8c"
-                />
+                <Image className="jobs-right-img" src={jobspic} />
               </div>
               <div className="px-3 py-2 fs-14">
                 <p>
