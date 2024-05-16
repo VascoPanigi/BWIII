@@ -1,7 +1,4 @@
 import { Col, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
-
-
 
 const MyPost = ({ post }) => {
   const data = (data) => {
