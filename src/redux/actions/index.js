@@ -15,6 +15,10 @@ export const REMOVE_EXPERIENCE = "REMOVE_EXPERIENCE";
 export const GET_ALL_POSTS = "GET_ALL_POSTS";
 export const GET_SPECIFIC_POST = "GET_SPECIFIC_POST";
 export const EDIT_EXPERIENCE = "EDIT_EXPERIENCE";
+export const GET_ALL_JOBS = "GET_ALL_JOBS";
+export const GET_QUERY_JOBS = "GET_QUERY_JOBS";
+export const GET_COMPANY_JOBS = "GET_COMPANY_JOBS";
+export const GET_CATEGORY_JOBS = "GET_CATEGORY_JOBS";
 
 export const fetchProfileAction = (id) => {
   return async (dispatch) => {
@@ -88,7 +92,7 @@ export const modifyProfileAction = (updatedProfileData) => {
         throw new Error("Error updating your profile, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa :(");
+      console.log("Your request returned this error:", error, "uffa x2 :(");
     }
   };
 };
@@ -115,7 +119,7 @@ export const fetchUsersListAction = () => {
         throw new Error("Error fetching users list, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "acciderbolina :(");
+      console.log("Your request returned this error:", error, "acciderbolina x3 :(");
     }
   };
 };
@@ -141,7 +145,7 @@ export const fetchExperiencesAction = (id) => {
         throw new Error("Error fetching your profile, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x2 :(");
+      console.log("Your request returned this error:", error, "uffa x4 :(");
     }
   };
 };
@@ -178,7 +182,7 @@ export const addExperienceAction = (id, newExperience) => {
         throw new Error("Error adding experience, try again later!");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error);
+      console.log("Your request returned this error:", error, "uffa x5 :(");
     }
   };
 };
@@ -208,7 +212,7 @@ export const removeExperienceAction = (profileId, experienceId) => {
         throw new Error("Error removing experience, try again later!");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error);
+      console.log("Your request returned this error:", error, "uffa x6 :(");
     }
   };
 };
@@ -238,7 +242,7 @@ export const editExperienceAction = (profileId, experienceId, newExperience) => 
         throw new Error("Error editing experience, try again later!");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x5 :(");
+      console.log("Your request returned this error:", error, "uffa x7 :(");
     }
   };
 };
@@ -265,7 +269,7 @@ export const fetchAllPosts = () => {
         throw new Error("Error fetching the posts, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x3 :(");
+      console.log("Your request returned this error:", error, "uffa x8 :(");
     }
   };
 };
@@ -283,18 +287,14 @@ export const postComment = (comment) => {
       });
       if (response.ok) {
         console.log("commento postato 😎");
-        const posts = await response.json();
 
-        dispatch({
-          type: GET_ALL_POSTS,
-          payload: posts,
-        });
+        dispatch(fetchAllPosts);
       } else {
         console.log("error");
         throw new Error("Error posting your comment, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x4 :(");
+      console.log("Your request returned this error:", error, "uffa x9 :(");
     }
   };
 };
@@ -320,7 +320,7 @@ export const fetchSpecificPost = (postID) => {
         throw new Error("Error fetching this post, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x3 :(");
+      console.log("Your request returned this error:", error, "uffa x10 :(");
     }
   };
 };
@@ -348,7 +348,7 @@ export const deleteSpecificPost = (postID) => {
         throw new Error("Error fetching this post, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x3 :(");
+      console.log("Your request returned this error:", error, "uffa x11 :(");
     }
   };
 };
@@ -377,7 +377,114 @@ export const modifySpecificPost = (postID, postObj) => {
         throw new Error("Error fetching this post, try again later! ");
       }
     } catch (error) {
-      console.log("Your request returned this error:", error, "uffa x3 :(");
+      console.log("Your request returned this error:", error, "uffa x12 :(");
+    }
+  };
+};
+
+export const fetchAllJobs = () => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://strive-benchmark.herokuapp.com/api/jobs`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+      });
+      if (response.ok) {
+        const jobs = await response.json();
+
+        dispatch({
+          type: GET_ALL_POSTS,
+          payload: jobs,
+        });
+      } else {
+        console.log("error");
+        throw new Error("There was an error fetching jobs, try again later! ");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x13 :(");
+    }
+  };
+};
+
+export const fetchQueryJobs = (query) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://strive-benchmark.herokuapp.com/api/jobs?search=${query}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+      });
+      if (response.ok) {
+        const jobs = await response.json();
+
+        dispatch({
+          type: GET_QUERY_JOBS,
+          payload: jobs,
+        });
+      } else {
+        console.log("error");
+        throw new Error("There was an error with the search. Please try again later! ");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x14 :(");
+    }
+  };
+};
+
+export const fetchCompanyJobs = (company) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://strive-benchmark.herokuapp.com/api/jobs?company=${company}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+      });
+      if (response.ok) {
+        const jobs = await response.json();
+
+        dispatch({
+          type: GET_COMPANY_JOBS,
+          payload: jobs,
+        });
+      } else {
+        console.log("error");
+        throw new Error("There was an error with the search. Please try again later! ");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x14 :(");
+    }
+  };
+};
+
+export const fetchCategoryJobs = (category, limit) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(
+        `https://strive-benchmark.herokuapp.com/api/jobs?category=${category}&limit=${limit} `,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: import.meta.env.VITE_TOKEN_API,
+          },
+        }
+      );
+      if (response.ok) {
+        const jobs = await response.json();
+
+        dispatch({
+          type: GET_CATEGORY_JOBS,
+          payload: jobs,
+        });
+      } else {
+        console.log("error");
+        throw new Error("There was an error with the search. Please try again later! ");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x14 :(");
     }
   };
 };

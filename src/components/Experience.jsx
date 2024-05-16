@@ -1,27 +1,32 @@
-import { Card } from "react-bootstrap";
-import ExperienceCard from "./ExperienceCard";
-import { useSelector } from "react-redux";
-import rightarrow from "../assets/icons/arrowright.svg";
-import { Image } from "react-bootstrap";
-import ExpModal from "./ExpModal";
-import { useNavigate } from "react-router-dom";
-import { Logger } from "sass";
+import { Card } from 'react-bootstrap'
+import ExperienceCard from './ExperienceCard'
+import { useSelector } from 'react-redux'
+import rightarrow from '../assets/icons/arrowright.svg'
+import { Image } from 'react-bootstrap'
+import ExpModal from './ExpModal'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const Experience = () => {
-  const navigate = useNavigate();
-  const userId = useSelector((state) => state.user.other_user_info._id);
+  const navigate = useNavigate()
+  const userId = useSelector((state) => state.user.other_user_info._id)
+  const loggedIn = useSelector((state) => state.login.isLogged)
+  const params = useParams()
+  const id = params.dynamicValue
 
-  const experiencesList = useSelector((state) => state.experiences_list);
+  const experiencesList = useSelector((state) => state.experiences_list)
 
-  const modalType = useSelector((state) => state.modal.modalType);
+  const modalType = useSelector((state) => state.modal.modalType)
 
   return (
     <Card className="section-container">
       <div className="inner-section-container">
-        <div className="edit-wrapper">
-          <i className="edit bi bi-pen" onClick={() => navigate(`/experience/${userId}`)}></i>
-          {modalType === "exp" && <ExpModal />}
-        </div>
+        {loggedIn && id === 'me' && (
+          <div className="edit-wrapper">
+            <i className="edit bi bi-pen" onClick={() => navigate(`/experience/${userId}`)}></i>
+            {modalType === 'exp' && <ExpModal />}
+          </div>
+        )}
+
         <p className=" section-title">Experience</p>
         {experiencesList.experiences_list.map((experience) => (
           <ExperienceCard key={experience._id} experience={experience} />
@@ -34,7 +39,7 @@ const Experience = () => {
         Show all experiences <Image src={rightarrow} />
       </h6>
     </Card>
-  );
-};
+  )
+}
 
-export default Experience;
+export default Experience
