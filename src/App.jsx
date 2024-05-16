@@ -8,6 +8,7 @@ import LoginPage from "./components/LoginPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ExperiencePage from "./components/ExperiencePage";
 import MyHome from "./components/MyHome";
+import MyJobs from "./components/MyJobs";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/experience/:userid" element={<ExperiencePage />} />
           <Route path="/user/home" element={<MyHome />} />
+          <Route path="/jobs" element={<MyJobs />} />
 
           {/* <MyProfilePage /> */}
         </Routes>
