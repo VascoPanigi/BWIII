@@ -1,20 +1,20 @@
-import { Modal, Button, Form, Col, FormGroup } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
-import { hideModal, editExperienceAction, fetchExperiencesAction } from "../redux/actions";
-import { useState } from "react";
+import { Modal, Button, Form, Col, FormGroup } from 'react-bootstrap'
+import { useSelector, useDispatch } from 'react-redux'
+import { hideModal, editExperienceAction, fetchExperiencesAction } from '../redux/actions'
+import { useState } from 'react'
 
 const ExpPutModal = ({ expData }) => {
-  console.log("expdata console log lalala", expData);
-  const dispatch = useDispatch();
-  const show = useSelector((state) => state.modal.showModal);
-  const userId = useSelector((state) => state.user.other_user_info._id);
+  console.log('expdata console log lalala', expData)
+  const dispatch = useDispatch()
+  const show = useSelector((state) => state.modal.showModal)
+  const userId = useSelector((state) => state.user.other_user_info._id)
 
-  const [role, setRole] = useState(expData.role);
-  const [company, setCompany] = useState(expData.company);
-  const [startDate, setStartDate] = useState(expData.startDate);
-  const [endDate, setEndDate] = useState(expData.endDate);
-  const [description, setDescription] = useState(expData.description);
-  const [area, setArea] = useState(expData.area);
+  const [role, setRole] = useState(expData.role)
+  const [company, setCompany] = useState(expData.company)
+  const [startDate, setStartDate] = useState(expData.startDate)
+  const [endDate, setEndDate] = useState(expData.endDate)
+  const [description, setDescription] = useState(expData.description)
+  const [area, setArea] = useState(expData.area)
 
   const experienceObject = {
     role: role,
@@ -23,17 +23,16 @@ const ExpPutModal = ({ expData }) => {
     endDate: endDate,
     description: description,
     area: area,
-  };
+  }
 
-  const handleClose = () => dispatch(hideModal());
+  const handleClose = () => dispatch(hideModal())
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("SONO STATO PUTTATO AAA");
+    e.preventDefault()
     // dispatch(modifyProfileAction(experienceObject));
-    dispatch(editExperienceAction(userId, expData._id, experienceObject));
-    dispatch(fetchExperiencesAction(userId));
-    handleClose();
-  };
+    dispatch(editExperienceAction(userId, expData._id, experienceObject))
+    dispatch(fetchExperiencesAction(userId))
+    handleClose()
+  }
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -113,7 +112,7 @@ const ExpPutModal = ({ expData }) => {
         </Form>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default ExpPutModal;
+export default ExpPutModal
