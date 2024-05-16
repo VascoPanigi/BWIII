@@ -82,3 +82,71 @@
     }
   }
 }
+
+@mixin inactive {
+  background-color: #b1b1b1;
+  color: $dark;
+  opacity: 50%;
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid transparent;
+    cursor: not-allowed;
+  }
+}
+@mixin active {
+  cursor: pointer;
+  background-color: $primary;
+  color: #fff;
+  opacity: 100%;
+  &:hover {
+    background-color: $primary-dark;
+  }
+}
+
+.post-modal {
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  h6,
+  p {
+    margin: 0;
+  }
+  p {
+    font-size: 13px;
+  }
+  .modal-header {
+    border-bottom: none;
+    button {
+      margin-bottom: auto;
+    }
+    .flex-wrapper {
+      padding: 5px 10px;
+      &:hover {
+        background-color: $secondary-emphasis;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+    }
+  }
+  .form-control {
+    border: none;
+    box-shadow: none;
+    resize: none;
+    &:hover {
+      border: inherit;
+      box-shadow: inherit;
+    }
+  }
+  .modal-footer {
+    .active {
+      @include active();
+    }
+    .inactive {
+      @include inactive();
+    }
+  }
+}

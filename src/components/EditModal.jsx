@@ -1,21 +1,20 @@
-import { Modal, Button, Form, Col, FormGroup } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchUsersListAction, hideModal, modifyProfileAction } from "../redux/actions";
-import { useState } from "react";
-import { Logger } from "sass";
+import { Modal, Button, Form, Col, FormGroup } from 'react-bootstrap'
+import { useSelector, useDispatch } from 'react-redux'
+import { hideModal, modifyProfileAction } from '../redux/actions'
+import { useState } from 'react'
 
 const EditModal = () => {
-  const userData = useSelector((state) => state.user);
+  const userData = useSelector((state) => state.user)
 
-  const userInfo = userData.user_info;
+  const userInfo = userData.user_info
 
-  const dispatch = useDispatch();
-  const show = useSelector((state) => state.modal.showModal);
-  const [name, setName] = useState(userInfo.name);
-  const [surname, setSurname] = useState(userInfo.surname);
-  const [bio, setBio] = useState(userInfo.bio);
-  const [title, setTitle] = useState(userInfo.title);
-  const [area, setArea] = useState(userInfo.area);
+  const dispatch = useDispatch()
+  const show = useSelector((state) => state.modal.showModal)
+  const [name, setName] = useState(userInfo.name)
+  const [surname, setSurname] = useState(userInfo.surname)
+  const [bio, setBio] = useState(userInfo.bio)
+  const [title, setTitle] = useState(userInfo.title)
+  const [area, setArea] = useState(userInfo.area)
 
   const profileObject = {
     name: name,
@@ -23,16 +22,16 @@ const EditModal = () => {
     bio: bio,
     title: title,
     area: area,
-  };
+  }
 
-  const handleClose = () => dispatch(hideModal());
+  const handleClose = () => dispatch(hideModal())
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // console.log("sono l'oggetto della put", profileObject);
-    dispatch(modifyProfileAction(profileObject));
-    dispatch(modifyProfileAction(userInfo._id));
-  };
+    dispatch(modifyProfileAction(profileObject))
+    dispatch(modifyProfileAction(userInfo._id))
+  }
 
   return (
     <>
@@ -104,7 +103,7 @@ const EditModal = () => {
         </Form>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default EditModal;
+export default EditModal
