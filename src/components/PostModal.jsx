@@ -14,9 +14,18 @@ function PostModal() {
   const userInfo = userData.user_info
 
   const [postText, setPostText] = useState('')
+  const [image, setImageURL] = useState('')
+  const [isEditing, setIsEditing] = useState(false)
+
+  const toggleEdit = () => {
+    setIsEditing(!isEditing)
+  }
 
   const handleInputChange = (event) => {
     setPostText(event.target.value)
+  }
+  const handleImageChange = (event) => {
+    setImageURL(event.target.value)
   }
 
   return (
@@ -47,8 +56,18 @@ function PostModal() {
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={postText ? handleClose : null} className={!postText ? 'inactive' : 'active'}>
+        <Modal.Footer className="d-flex align-items-center justify-content-between">
+          <Button className={`pic-edit-btn ${isEditing ? 'active' : ''}`} onClick={toggleEdit}>
+            <i className="edit bi bi-pen"></i>
+          </Button>
+          {isEditing && (
+            <Form onSubmit={handleClose} className="d-flex gap-5 pic-edit-form">
+              <Form.Group>
+                <Form.Control type="text" value={image} onChange={handleImageChange} placeholder="Post an image!" />
+              </Form.Group>
+            </Form>
+          )}
+          <Button onClick={postText ? handleClose : null} className={!postText ? 'save-inactive' : 'save-active'}>
             Post
           </Button>
         </Modal.Footer>
