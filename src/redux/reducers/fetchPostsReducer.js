@@ -10,7 +10,7 @@ const fetchPostsReducer = (state = initialState, action) => {
     case GET_ALL_POSTS:
       return {
         ...state,
-        posts: action.payload,
+        posts: action.payload.slice(-100, -1),
       };
     case GET_SPECIFIC_POST:
       return {
