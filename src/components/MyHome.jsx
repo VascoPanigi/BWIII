@@ -1,33 +1,35 @@
-import { Col, Container, NavLink, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import img from "../assets/img/img1.jpg";
-import { useEffect } from "react";
-import { fetchAllPosts, setModalType, showModal } from "../redux/actions";
-import MyPost from "./MyPost";
-import MySuggestions from "./Mysuggestions";
-import PostModal from "./PostModal";
+import { Button, Col, Container, Image, NavLink, Row } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import img from '../assets/img/img1.jpg'
+import { useEffect } from 'react'
+import { fetchAllPosts, setModalType, showModal } from '../redux/actions'
+import MyPost from './MyPost'
+import MySuggestions from './Mysuggestions'
+import PostModal from './PostModal'
+import propic from '../assets/img/propic.jpeg'
+import { Link } from 'react-router-dom'
 
 const MyHome = () => {
-  const AllPosts = useSelector((state) => state.posts.posts);
-  const userData = useSelector((state) => state.user.user_info);
-  const loginStatus = useSelector((state) => state.login);
+  const AllPosts = useSelector((state) => state.posts.posts)
+  const userData = useSelector((state) => state.user.user_info)
+  const loginStatus = useSelector((state) => state.login)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchAllPosts());
-  }, []);
+    dispatch(fetchAllPosts())
+  }, [])
 
-  const modalType = useSelector((state) => state.modal.modalType);
+  const modalType = useSelector((state) => state.modal.modalType)
 
   const handleShowPostModal = () => {
     if (loginStatus.isLogged) {
-      dispatch(setModalType("post"));
-      dispatch(showModal());
+      dispatch(setModalType('post'))
+      dispatch(showModal())
     } else {
-      alert("You need to login to start posting");
+      alert('You need to login to start posting')
     }
-  };
+  }
 
   return (
     <>
@@ -37,20 +39,36 @@ const MyHome = () => {
             <Row className="d-flex flex-column side-bar border">
               <Col className="d-flex flex-column align-items-center">
                 <img src={img} alt="" />
-                <img className="profile pointer" src={userData.image} alt="" />
-                <h4 className="mt-3">
-                  {userData.name} {userData.surname}
-                </h4>
-                <p className="bio">{userData.bio} </p>
+                {loginStatus.isLogged ? (
+                  <Image src={userData.image} className="profile pointer" />
+                ) : (
+                  <Image src={propic} className="profile pointer" />
+                )}
+                {loginStatus.isLogged && (
+                  <>
+                    <h4 className="mt-3">
+                      {userData.name} {userData.surname}
+                    </h4>
+                    <p className="bio">{userData.bio} </p>
+                  </>
+                )}
               </Col>
               <Col className="d-flex flex-column  justify-content-center">
-                <p className="mt-2 d-flex justify-content-between px-2 par pointer">
-                  Profile views <span className="text-primary">22</span>
-                </p>
-                <p className="m-0 d-flex justify-content-between px-2 pointer">
-                  Connections <span className="text-primary">100</span>
-                </p>
-                <h6 className="pointer">Grow your network</h6>
+                {loginStatus.isLogged ? (
+                  <>
+                    <p className="mt-2 d-flex justify-content-between px-2 par pointer">
+                      Profile views <span className="text-primary">22</span>
+                    </p>
+                    <p className="m-0 d-flex justify-content-between px-2 pointer">
+                      Connections <span className="text-primary">100</span>
+                    </p>
+                    <h6 className="pointer">Grow your network</h6>
+                  </>
+                ) : (
+                  <Link to={'/login'} className="my-2 text-center w-100">
+                    <Button className="login-btn">Login</Button>
+                  </Link>
+                )}
               </Col>
               <Col>
                 <p className="par px-2 m-0 text-start">Boost your career with exclusive tools</p>
@@ -86,14 +104,18 @@ const MyHome = () => {
           </Col>
 
           <>
-            {modalType === "post" && <PostModal />}
+            {modalType === 'post' && <PostModal />}
 
             <Col className="center-home" xs={12} md={5} xl={4}>
               <Row className="start-post-card border">
                 <Col>
                   <Row className="align-items-center py-0">
                     <Col md={2} xxl={1} className="p-0">
-                      {userData && <img className="profile pointer" src={userData.image} alt="" />}
+                      {loginStatus.isLogged ? (
+                        <Image src={userData.image} className="profile pointer" />
+                      ) : (
+                        <Image src={propic} className="profile pointer" />
+                      )}
                     </Col>
                     <Col xs={10} xxl={{ span: 10, offset: 1 }} className="p-0">
                       <NavLink onClick={handleShowPostModal}>
@@ -170,7 +192,7 @@ const MyHome = () => {
         </Row>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default MyHome;
+export default MyHome

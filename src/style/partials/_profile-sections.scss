@@ -14,6 +14,7 @@
 
 .inner-section-container {
   margin-inline: 1.5rem;
+  min-height: 3.5rem;
 
   .card-body {
     padding-block: 0;
@@ -30,6 +31,51 @@
   .single-exp,
   .single-edu {
     margin-top: 15px;
+
+    .card-body {
+      padding-right: 0;
+
+      // i {
+      //   color: $primary-light;
+
+      //   &:hover {
+      //     color: $dark;
+      //     transition: color 0.5s ease, background-color 0.5s ease;
+      //     background-color: $primary-light;
+      //     border-radius: 99px;
+      //     padding: 10px;
+      //   }
+      // }
+      .edit-wrapper-one {
+        opacity: 0;
+        @include edit-button();
+        right: 35px;
+
+        &:hover {
+          color: $warning;
+          background-color: $secondary-light;
+        }
+      }
+      .edit-wrapper-two {
+        opacity: 0;
+        @include edit-button();
+        right: -10px;
+
+        &:hover {
+          color: $primary;
+          background-color: $secondary-light;
+        }
+      }
+    }
+  }
+
+  .card-container:hover {
+    cursor: pointer;
+    .edit-wrapper-one,
+    .edit-wrapper-two {
+      opacity: 1;
+      transition: opacity 0.6s ease;
+    }
   }
 
   .education-card {
