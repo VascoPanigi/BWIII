@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { fetchExperiencesAction, setModalType, showModal } from '../redux/actions'
 import ExpModal from './ExpModal'
 import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 const ExperiencePage = () => {
   const experiencesList = useSelector((state) => state.experiences_list)
@@ -14,7 +15,9 @@ const ExperiencePage = () => {
   const dispatch = useDispatch()
   const modalType = useSelector((state) => state.modal.modalType)
   const loggedIn = useSelector((state) => state.login.isLogged)
-  console.log('logge', loggedIn)
+
+  const params = useParams()
+  const id = params.dynamicValue
 
   useEffect(() => {
     dispatch(fetchExperiencesAction(userId))
@@ -33,7 +36,7 @@ const ExperiencePage = () => {
             <Card className="section-container exp-container">
               {modalType === 'exp' && <ExpModal expData={experiencesList} />}
               <div className="inner-section-container ">
-                {loggedIn && (
+                {loggedIn && id === 'me' && (
                   <div className="edit-wrapper">
                     <i className="bi bi-plus-lg" onClick={handleShowExpModal}></i>
                   </div>

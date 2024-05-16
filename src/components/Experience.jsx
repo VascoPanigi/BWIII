@@ -4,12 +4,14 @@ import { useSelector } from 'react-redux'
 import rightarrow from '../assets/icons/arrowright.svg'
 import { Image } from 'react-bootstrap'
 import ExpModal from './ExpModal'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const Experience = () => {
   const navigate = useNavigate()
   const userId = useSelector((state) => state.user.other_user_info._id)
   const loggedIn = useSelector((state) => state.login.isLogged)
+  const params = useParams()
+  const id = params.dynamicValue
 
   const experiencesList = useSelector((state) => state.experiences_list)
 
@@ -18,7 +20,7 @@ const Experience = () => {
   return (
     <Card className="section-container">
       <div className="inner-section-container">
-        {loggedIn && (
+        {loggedIn && id === 'me' && (
           <div className="edit-wrapper">
             <i className="edit bi bi-pen" onClick={() => navigate(`/experience/${userId}`)}></i>
             {modalType === 'exp' && <ExpModal />}
