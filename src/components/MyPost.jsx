@@ -43,13 +43,12 @@ const MyPost = ({ post }) => {
     dispatch(showIdModal(post._id))
   }
 
-  const cardSelected = useSelector((state) => state.modal.selected)
   // console.log(cardSelected)
   const showModalId = useSelector((state) => state.modal.showIdModal)
 
   const handleDelete = () => {
     dispatch(selectCard(post))
-    dispatch(deleteSpecificPost(cardSelected._id))
+    dispatch(deleteSpecificPost(post._id))
     console.log('delete')
     dispatch(fetchAllPosts())
     dispatch(fetchAllPosts())

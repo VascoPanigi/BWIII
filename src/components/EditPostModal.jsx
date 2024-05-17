@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllPosts, hideModal, postComment } from '../redux/actions'
+import { fetchAllPosts, hideModal, modifySpecificPost } from '../redux/actions'
 import { Form, Image } from 'react-bootstrap'
 import { useState } from 'react'
 
@@ -34,8 +34,9 @@ const EditPostModal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(postComment(putObjToSubmit))
+    dispatch(modifySpecificPost(post._id, putObjToSubmit))
     dispatch(fetchAllPosts())
+    handleClose()
   }
 
   const toggleEdit = () => {
@@ -74,23 +75,17 @@ const EditPostModal = () => {
               <i className="edit bi bi-pen"></i>
             </Button>
             {isEditing && (
-              <Form onSubmit={handleClose} className="d-flex gap-5 pic-edit-form">
-                <Form.Group>
-                  <Form.Control
-                    type="text"
-                    value={image}
-                    onChange={handleImageChange}
-                    placeholder="Post an image!"
-                    defaultValue={post.image}
-                  />
-                </Form.Group>
-              </Form>
+              <Form.Group className="d-flex gap-5 pic-edit-form">
+                <Form.Control
+                  type="text"
+                  value={image}
+                  onChange={handleImageChange}
+                  placeholder="Post an image!"
+                  defaultValue={post.image}
+                />
+              </Form.Group>
             )}
-            <Button
-              type="submit"
-              onClick={postText ? handleClose : null}
-              className={!postText ? 'save-inactive' : 'save-active'}
-            >
+            <Button type="submit" className={!postText ? 'save-inactive' : 'save-active'}>
               Post
             </Button>
           </Modal.Footer>
