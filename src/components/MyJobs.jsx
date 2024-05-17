@@ -1,48 +1,48 @@
-import { Container, Row, Col, Card, Button, Image } from "react-bootstrap";
-import { Dropdown } from "react-bootstrap";
-import jobspic from "../assets/img/jobsrightcolumn.gif";
-import JobCard from "./JobCard";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllJobs, fetchCategoryJobs, fetchCompanyJobs, fetchQueryJobs, jobsDisplayAction } from "../redux/actions";
+import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap'
+import { Dropdown } from 'react-bootstrap'
+import jobspic from '../assets/img/jobsrightcolumn.gif'
+import JobCard from './JobCard'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAllJobs, fetchCategoryJobs, fetchCompanyJobs, fetchQueryJobs, jobsDisplayAction } from '../redux/actions'
 
 // import interviewicon from "../assets/icons/interviewprep.svg";
 
 const MyJobs = () => {
-  const dispatch = useDispatch();
-  const allJobs = useSelector((state) => state.jobs.jobs);
-  console.log(allJobs);
-  const query = useSelector((state) => state.jobs.query);
-  const displayCategories = useSelector((state) => state.jobs.display);
-  const queryJobs = useSelector((state) => state.jobs.query_jobs);
-  const companyJobs = useSelector((state) => state.jobs.company_jobs);
-  const categoryJobs = useSelector((state) => state.jobs.category_jobs);
+  const dispatch = useDispatch()
+  const allJobs = useSelector((state) => state.jobs.jobs)
+  console.log(allJobs)
+  const query = useSelector((state) => state.jobs.query)
+  const displayCategories = useSelector((state) => state.jobs.display)
+  const queryJobs = useSelector((state) => state.jobs.query_jobs)
+  const companyJobs = useSelector((state) => state.jobs.company_jobs)
+  const categoryJobs = useSelector((state) => state.jobs.category_jobs)
 
-  console.log("a", displayCategories);
-  console.log("b", queryJobs);
-  console.log("c", companyJobs);
-  console.log("d", categoryJobs);
-  console.log("d", query.length);
-
-  useEffect(() => {
-    dispatch(fetchAllJobs());
-  }, []);
+  console.log('a', displayCategories)
+  console.log('b', queryJobs)
+  console.log('c', companyJobs)
+  console.log('d', categoryJobs)
+  console.log('d', query.length)
 
   useEffect(() => {
-    if (query !== "") {
-      dispatch(fetchQueryJobs(query));
-      dispatch(fetchCompanyJobs(query));
-      dispatch(fetchCategoryJobs(query, 20));
+    dispatch(fetchAllJobs())
+  }, [])
+
+  useEffect(() => {
+    if (query !== '') {
+      dispatch(fetchQueryJobs(query))
+      dispatch(fetchCompanyJobs(query))
+      dispatch(fetchCategoryJobs(query, 20))
     }
-  }, [query]);
+  }, [query])
 
   const handleShowCategories = () => {
-    dispatch(jobsDisplayAction("categories"));
-  };
+    dispatch(jobsDisplayAction('categories'))
+  }
 
   const handleShowCompanies = () => {
-    dispatch(jobsDisplayAction("companies"));
-  };
+    dispatch(jobsDisplayAction('companies'))
+  }
 
   return (
     <div className="background">
@@ -65,7 +65,7 @@ const MyJobs = () => {
                       <i className="bi bi-list-task me-2"></i> Preferences
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-2">
-                      {" "}
+                      {' '}
                       <i className="bi bi-file-earmark-fill me-2"></i> Interview prep
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-3">
@@ -110,7 +110,7 @@ const MyJobs = () => {
                 <h5>Suggested job searches</h5>
                 <i className="bi bi-x-lg close-icon align-content-center"></i>
               </div>
-              <div>
+              <div className="d-flex flex-wrap">
                 <span className="suggested-search">
                   <i className="bi bi-search"></i> marketing manager
                 </span>
@@ -152,33 +152,33 @@ const MyJobs = () => {
                   <h5 className="m-0">Hiring in your network</h5>
                 )} */}
 
-                {displayCategories === "" && allJobs && queryJobs.length === 0 && displayCategories === "" && (
+                {displayCategories === '' && allJobs && queryJobs.length === 0 && displayCategories === '' && (
                   <h5 className="m-0">Hiring in your network</h5>
                 )}
 
-                {query.length > 0 && queryJobs.length > 0 && displayCategories === "" && (
+                {query.length > 0 && queryJobs.length > 0 && displayCategories === '' && (
                   <h5 className="m-0">Search results</h5>
                 )}
 
-                {displayCategories === "categories" && <h5 className="m-0">Categories results</h5>}
-                {displayCategories === "companies" && <h5 className="m-0">Companies results</h5>}
+                {displayCategories === 'categories' && <h5 className="m-0">Categories results</h5>}
+                {displayCategories === 'companies' && <h5 className="m-0">Companies results</h5>}
                 <span className="grey-text fs-14">Explore relevant jobs in your network</span>
               </div>
 
-              {displayCategories === "" &&
+              {displayCategories === '' &&
                 allJobs &&
                 queryJobs.length === 0 &&
                 allJobs.slice(0, 20).map((job) => <JobCard key={job._id} job={job} />)}
 
-              {displayCategories === "" &&
+              {displayCategories === '' &&
                 query.length > 0 &&
                 queryJobs.length > 0 &&
                 queryJobs.slice(0, 20).map((job) => <JobCard key={job._id} job={job} />)}
 
-              {displayCategories === "categories" &&
+              {displayCategories === 'categories' &&
                 categoryJobs.length > 0 &&
                 categoryJobs.map((job) => <JobCard key={job._id} job={job} />)}
-              {displayCategories === "companies" && companyJobs.map((job) => <JobCard key={job._id} job={job} />)}
+              {displayCategories === 'companies' && companyJobs.map((job) => <JobCard key={job._id} job={job} />)}
 
               {/* // {allJobs && allJobs.slice(0, 20).map((job) => <JobCard key={job._id} job={job} />)} */}
 
@@ -272,7 +272,7 @@ const MyJobs = () => {
         </Row>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default MyJobs;
+export default MyJobs

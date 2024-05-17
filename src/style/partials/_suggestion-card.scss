@@ -7,6 +7,10 @@
   width: 85%;
   margin-inline: auto;
 
+  .card-body {
+    padding-right: 0;
+  }
+
   .suggestion-profile-image {
     border-radius: 50%;
     aspect-ratio: 4/4;
@@ -28,7 +32,12 @@
   }
 
   .suggestion-occupation {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    overflow: hidden;
+    max-width: 90ch;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
   }
   .last-seen-suggestion {
     font-weight: 400;
