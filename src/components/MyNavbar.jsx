@@ -14,9 +14,9 @@ import Col from "react-bootstrap/Col";
 import logo from "../assets/icons/logo.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchProfileAction, jobsSetQueryAction } from "../redux/actions";
+import { fetchExperiencesAction, fetchProfileAction, jobsDisplayAction, jobsSetQueryAction } from "../redux/actions";
 import propic from "../assets/img/propic.jpeg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const MyNavbar = () => {
   const userData = useSelector((state) => state.user);
@@ -29,12 +29,14 @@ const MyNavbar = () => {
 
   const handleClick = () => {
     dispatch(fetchProfileAction(loginStatus.userLoggedID));
+    dispatch(fetchExperiencesAction("6642750c55621a0015c15faa"));
   };
 
   const [query, setQuery] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // dispatch(jobsDisplayAction(""));
     dispatch(jobsSetQueryAction(query));
   };
   return (
@@ -109,7 +111,7 @@ const MyNavbar = () => {
                       </NavDropdown.Item>
                     ) : (
                       <NavDropdown.Item>
-                        <Link to={"/login"}>Login</Link>
+                        <Link to={"/"}>Login</Link>
                       </NavDropdown.Item>
                     )}
 
