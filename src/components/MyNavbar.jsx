@@ -14,8 +14,9 @@ import Col from "react-bootstrap/Col";
 import logo from "../assets/icons/logo.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchProfileAction } from "../redux/actions";
+import { fetchProfileAction, jobsSetQueryAction } from "../redux/actions";
 import propic from "../assets/img/propic.jpeg";
+import { useEffect, useState } from "react";
 
 const MyNavbar = () => {
   const userData = useSelector((state) => state.user);
@@ -30,6 +31,12 @@ const MyNavbar = () => {
     dispatch(fetchProfileAction(loginStatus.userLoggedID));
   };
 
+  const [query, setQuery] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(jobsSetQueryAction(query));
+  };
   return (
     <>
       <Navbar className="navbar-container bg-body-tertiary align-items-center">
@@ -38,7 +45,7 @@ const MyNavbar = () => {
             <Navbar.Brand href="#home">
               <Image src={logo} />
             </Navbar.Brand>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Col className="p-0 d-none d-lg-block">
                 <div className="input-group">
                   <span className="input-group-text" id="basic-addon1">
@@ -50,6 +57,8 @@ const MyNavbar = () => {
                     className="mr-sm-2"
                     aria-label="Search"
                     aria-describedby="basic-addon1"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
                   />
                 </div>
               </Col>

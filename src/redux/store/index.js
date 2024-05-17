@@ -5,7 +5,7 @@ import fetchUsersListReducer from "../reducers/fetchUsersListReducer";
 import modalReducer from "../reducers/modalReducer";
 import loginReducer from "../reducers/loginReducer";
 import fetchPostsReducer from "../reducers/fetchPostsReducer";
-import fetchJobsReducer from "../reducers/fetchPostsReducer";
+import fetchJobsReducer from "../reducers/fetchJobsReducer";
 
 const rootReducer = combineReducers({
   user: fetchUserReducer,

@@ -3,13 +3,15 @@ import { Dropdown } from "react-bootstrap";
 import jobspic from "../assets/img/jobsrightcolumn.gif";
 import JobCard from "./JobCard";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchAllJobs } from "../redux/actions";
 
 // import interviewicon from "../assets/icons/interviewprep.svg";
 
 const MyJobs = () => {
   const dispatch = useDispatch();
+  const allJobs = useSelector((state) => state.jobs.jobs);
+  console.log(allJobs);
 
   useEffect(() => {
     dispatch(fetchAllJobs());
@@ -120,8 +122,9 @@ const MyJobs = () => {
                 <h5 className="m-0">Hiring in your network</h5>
                 <span className="grey-text fs-14">Explore relevant jobs in your network</span>
               </div>
-              <JobCard />
-              <JobCard />
+
+              {allJobs && allJobs.slice(0, 20).map((job) => <JobCard key={job._id} job={job} />)}
+
               {/* <div className="d-flex justify-content-between mt-3 mb-1 pb-2 mx-3 job-offer-card">
                 <div className="d-flex">
                   <Image
