@@ -32,6 +32,7 @@ const MyProfilePage = () => {
   // console.log("parametri", params);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchProfileAction(params.dynamicValue));
     dispatch(fetchUsersListAction());
 

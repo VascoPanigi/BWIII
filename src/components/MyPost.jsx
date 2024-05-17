@@ -2,6 +2,9 @@ import { Col, Dropdown, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteSpecificPost, fetchAllPosts, selectCard, setModalType, showIdModal } from "../redux/actions";
 import EditPostModal from "./EditPostModal";
+import { GET_SPECIFIC_PROFILE } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
+import { fetchProfileAction, fetchExperiencesAction } from "../redux/actions";
 
 const MyPost = ({ post }) => {
   // console.log('poststs', post) /////////
@@ -32,6 +35,7 @@ const MyPost = ({ post }) => {
 
   const dispatch = useDispatch();
   const modalType = useSelector((state) => state.modal.modalType);
+  const navigate = useNavigate();
 
   const handleShowEditPostModal = () => {
     dispatch(selectCard(post));
@@ -51,6 +55,13 @@ const MyPost = ({ post }) => {
     dispatch(fetchAllPosts());
   };
 
+  const handleClick = (post) => {
+    dispatch({ type: GET_SPECIFIC_PROFILE, payload: post.user });
+    dispatch(fetchExperiencesAction(post.user._id));
+    dispatch(fetchProfileAction(post.user._id));
+    navigate(`/user/${post.user._id}`);
+  };
+
   const loggedIn = useSelector((state) => state.login.isLogged);
   const userInfo = useSelector((state) => state.user.user_info);
 
@@ -65,7 +76,10 @@ const MyPost = ({ post }) => {
             </Col>
             <Col className="d-flex justify-content-between">
               <div>
-                <span>{post.user.username}</span>
+                <div className="post-username" onClick={() => handleClick(post)}>
+                  <span>{post.user.name}</span>
+                  <span> {post.user.surname}</span>
+                </div>
                 <blockquote className="m-0">{post.user.area}</blockquote>
                 <blockquote className="m-0">
                   {data(post.createdAt)}
