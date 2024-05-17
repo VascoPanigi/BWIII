@@ -1,21 +1,21 @@
-import { Container, Row, Col, Card, Button, Image } from "react-bootstrap";
-import { Dropdown } from "react-bootstrap";
-import jobspic from "../assets/img/jobsrightcolumn.gif";
-import JobCard from "./JobCard";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllJobs } from "../redux/actions";
+import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap'
+import { Dropdown } from 'react-bootstrap'
+import jobspic from '../assets/img/jobsrightcolumn.gif'
+import JobCard from './JobCard'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAllJobs } from '../redux/actions'
 
 // import interviewicon from "../assets/icons/interviewprep.svg";
 
 const MyJobs = () => {
-  const dispatch = useDispatch();
-  const allJobs = useSelector((state) => state.jobs.jobs);
-  console.log(allJobs);
+  const dispatch = useDispatch()
+  const allJobs = useSelector((state) => state.jobs.jobs)
+  console.log(allJobs)
 
   useEffect(() => {
-    dispatch(fetchAllJobs());
-  }, []);
+    dispatch(fetchAllJobs())
+  }, [])
 
   return (
     <div className="background">
@@ -38,7 +38,7 @@ const MyJobs = () => {
                       <i className="bi bi-list-task me-2"></i> Preferences
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-2">
-                      {" "}
+                      {' '}
                       <i className="bi bi-file-earmark-fill me-2"></i> Interview prep
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-3">
@@ -215,7 +215,7 @@ const MyJobs = () => {
         </Row>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default MyJobs;
+export default MyJobs

@@ -140,8 +140,9 @@ const MyHome = () => {
                   </Row>
                 </Col>
               </Row>
-
-              {AllPosts && AllPosts.slice(88).map((post) => <MyPost key={post._id} post={post} />)}
+              <div className="d-flex flex-column-reverse">
+                {AllPosts && AllPosts.slice(88).map((post) => <MyPost key={post._id} post={post} />)}
+              </div>
             </Col>
             <Col md={3} xl={3} xxl={2} className="d-none d-xl-block p-0">
               <MySuggestions />
