@@ -4,7 +4,7 @@ import jobspic from "../assets/img/jobsrightcolumn.gif";
 import JobCard from "./JobCard";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllJobs } from "../redux/actions";
+import { fetchAllJobs, fetchCategoryJobs, fetchCompanyJobs, fetchQueryJobs } from "../redux/actions";
 
 // import interviewicon from "../assets/icons/interviewprep.svg";
 
@@ -12,10 +12,19 @@ const MyJobs = () => {
   const dispatch = useDispatch();
   const allJobs = useSelector((state) => state.jobs.jobs);
   console.log(allJobs);
+  const query = useSelector((state) => state.jobs.query);
 
   useEffect(() => {
     dispatch(fetchAllJobs());
   }, []);
+
+  useEffect(() => {
+    if (query !== "") {
+      dispatch(fetchQueryJobs(query));
+      dispatch(fetchCompanyJobs(query));
+      dispatch(fetchCategoryJobs(query, 20));
+    }
+  }, [query]);
 
   return (
     <div className="background">
