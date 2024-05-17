@@ -24,6 +24,10 @@ export const SHOW_ID_MODAL = "SHOW_ID_MODAL";
 export const JOBS_SEARCH_QUERY = "JOBS_SEARCH_QUERY";
 export const JOBS_DISPLAY = "JOBS_DISPLAY";
 
+export const GET_COMMENTS = "GET_COMMENTS";
+export const ADD_COMMENT = "ADD_COMMENT";
+export const RETURN_SPECIFIC_POST_COMMENTS = "RETURN_SPECIFIC_POST_COMMENTS";
+
 export const fetchProfileAction = (id) => {
   return async (dispatch) => {
     try {
@@ -509,3 +513,60 @@ export const fetchCategoryJobs = (category, limit) => {
 
 export const jobsSetQueryAction = (query) => ({ type: JOBS_SEARCH_QUERY, payload: query });
 export const jobsDisplayAction = (section) => ({ type: JOBS_DISPLAY, payload: section });
+
+export const addCommentAction = (newComment) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+        body: JSON.stringify(newComment),
+      });
+
+      if (response.ok) {
+        const newComment = await response.json();
+
+        dispatch({
+          type: ADD_COMMENT,
+          payload: newComment,
+        });
+      } else {
+        console.log("error");
+        throw new Error("Error adding experience, try again later!");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x15 :(");
+    }
+  };
+};
+
+export const fetchAllComments = () => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: import.meta.env.VITE_TOKEN_API,
+        },
+      });
+      if (response.ok) {
+        const comments = await response.json();
+
+        dispatch({
+          type: GET_COMMENTS,
+          payload: comments,
+        });
+      } else {
+        console.log("error");
+        throw new Error("There was an error with the search. Please try again later! ");
+      }
+    } catch (error) {
+      console.log("Your request returned this error:", error, "uffa x16 :(");
+    }
+  };
+};
+
+export const returnSpecificPostAction = (comment) => ({ type: RETURN_SPECIFIC_POST_COMMENTS, payload: comment });

@@ -14,7 +14,7 @@ import Col from "react-bootstrap/Col";
 import logo from "../assets/icons/logo.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchExperiencesAction, fetchProfileAction, jobsDisplayAction, jobsSetQueryAction } from "../redux/actions";
+import { fetchExperiencesAction, fetchProfileAction, jobsSetQueryAction } from "../redux/actions";
 import propic from "../assets/img/propic.jpeg";
 import { useState } from "react";
 

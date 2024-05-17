@@ -1,10 +1,12 @@
-import { Col, Image, Row } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
-import propic from '../assets/img/propic.jpeg'
+import { Col, Image, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import propic from "../assets/img/propic.jpeg";
+import SingleComment from "./SingleComment";
 
 const Comments = ({ post }) => {
-  const userData = useSelector((state) => state.user.user_info)
-  const loggedIn = useSelector((state) => state.login.isLogged)
+  const userData = useSelector((state) => state.user.user_info);
+  const loggedIn = useSelector((state) => state.login.isLogged);
+  const comments = useSelector((state) => state.comments.specific_post_comments);
 
   return (
     <>
@@ -20,7 +22,11 @@ const Comments = ({ post }) => {
           <input type="text" placeholder="Add a comment..." />
         </Col>
       </Row>
-      <Row className="p-0 mt-3">
+
+      {comments.length > 0 &&
+        comments.map((comment) => <SingleComment key={comment._id} post={post} comment={comment.comment} />)}
+
+      {/* <Row className="p-0 mt-3">
         <Col xs={2} className="comments-wrapper p-0 align-items-start">
           <img src={post.user.image} alt="" className="pointer comment-propic" />
         </Col>
@@ -37,9 +43,9 @@ const Comments = ({ post }) => {
             <small>Like</small> | <small>Reply</small>
           </div>
         </Col>
-      </Row>
+      </Row> */}
     </>
-  )
-}
+  );
+};
 
-export default Comments
+export default Comments;
