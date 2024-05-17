@@ -34,7 +34,7 @@ const MyHome = () => {
   return (
     <>
       <Container fluid className="container-home">
-        <Row className="d-flex justify-content-center gap-4">
+        <Row className="d-flex justify-content-center gap-4 mx-2 mx-md-0">
           <Col xs={12} md={4} xl={3} xxl={2}>
             <Row className="d-flex flex-column side-bar border">
               <Col className="d-flex flex-column align-items-center">
@@ -53,7 +53,7 @@ const MyHome = () => {
                   </>
                 )}
               </Col>
-              <Col className="d-flex flex-column  justify-content-center">
+              <Col className="d-flex flex-column justify-content-center ">
                 {loginStatus.isLogged ? (
                   <>
                     <p className="mt-2 d-flex justify-content-between px-2 par pointer">
@@ -88,7 +88,7 @@ const MyHome = () => {
               </Col>
             </Row>
 
-            <Row className="border bottom-side">
+            <Row className="border bottom-side ">
               <Col className="bottom-side-col">
                 <a href="#">Groups</a>
                 <div className="d-flex justify-content-between align-items-center">
@@ -107,18 +107,18 @@ const MyHome = () => {
             {modalType === 'post' && <PostModal />}
 
             <Col className="center-home" xs={12} md={5} xl={4}>
-              <Row className="start-post-card border">
+              <Row className="start-post-card border mx-0 mx-md-0">
                 <Col>
-                  <Row className="align-items-center py-0">
-                    <Col md={2} xxl={1} className="p-0">
+                  <Row className="align-items-center py-0 px-2">
+                    <Col xs={1} md={2} xxl={1} className="p-0">
                       {loginStatus.isLogged ? (
                         <Image src={userData.image} className="profile pointer" />
                       ) : (
                         <Image src={propic} className="profile pointer" />
                       )}
                     </Col>
-                    <Col xs={10} xxl={{ span: 10, offset: 1 }} className="p-0">
-                      <NavLink onClick={handleShowPostModal}>
+                    <Col xs={{ span: 8, offset: 2 }} md={10} xxl={{ span: 10, offset: 1 }} className="p-0">
+                      <NavLink onClick={handleShowPostModal} className="p-0">
                         <input type="text" placeholder="Start a post" />
                       </NavLink>
                     </Col>
