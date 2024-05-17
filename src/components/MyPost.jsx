@@ -1,10 +1,10 @@
 import { Col, Dropdown, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteSpecificPost, fetchAllPosts, selectCard, setModalType, showModal } from '../redux/actions'
+import { deleteSpecificPost, fetchAllPosts, selectCard, setModalType, showIdModal } from '../redux/actions'
 import EditPostModal from './EditPostModal'
 
 const MyPost = ({ post }) => {
-  console.log('poststs', post) /////////
+  // console.log('poststs', post) /////////
   const data = (data) => {
     const nowDate = new Date()
     const newData = new Date(data)
@@ -36,11 +36,12 @@ const MyPost = ({ post }) => {
   const handleShowEditPostModal = () => {
     dispatch(selectCard(post))
     dispatch(setModalType('editModal'))
-    dispatch(showModal())
+    dispatch(showIdModal(post._id))
   }
 
   const cardSelected = useSelector((state) => state.modal.selected)
-  console.log(cardSelected)
+  // console.log(cardSelected)
+  const showModalId = useSelector((state) => state.modal.showIdModal)
 
   const handleDelete = () => {
     dispatch(selectCard(post))
@@ -49,9 +50,12 @@ const MyPost = ({ post }) => {
     dispatch(fetchAllPosts())
   }
 
+  const loggedIn = useSelector((state) => state.login.isLogged)
+  const userInfo = useSelector((state) => state.user.user_info)
+
   return (
     <>
-      {modalType === 'editModal' && <EditPostModal post={post} />}
+      {modalType === 'editModal' && showModalId === post._id && <EditPostModal post={post} />}
       <Row className="border post-card" style={{ marginBottom: '1rem' }}>
         <Col>
           <Row>
@@ -69,16 +73,18 @@ const MyPost = ({ post }) => {
                 </blockquote>
               </div>
 
-              <Dropdown align="end">
-                <Dropdown.Toggle id="dropdown-basic" className="edit-wrapper">
-                  <i className="bi bi-three-dots"></i>
-                </Dropdown.Toggle>
+              {loggedIn && userInfo._id === post.user._id && (
+                <Dropdown align="end">
+                  <Dropdown.Toggle id="dropdown-basic" className="edit-wrapper">
+                    <i className="bi bi-three-dots"></i>
+                  </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                  <Dropdown.Item onClick={handleShowEditPostModal}>Edit</Dropdown.Item>
-                  <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={handleShowEditPostModal}>Edit</Dropdown.Item>
+                    <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              )}
             </Col>
 
             <p>{post.text}</p>
