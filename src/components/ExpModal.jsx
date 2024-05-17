@@ -1,6 +1,6 @@
 import { Modal, Button, Form, Col, FormGroup } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
-import { addExperienceAction, fetchExperiencesAction, hideModal, modifyProfileAction } from '../redux/actions'
+import { addExperienceAction, fetchExperiencesAction, hideModal } from '../redux/actions'
 import { useEffect, useState } from 'react'
 
 const ExpModal = () => {
