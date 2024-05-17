@@ -26,14 +26,11 @@ const Comments = ({ post }) => {
         </Col>
         <Col xs={10} className="p-0 align-items-start">
           <div className="d-flex flex-column comment">
-            <h6>Name</h6>
-            <span>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum eligendi ducimus nulla vitae eaque dicta
-              at, nisi assumenda similique suscipit facilis est incidunt quo perspiciatis? Voluptates unde voluptas
-              ratione! Nesciunt. Rerum esse veniam, dolorum quis et eos cupiditate ipsum. A voluptate magnam dicta? Sed
-              accusamus illum voluptate explicabo enim, culpa cumque quidem, reiciendis distinctio odit quasi doloribus
-              et consequuntur at?
-            </span>
+            <h6>
+              {post.user.name}
+              {post.user.surname}
+            </h6>
+            <span>{post.user.bio}</span>
             <p>This is a comment</p>
           </div>
           <div className="mb-1">
