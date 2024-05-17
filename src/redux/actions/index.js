@@ -20,6 +20,7 @@ export const GET_QUERY_JOBS = "GET_QUERY_JOBS";
 export const GET_COMPANY_JOBS = "GET_COMPANY_JOBS";
 export const GET_CATEGORY_JOBS = "GET_CATEGORY_JOBS";
 export const SELECTED = "SELECTED";
+export const JOBS_SEARCH_QUERY = "JOBS_SEARCH_QUERY";
 
 export const fetchProfileAction = (id) => {
   return async (dispatch) => {
@@ -401,7 +402,7 @@ export const fetchAllJobs = () => {
       });
       if (response.ok) {
         const jobs = await response.json();
-        console.log(jobs);
+        // console.log(jobs);
         dispatch({
           type: GET_ALL_JOBS,
           payload: jobs,
@@ -496,3 +497,5 @@ export const fetchCategoryJobs = (category, limit) => {
     }
   };
 };
+
+export const jobsSetQueryAction = (query) => ({ type: JOBS_SEARCH_QUERY, payload: query });
