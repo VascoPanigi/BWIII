@@ -276,4 +276,8 @@
 }
 .post-username {
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    color: $primary;
+  }
 }
