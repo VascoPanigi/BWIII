@@ -57,7 +57,7 @@ const MyPost = ({ post }) => {
   return (
     <>
       {modalType === 'editModal' && showModalId === post._id && <EditPostModal post={post} />}
-      <Row className="border post-card px-0 mx-0 mx-md-0" style={{ marginBottom: '1rem' }}>
+      <Row className="border post-card p-0 mx-0 mx-md-0" style={{ marginBottom: '1rem' }}>
         <Col>
           <Row className="justify-content-around mx-2 mx-md-0 px-3">
             <Col xs={3} md={2}>
@@ -77,7 +77,7 @@ const MyPost = ({ post }) => {
               {loggedIn && userInfo._id === post.user._id && (
                 <Dropdown align="end">
                   <Dropdown.Toggle id="dropdown-basic" className="edit-wrapper">
-                    <i className="bi bi-three-dots"></i>
+                    {/* <i className="bi bi-three-dots"></i> */}
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
