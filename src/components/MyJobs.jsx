@@ -161,7 +161,7 @@ const MyJobs = () => {
                 )}
 
                 {displayCategories === "categories" && <h5 className="m-0">Categories results</h5>}
-                {displayCategories === "companies" && <h5 className="m-0">Companies</h5>}
+                {displayCategories === "companies" && <h5 className="m-0">Companies results</h5>}
                 <span className="grey-text fs-14">Explore relevant jobs in your network</span>
               </div>
 
