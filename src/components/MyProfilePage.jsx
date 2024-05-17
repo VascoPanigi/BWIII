@@ -1,47 +1,47 @@
-import { Col, Container, Row } from "react-bootstrap";
-import ProfileHero from "./ProfileHero";
-import MySuggestions from "./Mysuggestions";
-import MyProjects from "./MyProjects";
-import Education from "./Education";
-import Experience from "./Experience";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProfileAction, fetchUsersListAction } from "../redux/actions";
-import { useParams } from "react-router-dom";
+import { Col, Container, Row } from 'react-bootstrap'
+import ProfileHero from './ProfileHero'
+import MySuggestions from './Mysuggestions'
+import MyProjects from './MyProjects'
+import Education from './Education'
+import Experience from './Experience'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchExperiencesAction, fetchProfileAction, fetchUsersListAction } from '../redux/actions'
+import { useParams } from 'react-router-dom'
 
 const MyProfilePage = () => {
-  const dispatch = useDispatch();
-  const userData = useSelector((state) => state.user);
-  const usersList = useSelector((state) => state.users_list);
-  const experiencesList = useSelector((state) => state.experiences_list);
+  const dispatch = useDispatch()
+  const userData = useSelector((state) => state.user)
+  const usersList = useSelector((state) => state.users_list)
+  const experiencesList = useSelector((state) => state.experiences_list)
   // const loginStatus = useSelector((state) => state.login);
   // console.log("showUserData", userData);
   // console.log("showOtherUserData", userData.other_user_info);
   // console.log("experiencetest", experiencesList);
   // const otherUser = userData.other_user_info;
-  // let otherUserID = userData.other_user_info._id;
+  const otherUserId = userData.other_user_info._id
   // console.log(usersList);
 
   // const loginStatus = useSelector((state) => state.login);
   // console.log(loginStatus);
 
-  const params = useParams();
+  const params = useParams()
   // const navigate = useNavigate();
 
   // console.log("ID dinamico", params.dynamicValue);
   // console.log("parametri", params);
 
   useEffect(() => {
-    dispatch(fetchProfileAction(params.dynamicValue));
-    dispatch(fetchUsersListAction());
+    dispatch(fetchProfileAction(params.dynamicValue))
+    dispatch(fetchUsersListAction())
 
-    // if (params.dynamicValue !== "me") {
-    //   dispatch(fetchExperiencesAction(otherUserId));
-    // } else {
-    //   dispatch(fetchExperiencesAction(userData.user_info._id));
-    // }
+    if (params.dynamicValue !== 'me') {
+      dispatch(fetchExperiencesAction(otherUserId))
+    } else {
+      dispatch(fetchExperiencesAction(userData.user_info._id))
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   // useEffect(() => {
   //   dispatch(fetchProfileAction(otherUserID));
@@ -72,7 +72,7 @@ const MyProfilePage = () => {
         </Row>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default MyProfilePage;
+export default MyProfilePage

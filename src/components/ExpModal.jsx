@@ -30,7 +30,6 @@ const ExpModal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(modifyProfileAction(experienceObject))
     dispatch(addExperienceAction(userId, experienceObject))
     dispatch(fetchExperiencesAction(userId))
     handleClose()
