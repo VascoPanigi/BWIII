@@ -91,7 +91,7 @@ const MyPost = ({ post }) => {
               {loggedIn && userInfo._id === post.user._id && (
                 <Dropdown align="end">
                   <Dropdown.Toggle id="dropdown-basic" className="edit-wrapper">
-                    {/* <i className="bi bi-three-dots"></i> */}
+                    <i className="bi bi-three-dots"></i>
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
