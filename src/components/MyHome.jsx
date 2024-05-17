@@ -2,7 +2,7 @@ import { Button, Col, Container, Image, NavLink, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import img from "../assets/img/img1.jpg";
 import { useEffect } from "react";
-import { fetchAllComments, fetchAllPosts, setModalType, showModal } from "../redux/actions";
+import { fetchAllComments, fetchAllPosts, fetchUsersListAction, setModalType, showModal } from "../redux/actions";
 import MyPost from "./MyPost";
 import MySuggestions from "./Mysuggestions";
 import PostModal from "./PostModal";

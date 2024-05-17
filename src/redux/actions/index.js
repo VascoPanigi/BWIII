@@ -533,6 +533,7 @@ export const addCommentAction = (newComment) => {
           type: ADD_COMMENT,
           payload: newComment,
         });
+        dispatch(fetchAllComments());
       } else {
         console.log("error");
         throw new Error("Error adding experience, try again later!");
