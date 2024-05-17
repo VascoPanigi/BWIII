@@ -110,14 +110,14 @@ const MyHome = () => {
               <Row className="start-post-card border mx-0 mx-md-0">
                 <Col>
                   <Row className="align-items-center py-0 px-2">
-                    <Col xs={1} md={2} xxl={1} className="p-0">
+                    <Col xs={1} md={1} xxl={1} className="p-0">
                       {loginStatus.isLogged ? (
                         <Image src={userData.image} className="profile pointer" />
                       ) : (
                         <Image src={propic} className="profile pointer" />
                       )}
                     </Col>
-                    <Col xs={{ span: 8, offset: 2 }} md={10} xxl={{ span: 10, offset: 1 }} className="p-0">
+                    <Col xs={{ span: 8, offset: 2 }} md={9} xxl={{ span: 10, offset: 1 }} className="p-0">
                       <NavLink onClick={handleShowPostModal} className="p-0">
                         <input type="text" placeholder="Start a post" />
                       </NavLink>
