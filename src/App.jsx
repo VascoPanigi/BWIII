@@ -17,8 +17,8 @@ function App() {
         <MyNavbar />
         <Routes>
           {/* <Route path="/user/me" element={<MyProfilePage />} /> */}
+          <Route path="/" element={<LoginPage />} />
           <Route path="/user/:dynamicValue" element={<MyProfilePage />} />
-          <Route path="/login" element={<LoginPage />} />
           <Route path="/experience/:userid" element={<ExperiencePage />} />
           <Route path="/user/home" element={<MyHome />} />
           <Route path="/jobs" element={<MyJobs />} />
