@@ -22,6 +22,7 @@ export const GET_CATEGORY_JOBS = "GET_CATEGORY_JOBS";
 export const SELECTED = "SELECTED";
 export const SHOW_ID_MODAL = "SHOW_ID_MODAL";
 export const JOBS_SEARCH_QUERY = "JOBS_SEARCH_QUERY";
+export const JOBS_DISPLAY = "JOBS_DISPLAY";
 
 export const fetchProfileAction = (id) => {
   return async (dispatch) => {
@@ -440,6 +441,7 @@ export const fetchQueryJobs = (query) => {
           type: GET_QUERY_JOBS,
           payload: jobs,
         });
+        dispatch(jobsDisplayAction(""));
       } else {
         console.log("error");
         throw new Error("There was an error with the search. Please try again later! ");
@@ -506,3 +508,4 @@ export const fetchCategoryJobs = (category, limit) => {
 };
 
 export const jobsSetQueryAction = (query) => ({ type: JOBS_SEARCH_QUERY, payload: query });
+export const jobsDisplayAction = (section) => ({ type: JOBS_DISPLAY, payload: section });

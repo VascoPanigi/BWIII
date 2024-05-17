@@ -4,7 +4,7 @@ import jobspic from "../assets/img/jobsrightcolumn.gif";
 import JobCard from "./JobCard";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllJobs } from "../redux/actions";
+import { fetchAllJobs, fetchCategoryJobs, fetchCompanyJobs, fetchQueryJobs, jobsDisplayAction } from "../redux/actions";
 
 // import interviewicon from "../assets/icons/interviewprep.svg";
 
@@ -12,10 +12,37 @@ const MyJobs = () => {
   const dispatch = useDispatch();
   const allJobs = useSelector((state) => state.jobs.jobs);
   console.log(allJobs);
+  const query = useSelector((state) => state.jobs.query);
+  const displayCategories = useSelector((state) => state.jobs.display);
+  const queryJobs = useSelector((state) => state.jobs.query_jobs);
+  const companyJobs = useSelector((state) => state.jobs.company_jobs);
+  const categoryJobs = useSelector((state) => state.jobs.category_jobs);
+
+  console.log("a", displayCategories);
+  console.log("b", queryJobs);
+  console.log("c", companyJobs);
+  console.log("d", categoryJobs);
+  console.log("d", query.length);
 
   useEffect(() => {
     dispatch(fetchAllJobs());
   }, []);
+
+  useEffect(() => {
+    if (query !== "") {
+      dispatch(fetchQueryJobs(query));
+      dispatch(fetchCompanyJobs(query));
+      dispatch(fetchCategoryJobs(query, 20));
+    }
+  }, [query]);
+
+  const handleShowCategories = () => {
+    dispatch(jobsDisplayAction("categories"));
+  };
+
+  const handleShowCompanies = () => {
+    dispatch(jobsDisplayAction("companies"));
+  };
 
   return (
     <div className="background">
@@ -60,11 +87,11 @@ const MyJobs = () => {
                   <i className="bi bi-bookmark-fill"></i>
                   <span> My Jobs</span>
                 </li>
-                <li className="align-content-center">
-                  <i className="bi bi-list-task"></i> <span>Preferences</span>
+                <li className="align-content-center" onClick={handleShowCategories}>
+                  <i className="bi bi-list-task"></i> <span>Categories</span>
                 </li>
-                <li className="align-content-center">
-                  <i className="bi bi-file-earmark-fill"></i> <span>Interview prep</span>
+                <li className="align-content-center" onClick={handleShowCompanies}>
+                  <i className="bi bi-file-earmark-fill"></i> <span>Companies</span>
                 </li>
                 <li className="align-content-center">
                   <i className="bi bi-youtube"></i> <span>Job seeker guidance</span>
@@ -119,11 +146,41 @@ const MyJobs = () => {
             </Card>
             <Card className=" mt-3">
               <div className=" px-3 pt-3">
-                <h5 className="m-0">Hiring in your network</h5>
+                {/* {displayCategories === "" && allJobs && queryJobs.length > 0 ? (
+                  <h5 className="m-0">Search results</h5>
+                ) : (
+                  <h5 className="m-0">Hiring in your network</h5>
+                )} */}
+
+                {displayCategories === "" && allJobs && queryJobs.length === 0 && displayCategories === "" && (
+                  <h5 className="m-0">Hiring in your network</h5>
+                )}
+
+                {query.length > 0 && queryJobs.length > 0 && displayCategories === "" && (
+                  <h5 className="m-0">Search results</h5>
+                )}
+
+                {displayCategories === "categories" && <h5 className="m-0">Categories results</h5>}
+                {displayCategories === "companies" && <h5 className="m-0">Companies</h5>}
                 <span className="grey-text fs-14">Explore relevant jobs in your network</span>
               </div>
 
-              {allJobs && allJobs.slice(0, 20).map((job) => <JobCard key={job._id} job={job} />)}
+              {displayCategories === "" &&
+                allJobs &&
+                queryJobs.length === 0 &&
+                allJobs.slice(0, 20).map((job) => <JobCard key={job._id} job={job} />)}
+
+              {displayCategories === "" &&
+                query.length > 0 &&
+                queryJobs.length > 0 &&
+                queryJobs.slice(0, 20).map((job) => <JobCard key={job._id} job={job} />)}
+
+              {displayCategories === "categories" &&
+                categoryJobs.length > 0 &&
+                categoryJobs.map((job) => <JobCard key={job._id} job={job} />)}
+              {displayCategories === "companies" && companyJobs.map((job) => <JobCard key={job._id} job={job} />)}
+
+              {/* // {allJobs && allJobs.slice(0, 20).map((job) => <JobCard key={job._id} job={job} />)} */}
 
               {/* <div className="d-flex justify-content-between mt-3 mb-1 pb-2 mx-3 job-offer-card">
                 <div className="d-flex">

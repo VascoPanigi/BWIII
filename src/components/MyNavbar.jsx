@@ -1,42 +1,43 @@
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import { Image } from 'react-bootstrap'
-import bell from '../assets/icons/bell.svg'
-import grid from '../assets/icons/grid.svg'
-import messaging from '../assets/icons/messaging.svg'
-import network from '../assets/icons/network.svg'
-import home from '../assets/icons/home.svg'
-import jobs from '../assets/icons/jobs.svg'
-import Form from 'react-bootstrap/Form'
-import Col from 'react-bootstrap/Col'
-import logo from '../assets/icons/logo.svg'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { fetchProfileAction, jobsSetQueryAction } from '../redux/actions'
-import propic from '../assets/img/propic.jpeg'
-import { useEffect, useState } from 'react'
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { Image } from "react-bootstrap";
+import bell from "../assets/icons/bell.svg";
+import grid from "../assets/icons/grid.svg";
+import messaging from "../assets/icons/messaging.svg";
+import network from "../assets/icons/network.svg";
+import home from "../assets/icons/home.svg";
+import jobs from "../assets/icons/jobs.svg";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import logo from "../assets/icons/logo.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchExperiencesAction, fetchProfileAction, jobsDisplayAction, jobsSetQueryAction } from "../redux/actions";
+import propic from "../assets/img/propic.jpeg";
+import { useState } from "react";
 
 const MyNavbar = () => {
-  const userData = useSelector((state) => state.user)
+  const userData = useSelector((state) => state.user);
   // console.log('nav', userData)
 
-  const loginStatus = useSelector((state) => state.login)
+  const loginStatus = useSelector((state) => state.login);
   // console.log(loginStatus)
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(fetchProfileAction(loginStatus.userLoggedID))
-  }
+    dispatch(fetchProfileAction(loginStatus.userLoggedID));
+    dispatch(fetchExperiencesAction("6642750c55621a0015c15faa"));
+  };
 
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    dispatch(jobsSetQueryAction(query))
-  }
+    e.preventDefault();
+    dispatch(jobsSetQueryAction(query));
+  };
   return (
     <>
       <Navbar className="navbar-container bg-body-tertiary align-items-center">
@@ -68,7 +69,7 @@ const MyNavbar = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="navbar-group me-auto">
-                <Link className="text-center" to={'/user/home'}>
+                <Link className="text-center" to={"/user/home"}>
                   <Image src={home}></Image>
                   <p>Home</p>
                 </Link>
@@ -76,7 +77,7 @@ const MyNavbar = () => {
                   <Image src={network}></Image>
                   <p>My network</p>
                 </Nav.Link>
-                <Link className="text-center" to={'/jobs'}>
+                <Link className="text-center" to={"/jobs"}>
                   <Image src={jobs}></Image>
                   <p>Jobs</p>
                 </Link>
@@ -109,7 +110,7 @@ const MyNavbar = () => {
                       </NavDropdown.Item>
                     ) : (
                       <NavDropdown.Item>
-                        <Link to={'/'}>Login</Link>
+                        <Link to={"/"}>Login</Link>
                       </NavDropdown.Item>
                     )}
 
@@ -135,7 +136,7 @@ const MyNavbar = () => {
         </Container>
       </Navbar>
     </>
-  )
-}
+  );
+};
 
-export default MyNavbar
+export default MyNavbar;
