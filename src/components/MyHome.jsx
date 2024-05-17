@@ -107,7 +107,7 @@ const MyHome = () => {
           <>
             {modalType === "post" && <PostModal />}
 
-            <Col className="center-home" xs={12} md={5} xl={4}>
+            <Col className="center-home" xs={12} md={5} lg={4}>
               <Row className="start-post-card border mx-0 mx-md-0">
                 <Col>
                   <Row className="align-items-center py-0 px-2">
@@ -145,7 +145,7 @@ const MyHome = () => {
                 {AllPosts && AllPosts.slice(88).map((post) => <MyPost key={post._id} post={post} />)}
               </div>
             </Col>
-            <Col md={3} xl={3} xxl={2} className="d-none d-xl-block p-0">
+            <Col xl={3} xxl={2} className="d-none d-xl-block p-0">
               <MySuggestions />
             </Col>
           </>
