@@ -5,6 +5,8 @@ import EditPostModal from './EditPostModal'
 import { GET_SPECIFIC_PROFILE } from '../redux/actions'
 import { useNavigate } from 'react-router-dom'
 import { fetchProfileAction, fetchExperiencesAction } from '../redux/actions'
+import Comments from './Comments'
+import { useState } from 'react'
 
 const MyPost = ({ post }) => {
   // console.log('poststs', post) /////////
@@ -64,6 +66,11 @@ const MyPost = ({ post }) => {
   const loggedIn = useSelector((state) => state.login.isLogged)
   const userInfo = useSelector((state) => state.user.user_info)
 
+  const [showComments, setShowComments] = useState(false)
+  const handleShowComments = () => {
+    setShowComments(!showComments)
+  }
+
   return (
     <>
       {modalType === 'editModal' && showModalId === post._id && <EditPostModal post={post} />}
@@ -104,24 +111,29 @@ const MyPost = ({ post }) => {
             <p className="my-2">{post.text}</p>
             {post.image && <img className="post-image img-post pointer" src={post.image} alt="" />}
 
-            <Row xs={3} className="px-0" style={{ fontSize: '15px' }}>
-              <Col xs={3} className="text-center pointer">
+            <Row xs={3} className="px-0" style={{ fontSize: '15px', paddingBottom: '0' }}>
+              <Col xs={3} className="pointer d-flex align-items-center justify-content-center hover">
                 <i className="bi bi-hand-thumbs-up"></i>
-                <p className="d-inline">Suggest</p>
+                <p className="d-inline">Like</p>
               </Col>
-              <Col xs={3} className="text-center pointer">
-                <i className="bi bi-chat-dots"></i>
+              <Col
+                xs={3}
+                className="pointer d-flex align-items-center justify-content-center hover"
+                onClick={handleShowComments}
+              >
+                <i className="bi bi-chat-right-text"></i>
                 <p className="d-inline">Comment</p>
               </Col>
-              <Col xs={3} className="text-center pointer">
-                <i className="bi bi-arrow-counterclockwise"></i>
-                <p className="d-inline">Share</p>
+              <Col xs={3} className="pointer d-flex align-items-center justify-content-center hover">
+                <i className="bi bi-arrow-repeat"></i>
+                <p className="d-inline">Repost</p>
               </Col>
-              <Col xs={3} className="text-center pointer">
-                <i className="bi bi-send-arrow-up-fill"></i>
+              <Col xs={3} className="pointer d-flex align-items-center justify-content-center hover">
+                <i className="bi bi-send"></i>
                 <p className="d-inline">Send</p>
               </Col>
             </Row>
+            {showComments && <Comments post={post} />}
           </Row>
         </Col>
       </Row>
