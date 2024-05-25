@@ -142,7 +142,7 @@ const MyHome = () => {
                 </Col>
               </Row>
               <div className="d-flex flex-column-reverse">
-                {AllPosts && AllPosts.slice(88).map((post) => <MyPost key={post._id} post={post} />)}
+                {AllPosts && AllPosts.slice(60).map((post) => <MyPost key={post._id} post={post} />)}
               </div>
             </Col>
             <Col xl={3} xxl={2} className="d-none d-xl-block p-0">
