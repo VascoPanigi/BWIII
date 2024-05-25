@@ -2,11 +2,14 @@ import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 const SingleComment = ({ comment, user }) => {
-  const userCom = useSelector((state) => state.users_list.users_list);
+  const userList = useSelector((state) => state.users_list);
 
-  console.log("userCom", userCom);
+  console.log("userList", userList);
 
-  const specificUser = userCom.filter((utente) => utente.username === user);
+  console.log(userList.users_list);
+
+  let specificUser = userList.users_list.filter((utente) => utente.username === user);
+  specificUser = specificUser[0];
 
   console.log("specificUser", specificUser);
 
