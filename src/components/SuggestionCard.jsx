@@ -1,17 +1,17 @@
-import { Button, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { GET_SPECIFIC_PROFILE, fetchExperiencesAction, fetchProfileAction } from '../redux/actions'
+import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { GET_SPECIFIC_PROFILE, fetchExperiencesAction, fetchProfileAction } from "../redux/actions";
 
 const SuggestionCard = ({ singleUser }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   // console.log(singleUser._id);
 
   const handleClick = () => {
-    dispatch({ type: GET_SPECIFIC_PROFILE, payload: singleUser })
-    dispatch(fetchExperiencesAction(singleUser._id))
-    dispatch(fetchProfileAction(singleUser._id))
-  }
+    dispatch({ type: GET_SPECIFIC_PROFILE, payload: singleUser });
+    dispatch(fetchExperiencesAction(singleUser._id));
+    dispatch(fetchProfileAction(singleUser._id));
+  };
 
   return (
     <Card className="suggestion-card-container my-auto">
@@ -19,7 +19,7 @@ const SuggestionCard = ({ singleUser }) => {
         <Card.Img src={singleUser.image} className="suggestion-profile-image" />
         <div className="d-flex flex-column">
           <Card.Body>
-            <Card.Title className="suggestion-name ">
+            <Card.Title className="suggestion-name" onClick={handleClick}>
               {singleUser.name} {singleUser.surname}
               <span className="last-seen-suggestion"> • 3rd</span>
             </Card.Title>
@@ -33,7 +33,7 @@ const SuggestionCard = ({ singleUser }) => {
         </div>
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default SuggestionCard
+export default SuggestionCard;

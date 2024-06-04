@@ -4,10 +4,6 @@ import { useSelector } from "react-redux";
 const SingleComment = ({ comment, user }) => {
   const userList = useSelector((state) => state.users_list);
 
-  console.log("sono l-utente ciao", user);
-  console.log("userList", userList);
-  console.log(userList.users_list);
-
   let specificUser = userList.users_list.filter((utente) => utente.username === user);
 
   specificUser = specificUser[0];
@@ -17,11 +13,6 @@ const SingleComment = ({ comment, user }) => {
     console.log("specificUser CON EMAIL", specificUser);
     specificUser = specificUser[0];
   }
-
-  console.log("specificUser", specificUser);
-
-  console.log("cccccccccccccccccccccccccc", specificUser);
-  // console.log("ao so er nome", specificUser.name);
 
   return (
     <>

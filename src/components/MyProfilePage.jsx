@@ -19,8 +19,8 @@ const MyProfilePage = () => {
   // console.log("showOtherUserData", userData.other_user_info);
   // console.log("experiencetest", experiencesList);
   // const otherUser = userData.other_user_info;
-  const otherUserId = userData.other_user_info._id;
-  // console.log(usersList);
+  // const otherUserId = userData.other_user_info._id;
+  console.log(usersList.users_list);
 
   // const loginStatus = useSelector((state) => state.login);
   // console.log(loginStatus);
@@ -34,12 +34,14 @@ const MyProfilePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(fetchProfileAction(params.dynamicValue));
-    dispatch(fetchUsersListAction());
+    if (usersList.users_list.length === 0) {
+      dispatch(fetchUsersListAction());
+    }
 
     if (params.dynamicValue === "me") {
       dispatch(fetchExperiencesAction("6642750c55621a0015c15faa"));
     } else {
-      dispatch(fetchExperiencesAction(otherUserId));
+      dispatch(fetchExperiencesAction(params.dynamicValue));
     }
   }, []);
 

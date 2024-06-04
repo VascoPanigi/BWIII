@@ -19,6 +19,7 @@ const MyHome = () => {
   useEffect(() => {
     dispatch(fetchAllPosts());
     dispatch(fetchAllComments());
+    dispatch(fetchUsersListAction());
   }, []);
 
   const modalType = useSelector((state) => state.modal.modalType);
